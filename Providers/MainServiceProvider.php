@@ -33,7 +33,7 @@ class MainServiceProvider extends MainProvider
     /**
      * Register anything in the container.
      */
-    public function register()
+    public function register(): void
     {
         parent::register();
 
