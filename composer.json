@@ -1,0 +1,38 @@
+{
+  "name": "larabeans/tenanter",
+  "description": "Apiato container to add multi tenancy feature",
+  "type": "apiato-container",
+  "homepage": "https://larabeans.com/",
+  "version": "0.1.0",
+  "support": {
+    "issues": "https://github.com/larabeans/tenanter/issues",
+    "source": "https://github.com/larabeans/tenanter"
+  },
+  "authors": [
+    {
+      "name": "Ali Kazmi",
+      "email": "ali@kazmi.me"
+    }
+  ],
+  "keywords": [
+    "apiato",
+    "tenant",
+    "tenanter",
+    "apiato containter",
+    "larabeans"
+  ],
+  "license": "MIT",
+  "require": {
+    "larabeans/core": "*"
+  },
+  "require-dev": {},
+  "extra": {
+    "apiato": {
+      "container": {
+        "name": "Tenanter"
+      }
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
