@@ -9,13 +9,11 @@ class TenantDefaultTenantsSeeder_3 extends Seeder
 {
     public function run()
     {
-      // Default Store Seeder ---------------------------------------------
-      if(Config::get('tenanter.enabled')){
+        // Default Store Seeder ---------------------------------------------
         app(CreateTenantTask::class)->run(
             config('tenanter.default_id'),
             'Default Tenant',
             $isActive = true
         );
-      }
     }
 }
