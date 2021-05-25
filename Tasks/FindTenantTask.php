@@ -6,8 +6,9 @@ use App\Containers\Vendor\Tenanter\Data\Repositories\TenantRepository;
 use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Tasks\Task;
 use Exception;
+use Illuminate\Support\Str;
 
-class FindTenantByIdTask extends Task
+class FindTenantTask extends Task
 {
 
     protected $repository;
@@ -17,10 +18,12 @@ class FindTenantByIdTask extends Task
         $this->repository = $repository;
     }
 
-    public function run($id)
+    public function run($nameOrId)
     {
         try {
-            return $this->repository->find($id);
+            $query = (is_numeric($nameOrId) || Str::isUuid($nameOrId)) ? ['id' => $nameOrId] : ['name' => $nameOrId];
+
+            return $this->repository->findWhere($query)->first();
         }
         catch (Exception $exception) {
             throw new NotFoundException();

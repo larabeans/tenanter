@@ -7,7 +7,7 @@ use App\Containers\Vendor\Tenanter\Actions\ActivateTenantAction;
 use App\Containers\Vendor\Tenanter\Actions\CreateTenantAction;
 use App\Containers\Vendor\Tenanter\Actions\DeactivateTenantAction;
 use App\Containers\Vendor\Tenanter\Actions\DeleteTenantAction;
-use App\Containers\Vendor\Tenanter\Actions\FindTenantByIdAction;
+use App\Containers\Vendor\Tenanter\Actions\FindTenantAction;
 use App\Containers\Vendor\Tenanter\Actions\GetAllTenantsAction;
 use App\Containers\Vendor\Tenanter\Actions\UpdateTenantAction;
 use App\Containers\Vendor\Tenanter\UI\API\Requests\ActivateTenantRequest;
@@ -44,7 +44,7 @@ class Controller extends ApiController
      */
     public function findTenantById(FindTenantByIdRequest $request)
     {
-        $tenant = app(FindTenantByIdAction::class)->run($request);
+        $tenant = app(FindTenantAction::class)->run($request);
 
         return $this->transform($tenant, TenantTransformer::class);
     }
