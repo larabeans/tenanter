@@ -28,7 +28,7 @@ Includes migration to add `tenant_id` column in all existing database tables.
 ---
 
 ## Seeders
-For seeder use post from _1  to _10
+For seeder naming use post fix from _1  to _10
 
 Includes seeders for
   - tenant roles 
@@ -42,7 +42,7 @@ Includes seeders for
 ---
 
 ## TODO
-- Implement cli (artisan) command to add tenant column to any table
+- Implement cli (artisan) command to add tenant column to any table (specifying table name and column type i.e. incement or uuid)
 - Implement cli (artisan) command to add default tenant in database
 
 ---
