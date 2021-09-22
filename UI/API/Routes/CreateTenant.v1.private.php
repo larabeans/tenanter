@@ -8,9 +8,12 @@
  * @apiDescription     Tenant is business Identity, api allows registration of tenant (i.e. business) identities.
  *
  * @apiVersion         1.0.0
- * @apiPermission      none
+ * @apiPermission      Authenticated User, tenant-admin, create-tenant
  *
  * @apiParam           {String}  name
+ * @apiParam           {Binary} is_active 1 or 0
+ * @apiParam            {String} domain  www.example.com
+ * @apiParam            {JSON} Configuration  {"language":"urdu","currency":"pkr"}
  *
  * @apiUse             TenantSuccessSingleResponse
  */

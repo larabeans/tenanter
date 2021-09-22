@@ -8,10 +8,11 @@
  * @apiDescription     Endpoint description here..
  *
  * @apiVersion         1.0.0
- * @apiPermission      Authenticated User With Permissions
+ * @apiPermission      Authenticated User, tenant-admin, edit-tenant
  *
  * @apiParam           {String}  name
  * @apiParam           {String}  status
+ * @apiParam            {JSON} Configuration  {"language":"urdu","currency":"pkr"}
  *
  * @apiUse             TenantSuccessSingleResponse
  */

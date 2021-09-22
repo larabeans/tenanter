@@ -4,12 +4,11 @@
  * @apiGroup           Tenant
  * @apiName            findTenantById
  *
- * @api                {GET} /v1/tenants/:id Find/Get Tenant
+ * @api                {GET} /v1/tenants/:id Find Tenant
  * @apiDescription     Api endpoint to get tenant details.
  *
  * @apiVersion         1.0.0
- * @apiPermission      Authenticated User With Permissions
- *
+ * @apiPermission      Authenticated User, tenant-admin, view-tenant
  * @apiParam           {String}  id
  *
  * @apiUse             TenantSuccessSingleResponse
