@@ -9,7 +9,7 @@
  *
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated User, tenant-admin, view-tenant
- * @apiParam           {String}  id
+ * @apiParam           {String}  id/name search on the base of both id and name
  *
  * @apiUse             TenantSuccessSingleResponse
  */

@@ -1,22 +1,18 @@
 <?php
 
 /**
- * @apiGroup           Tenanter
+ * @apiGroup           Tenant
  * @apiName            findTenantByDomain
  *
- * @api                {GET} /v1/domain/tenant Endpoint title here..
- * @apiDescription     Endpoint description here..
+ * @api                {GET} /v1/domain/tenant Find Tanent by Domain name
+ * @apiDescription     search on the base of domain name such as www/example.com
  *
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated User, tenant-admin, view-tenant
  *
  * @apiParam           {String}  domain name of domain eg. www.example.com
  *
- * @apiSuccessExample  {json}  Success-Response:
- * HTTP/1.1 200 OK
-{
-  // Insert the response of the request here...
-}
+ * @apiUse             TenantSuccessSingleResponse
  */
 
 use App\Containers\Vendor\Tenanter\UI\API\Controllers\Controller;
