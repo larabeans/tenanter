@@ -2,14 +2,17 @@
 
 namespace App\Containers\Vendor\Tenanter\Models;
 
-use App\Ship\Parents\Models\Model;
+//use App\Ship\Parents\Models\Model;
+use App\Containers\Vendor\Beaner\Parents\Models\Model;
 
 class Tenant extends Model
 {
     protected $fillable = [
       'slug',
       'name',
-      'is_active'
+      'is_active',
+        'domain',
+        'configuration'
     ];
 
     protected $attributes = [
@@ -21,7 +24,7 @@ class Tenant extends Model
     ];
 
     protected $casts = [
-
+        'configuration' => 'string'
     ];
 
     protected $dates = [
