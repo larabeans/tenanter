@@ -18,12 +18,22 @@ class CreateTenantTables extends Migration
 
             $table->string("slug")->unique();
             $table->string("name");
+            $table->string("domain");
             $table->boolean("is_active");
+            $table->text('configuration')->nullable();
+
 
             $table->timestamps();
             $table->softDeletes();
 
         });
+//        Schema::table('tenants', function (Blueprint $table) {
+//
+//
+//        });
+
+
+
     }
 
     /**
