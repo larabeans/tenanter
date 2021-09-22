@@ -4,55 +4,45 @@ namespace App\Containers\Vendor\Tenanter\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;
 
-/**
- * Class GetAllTenantsRequest.
- */
-class GetAllTenantsRequest extends Request
+class FindTenantByDomainRequest extends Request
 {
     /**
      * Define which Roles and/or Permissions has access to this request.
-     *
-     * @var  array
      */
-    protected $access = [
-      'permissions' => 'view-tenant',
-      'roles'       => 'tenant-admin',
+    protected array $access = [
+        'permissions' => 'view-tenant',
+        'roles'       => 'tenant-admin',
     ];
 
     /**
      * Id's that needs decoding before applying the validation rules.
-     *
-     * @var  array
      */
-    protected $decode = [
+    protected array $decode = [
         // 'id',
     ];
 
     /**
      * Defining the URL parameters (e.g, `/user/{id}`) allows applying
      * validation rules on them and allows accessing them like request data.
-     *
-     * @var  array
      */
-    protected $urlParameters = [
+    protected array $urlParameters = [
         // 'id',
     ];
 
     /**
-     * @return  array
+     * Get the validation rules that apply to the request.
      */
-    public function rules()
+    public function rules(): array
     {
         return [
-            // 'id' => 'required',
-            // '{user-input}' => 'required|max:255',
+            // 'id' => 'required'
         ];
     }
 
     /**
-     * @return  bool
+     * Determine if the user is authorized to make this request.
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return $this->check([
             'hasAccess',
