@@ -2,7 +2,6 @@
 
 namespace App\Containers\Vendor\Tenanter\Models;
 
-//use App\Ship\Parents\Models\Model;
 use App\Containers\Vendor\Beaner\Parents\Models\Model;
 
 class Tenant extends Model
@@ -12,7 +11,6 @@ class Tenant extends Model
       'name',
       'is_active',
         'domain',
-        'configuration'
     ];
 
     protected $attributes = [
