@@ -20,7 +20,6 @@ class CreateTenantTables extends Migration
             $table->string("name");
             $table->string("domain");
             $table->boolean("is_active");
-            $table->text('configuration')->nullable();
 
 
             $table->timestamps();
