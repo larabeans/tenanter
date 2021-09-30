@@ -36,7 +36,6 @@ class TenantTransformer extends Transformer
             'slug' => $entity->slug,
             'domain' => $entity->domain,
             'is_active' => $entity->is_active,
-            'configuration'=>$entity->configuration,
             'created_at' => $entity->created_at,
             'updated_at' => $entity->updated_at,
 
