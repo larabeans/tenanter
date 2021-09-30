@@ -12,6 +12,7 @@ class CreateTenantAction extends Action
 {
     public function run(CreateTenantRequest $request) : Tenant
     {
-        return app(CreateTenantTask::class)->run(null, $request->name, $request->is_active,$request->domain,$request->configuration);
+        //dd($request);
+        return app(CreateTenantTask::class)->run(null, $request->name, $request->is_active,$request->domain);
     }
 }
