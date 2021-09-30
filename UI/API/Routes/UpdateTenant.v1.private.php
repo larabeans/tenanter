@@ -12,7 +12,6 @@
  *
  * @apiParam           {String}  name
  * @apiParam           {String}  status
- * @apiParam            {JSON} Configuration  {"language":"urdu","currency":"pkr"}
  *
  * @apiUse             TenantSuccessSingleResponse
  */

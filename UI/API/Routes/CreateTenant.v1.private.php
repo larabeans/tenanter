@@ -13,7 +13,6 @@
  * @apiParam           {String}  name
  * @apiParam           {Binary} is_active 1 or 0
  * @apiParam            {String} domain  www.example.com
- * @apiParam            {JSON} Configuration  {"language":"urdu","currency":"pkr"}
  *
  * @apiUse             TenantSuccessSingleResponse
  */
