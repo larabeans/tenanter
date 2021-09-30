@@ -12,7 +12,9 @@
  *
  * @apiParam           {String}  name
  * @apiParam           {Binary} is_active 1 or 0
- * @apiParam            {String} domain  www.example.com
+ * @apiParam           {String} domain  www.example.com
+ * @apiParam           {String} email  user email
+ * @apiParam           {String} password  user password
  *
  * @apiUse             TenantSuccessSingleResponse
  */
