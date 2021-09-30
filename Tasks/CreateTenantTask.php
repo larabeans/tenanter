@@ -25,19 +25,14 @@ class CreateTenantTask extends Task
       string $id = null,
       string $name,
       bool $isActive = null,
-      string $domain,
-      array $configuration
+      string $domain
     ): Tenant
     {
-
-        $configuration_data = json_encode($configuration);
-        //dd($configuration_data);
         $data = [
           'slug' => Str::slug($name),
           'name' => $name,
           'is_active' => $isActive ? true : false,
-            'domain' => $domain,
-            'configuration'=>$configuration_data
+            'domain' => $domain
         ];
        // dd($data);
 
