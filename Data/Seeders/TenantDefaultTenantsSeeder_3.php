@@ -14,8 +14,7 @@ class TenantDefaultTenantsSeeder_3 extends Seeder
             config('tenanter.default_id'),
             'Default Tenant',
             $isActive = true,
-            'www.defaulttenant.com',
-            "{'language':'English','currency':'pkr'}"
+            'www.defaulttenant.com'
         );
     }
 }
