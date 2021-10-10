@@ -8,6 +8,7 @@ use App\Ship\Parents\Tasks\Task;
 Use App\Containers\Vendor\Tenanter\Models\Tenant;
 use Illuminate\Support\Str;
 use Exception;
+use phpDocumentor\Reflection\Types\String_;
 
 
 class CreateTenantTask extends Task
@@ -23,14 +24,17 @@ class CreateTenantTask extends Task
     public function run(
       string $id = null,
       string $name,
-      bool $isActive = null
+      bool $isActive = null,
+      string $domain
     ): Tenant
     {
         $data = [
           'slug' => Str::slug($name),
           'name' => $name,
-          'is_active' => $isActive ? true : false
+          'is_active' => $isActive ? true : false,
+            'domain' => $domain
         ];
+       // dd($data);
 
         if (!is_null($id)) {
           $data['id'] = $id;
@@ -40,7 +44,7 @@ class CreateTenantTask extends Task
             return $this->repository->create($data);
         }
         catch (Exception $exception) {
-            throw new CreateResourceFailedException();
+            throw new CreateResourceFailedException($exception);
         }
     }
 }

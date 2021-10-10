@@ -8,7 +8,7 @@
  * @apiDescription     Super admin, can activate any tenant for any possible reason.
  *
  * @apiVersion         1.0.0
- * @apiPermission      Authenticated User With Permissions
+ * @apiPermission      Authenticated User, tenant-admin, edit-tenant
  *
  * @apiParam           {String}  id
  * @apiParam           {boolean}  status

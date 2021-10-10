@@ -8,7 +8,7 @@
  * @apiDescription     Api endpoint to get list of all tenants.
  *
  * @apiVersion         1.0.0
- * @apiPermission      Authenticated User With Permissions
+ * @apiPermission      Authenticated User, tenant-admin, view-tenant
  *
  *
  * @apiUse             TenantSuccessSingleResponse

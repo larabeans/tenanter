@@ -3,27 +3,26 @@
 namespace App\Containers\Vendor\Tenanter\Tasks;
 
 use App\Containers\Vendor\Tenanter\Data\Repositories\TenantRepository;
-use App\Ship\Exceptions\UpdateResourceFailedException;
+use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Tasks\Task;
 use Exception;
 
-class UpdateTenantTask extends Task
+class FindTenantByDomainTask extends Task
 {
-
-    protected $repository;
+    protected TenantRepository $repository;
 
     public function __construct(TenantRepository $repository)
     {
         $this->repository = $repository;
     }
 
-    public function run($id, $data)
+    public function run($domain)
     {
         try {
-            return $this->repository->update($data, $id);
+            return $this->repository->where('domain',$domain)->first();
         }
         catch (Exception $exception) {
-            throw new UpdateResourceFailedException($exception);
+            throw new NotFoundException();
         }
     }
 }

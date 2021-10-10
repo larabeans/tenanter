@@ -28,11 +28,14 @@ class TenantTransformer extends Transformer
      */
     public function transform(Tenant $entity)
     {
+        $c = $entity->configuration;
         $response = [
             'object' => 'Tenant',
-            'id' => $entity->getHashedKey(),
+            'id' => $entity->id,
             'name' => $entity->name,
-            'display_name' => $entity->display_name,
+            'slug' => $entity->slug,
+            'domain' => $entity->domain,
+            'is_active' => $entity->is_active,
             'created_at' => $entity->created_at,
             'updated_at' => $entity->updated_at,
 

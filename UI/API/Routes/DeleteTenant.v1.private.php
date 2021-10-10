@@ -8,7 +8,7 @@
  * @apiDescription     Api end point to delete tenant.
  *
  * @apiVersion         1.0.0
- * @apiPermission      Authenticated User With Permissions
+ * @apiPermission      Authenticated User, tenant-admin, delete-tenant
  *
  *
  * @apiParam           {String}  id

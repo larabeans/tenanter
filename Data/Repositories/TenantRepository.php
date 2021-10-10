@@ -15,7 +15,9 @@ class TenantRepository extends Repository
      */
     protected $fieldSearchable = [
         'id' => '=',
-        // ...
+        'name'=>'like',
+        'domain'=>'like',
+        'slug'=>'like'
     ];
 
 }

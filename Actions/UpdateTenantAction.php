@@ -16,7 +16,7 @@ class UpdateTenantAction extends Action
 
         $tenant = app(UpdateTenantTask::class)->run($request->id, [
             'name' => $request->name,
-            'is_active' => $request->is_active
+            'is_active' => $request->status
         ]);
 
         return $tenant;

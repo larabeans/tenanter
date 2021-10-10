@@ -10,8 +10,7 @@ HTTP/1.1 200 OK
     "id":eqwja3vw94kzmxr0,
     "name":"S ALi",
     "slug":"s-ali",
-    "email":"x.yz@hotmail.com",
-    "confirmed":"0",
+    "domain":"www.example.com",
     "created_at":{
       "date":"2017-06-06 05:40:51.000000",
       "timezone_type":3,

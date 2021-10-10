@@ -8,6 +8,7 @@ use App\Containers\Vendor\Tenanter\Actions\CreateTenantAction;
 use App\Containers\Vendor\Tenanter\Actions\DeactivateTenantAction;
 use App\Containers\Vendor\Tenanter\Actions\DeleteTenantAction;
 use App\Containers\Vendor\Tenanter\Actions\FindTenantAction;
+use App\Containers\Vendor\Tenanter\Actions\FindTenantByDomainAction;
 use App\Containers\Vendor\Tenanter\Actions\GetAllTenantsAction;
 use App\Containers\Vendor\Tenanter\Actions\UpdateTenantAction;
 use App\Containers\Vendor\Tenanter\UI\API\Requests\ActivateTenantRequest;
@@ -16,6 +17,7 @@ use App\Containers\Vendor\Tenanter\UI\API\Requests\DeactivateTenantRequest;
 use App\Containers\Vendor\Tenanter\UI\API\Requests\DeleteTenantRequest;
 use App\Containers\Vendor\Tenanter\UI\API\Requests\GetAllTenantsRequest;
 use App\Containers\Vendor\Tenanter\UI\API\Requests\FindTenantByIdRequest;
+use App\Containers\Vendor\Tenanter\UI\API\Requests\FindTenantByDomainRequest;
 use App\Containers\Vendor\Tenanter\UI\API\Requests\UpdateTenantRequest;
 use App\Containers\Vendor\Tenanter\UI\API\Transformers\TenantTransformer;
 
@@ -34,7 +36,6 @@ class Controller extends ApiController
     public function createTenant(CreateTenantRequest $request)
     {
         $tenant = app(CreateTenantAction::class)->run($request);
-
         return $this->created($this->transform($tenant, TenantTransformer::class));
     }
 
@@ -48,6 +49,19 @@ class Controller extends ApiController
 
         return $this->transform($tenant, TenantTransformer::class);
     }
+
+    /**
+     * @param FindTenantByDomainRequest $request
+     * @return array
+     */
+   public function findTenantByDomain(FindTenantByDomainRequest $request)
+    {
+        $tenant = app(FindTenantByDomainAction::class)->run($request);
+
+        return $this->transform($tenant, TenantTransformer::class);
+    }
+
+
 
     /**
      * @param GetAllTenantsRequest $request

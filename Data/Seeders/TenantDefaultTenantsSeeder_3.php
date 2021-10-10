@@ -13,7 +13,8 @@ class TenantDefaultTenantsSeeder_3 extends Seeder
         app(CreateTenantTask::class)->run(
             config('tenanter.default_id'),
             'Default Tenant',
-            $isActive = true
+            $isActive = true,
+            'www.defaulttenant.com'
         );
     }
 }
