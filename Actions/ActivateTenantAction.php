@@ -9,7 +9,7 @@ use App\Containers\Vendor\Tenanter\Tasks\UpdateTenantTask;
 
 class ActivateTenantAction extends Action
 {
-    public function run(ActivateTenantRequest $request) : Tenant
+    public function run(ActivateTenantRequest $request): Tenant
     {
         $data = $request->sanitizeInput([
             // add your request data here

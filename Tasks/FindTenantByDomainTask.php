@@ -19,9 +19,8 @@ class FindTenantByDomainTask extends Task
     public function run($domain)
     {
         try {
-            return $this->repository->where('domain',$domain)->first();
-        }
-        catch (Exception $exception) {
+            return $this->repository->where('domain', $domain)->first();
+        } catch (Exception $exception) {
             throw new NotFoundException();
         }
     }

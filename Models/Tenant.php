@@ -7,9 +7,9 @@ use App\Containers\Vendor\Beaner\Parents\Models\Model;
 class Tenant extends Model
 {
     protected $fillable = [
-      'slug',
-      'name',
-      'is_active',
+        'slug',
+        'name',
+        'is_active',
         'domain',
     ];
 

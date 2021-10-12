@@ -16,7 +16,7 @@ class ActivateTenantRequest extends Request
      */
     protected $access = [
         'permissions' => 'edit-tenant',
-        'roles'       => 'tenant-admin',
+        'roles' => 'tenant-admin',
     ];
 
     /**

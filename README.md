@@ -1,4 +1,4 @@
->[Larabeans](README.md) > Tenanter
+> [Larabeans](README.md) > Tenanter
 
 ---
 
@@ -11,7 +11,6 @@
 * [Seeders](#seeders)
 * [TODO](#todo)
 
-
 ---
 
 ## Overview
@@ -23,28 +22,33 @@
 ---
 
 ## Migrations
+
 Includes migration to add `tenant_id` column in all existing database tables.
 
 ---
 
 ## Seeders
-For seeder naming use post fix from _1  to _10
+
+For seeder naming use post fix from _1 to _10
 
 Includes seeders for
-  - tenant roles 
-  - tenant permissions 
-  - root admin 
-  - tenant admin 
-  - default root admin 
-  - default tenant admin
-  - default tenant
+
+- tenant roles
+- tenant permissions
+- root admin
+- tenant admin
+- default root admin
+- default tenant admin
+- default tenant
 
 ---
 
 ## TODO
-- Implement cli (artisan) command to add tenant column to any table (specifying table name and column type i.e. incement or uuid)
+
+- Implement cli (artisan) command to add tenant column to any table (specifying table name and column type i.e. incement
+  or uuid)
 - Implement cli (artisan) command to add default tenant in database
 
 ---
 
->[Larabeans](README.md) > Tenanter [⬆](#tenanter)
+> [Larabeans](README.md) > Tenanter [⬆](#tenanter)

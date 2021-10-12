@@ -5,7 +5,7 @@ namespace App\Containers\Vendor\Tenanter\Tasks;
 use App\Containers\Vendor\Tenanter\Data\Repositories\TenantRepository;
 use App\Ship\Exceptions\CreateResourceFailedException;
 use App\Ship\Parents\Tasks\Task;
-Use App\Containers\Vendor\Tenanter\Models\Tenant;
+use App\Containers\Vendor\Tenanter\Models\Tenant;
 use Illuminate\Support\Str;
 use Exception;
 use phpDocumentor\Reflection\Types\String_;
@@ -22,28 +22,27 @@ class CreateTenantTask extends Task
     }
 
     public function run(
-      string $id = null,
-      string $name,
-      bool $isActive = null,
-      string $domain
+        string $id = null,
+        string $name,
+        bool $isActive = null,
+        string $domain
     ): Tenant
     {
         $data = [
-          'slug' => Str::slug($name),
-          'name' => $name,
-          'is_active' => $isActive ? true : false,
+            'slug' => Str::slug($name),
+            'name' => $name,
+            'is_active' => $isActive ? true : false,
             'domain' => $domain
         ];
-       // dd($data);
+        // dd($data);
 
         if (!is_null($id)) {
-          $data['id'] = $id;
+            $data['id'] = $id;
         }
 
         try {
             return $this->repository->create($data);
-        }
-        catch (Exception $exception) {
+        } catch (Exception $exception) {
             throw new CreateResourceFailedException($exception);
         }
     }

@@ -24,8 +24,7 @@ class FindTenantTask extends Task
             $query = (is_numeric($nameOrId) || Str::isUuid($nameOrId)) ? ['id' => $nameOrId] : ['name' => $nameOrId];
 
             return $this->repository->findWhere($query)->first();
-        }
-        catch (Exception $exception) {
+        } catch (Exception $exception) {
             throw new NotFoundException();
         }
     }

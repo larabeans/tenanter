@@ -54,13 +54,12 @@ class Controller extends ApiController
      * @param FindTenantByDomainRequest $request
      * @return array
      */
-   public function findTenantByDomain(FindTenantByDomainRequest $request)
+    public function findTenantByDomain(FindTenantByDomainRequest $request)
     {
         $tenant = app(FindTenantByDomainAction::class)->run($request);
 
         return $this->transform($tenant, TenantTransformer::class);
     }
-
 
 
     /**
@@ -102,9 +101,9 @@ class Controller extends ApiController
      */
     public function activateTenant(ActivateTenantRequest $request)
     {
-      $tenant = app(ActivateTenantAction::class)->run($request);
+        $tenant = app(ActivateTenantAction::class)->run($request);
 
-      return $this->transform($tenant, TenantTransformer::class);
+        return $this->transform($tenant, TenantTransformer::class);
     }
 
     /**
@@ -113,8 +112,8 @@ class Controller extends ApiController
      */
     public function deactivateTenant(DeactivateTenantRequest $request)
     {
-      $tenant = app(DeactivateTenantAction::class)->run($request);
+        $tenant = app(DeactivateTenantAction::class)->run($request);
 
-      return $this->transform($tenant, TenantTransformer::class);
+        return $this->transform($tenant, TenantTransformer::class);
     }
 }

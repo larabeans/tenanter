@@ -9,10 +9,10 @@ class TenantPermissionsSeeder_2 extends Seeder
 {
     public function run()
     {
-      // Default Tenant Management Permissions ----------------------------------------------------------
-      app(CreatePermissionTask::class)->run('view-tenant', 'View Tenant Permissions.');
-      app(CreatePermissionTask::class)->run('edit-tenant', 'Edit Tenant Permission.');
-      app(CreatePermissionTask::class)->run('delete-tenant', 'Delete Tenant Permissions.');
-      app(CreatePermissionTask::class)->run('create-tenant', 'Create Tenant Permission.');
+        // Default Tenant Management Permissions ----------------------------------------------------------
+        app(CreatePermissionTask::class)->run('view-tenant', 'View Tenant Permissions.');
+        app(CreatePermissionTask::class)->run('edit-tenant', 'Edit Tenant Permission.');
+        app(CreatePermissionTask::class)->run('delete-tenant', 'Delete Tenant Permissions.');
+        app(CreatePermissionTask::class)->run('create-tenant', 'Create Tenant Permission.');
     }
 }

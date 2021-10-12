@@ -13,7 +13,7 @@ class CreateTenantTables extends Migration
     {
         Schema::create('tenants', function (Blueprint $table) {
 
-            if(config('uuider.installed', false)) $table->uuid('id')->primary('id');
+            if (config('uuider.installed', false)) $table->uuid('id')->primary('id');
             else $table->increments('id')->primary('id');
 
             $table->string("slug")->unique();
@@ -30,7 +30,6 @@ class CreateTenantTables extends Migration
 //
 //
 //        });
-
 
 
     }

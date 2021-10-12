@@ -8,7 +8,7 @@ use App\Ship\Parents\Actions\Action;
 
 class GetAllTenantsAction extends Action
 {
-    public function run(GetAllTenantsRequest $request) : object
+    public function run(GetAllTenantsRequest $request): object
     {
         $tenants = app(GetAllTenantsTask::class)->addRequestCriteria()->run();
 

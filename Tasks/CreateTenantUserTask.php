@@ -18,21 +18,20 @@ class CreateTenantUserTask extends Task
         $this->repository = $repository;
     }
 
-    public function run( bool $is_admin,
-                         string $tenant_id,
-                         string $email,
-                         string $password
+    public function run(bool $is_admin,
+                        string $tenant_id,
+                        string $email,
+                        string $password
     )
     {
         try {
             return $this->repository->create([
-                'is_admin'=>$is_admin,
-                'tenant_id'=>$tenant_id,
-                'email'=>$email,
-                'password'=>Hash::make($password)
+                'is_admin' => $is_admin,
+                'tenant_id' => $tenant_id,
+                'email' => $email,
+                'password' => Hash::make($password)
             ]);
-        }
-        catch (Exception $exception) {
+        } catch (Exception $exception) {
             throw new CreateResourceFailedException();
         }
     }
