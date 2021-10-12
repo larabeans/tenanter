@@ -10,11 +10,12 @@
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated User, tenant-admin, create-tenant
  *
- * @apiParam           {String}  name
+ * @apiParam           {String}  name unique
  * @apiParam           {Binary} is_active 1 or 0
  * @apiParam           {String} domain  www.example.com
- * @apiParam           {String} email  user email
+ * @apiParam           {String} email  user email(unique)
  * @apiParam           {String} password  user password
+ * @apiParam           {String} mode active or passive
  *
  * @apiUse             TenantSuccessSingleResponse
  */

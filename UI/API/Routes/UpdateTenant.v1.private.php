@@ -10,8 +10,9 @@
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated User, tenant-admin, edit-tenant
  *
- * @apiParam           {String}  name
- * @apiParam           {String}  status
+ * @apiParam           {String}   name
+ * @apiParam           {Boolean}  is_active
+ * @apiParam           {String}   mode active,passive
  *
  * @apiUse             TenantSuccessSingleResponse
  */

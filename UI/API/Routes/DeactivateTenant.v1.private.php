@@ -11,7 +11,6 @@
  * @apiPermission      Authenticated User, tenant-admin, edit-tenant
  *
  * @apiParam           {String}  id
- * @apiParam           {boolean}  status 0 or 1
  *
  * @apiUse             TenantSuccessSingleResponse
  */
