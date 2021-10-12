@@ -25,14 +25,16 @@ class CreateTenantTask extends Task
         string $id = null,
         string $name,
         bool $isActive = null,
-        string $domain
+        string $domain,
+        string $mode
     ): Tenant
     {
         $data = [
             'slug' => Str::slug($name),
             'name' => $name,
             'is_active' => $isActive ? true : false,
-            'domain' => $domain
+            'domain' => $domain,
+            'mode' => $mode
         ];
         // dd($data);
 
