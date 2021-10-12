@@ -35,6 +35,7 @@ class TenantTransformer extends Transformer
             'name' => $entity->name,
             'slug' => $entity->slug,
             'domain' => $entity->domain,
+            'mode'=> $entity->mode,
             'is_active' => $entity->is_active,
             'created_at' => $entity->created_at,
             'updated_at' => $entity->updated_at,
@@ -42,7 +43,7 @@ class TenantTransformer extends Transformer
         ];
 
         $response = $this->ifAdmin([
-            'real_id' => $entity->id,
+            'real_id'    => $entity->id,
             'deleted_at' => $entity->deleted_at,
         ], $response);
 
