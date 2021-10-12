@@ -15,8 +15,8 @@ class DeactivateTenantRequest extends Request
      * @var  array
      */
     protected $access = [
-        'permissions' => 'edit-tenant',
-        'roles' => 'tenant-admin',
+      'permissions' => 'edit-tenant',
+      'roles'       => 'tenant-admin',
     ];
 
     /**
@@ -44,8 +44,7 @@ class DeactivateTenantRequest extends Request
     public function rules()
     {
         return [
-            'id' => 'required',
-            'status' => 'required'
+            'id' => 'required'
         ];
     }
 

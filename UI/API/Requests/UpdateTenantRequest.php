@@ -15,8 +15,8 @@ class UpdateTenantRequest extends Request
      * @var  array
      */
     protected $access = [
-        'permissions' => 'edit-tenant',
-        'roles' => 'tenant-admin',
+      'permissions' => 'edit-tenant',
+      'roles'       => 'tenant-admin',
     ];
 
     /**
@@ -45,7 +45,7 @@ class UpdateTenantRequest extends Request
     {
         return [
             'id' => 'required',
-            'name' => 'required|unique:tenants,name'
+            'name' => 'unique:tenants,name'
         ];
     }
 
