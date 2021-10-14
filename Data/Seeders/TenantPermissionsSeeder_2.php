@@ -14,5 +14,6 @@ class TenantPermissionsSeeder_2 extends Seeder
         app(CreatePermissionTask::class)->run('edit-tenant', 'Edit Tenant Permission.');
         app(CreatePermissionTask::class)->run('delete-tenant', 'Delete Tenant Permissions.');
         app(CreatePermissionTask::class)->run('create-tenant', 'Create Tenant Permission.');
+        app(CreatePermissionTask::class)->run('manage-tenant', 'Manage Tenant Permission.');
     }
 }
