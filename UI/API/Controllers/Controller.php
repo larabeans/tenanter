@@ -4,15 +4,17 @@ namespace App\Containers\Vendor\Tenanter\UI\API\Controllers;
 
 use App\Ship\Parents\Controllers\ApiController;
 use App\Containers\Vendor\Tenanter\Actions\ActivateTenantAction;
-use App\Containers\Vendor\Tenanter\Actions\CreateTenantAction;
+use App\Containers\Vendor\Tenanter\Actions\RegisterTenantAction;
 use App\Containers\Vendor\Tenanter\Actions\DeactivateTenantAction;
 use App\Containers\Vendor\Tenanter\Actions\DeleteTenantAction;
 use App\Containers\Vendor\Tenanter\Actions\FindTenantAction;
 use App\Containers\Vendor\Tenanter\Actions\FindTenantByDomainAction;
 use App\Containers\Vendor\Tenanter\Actions\GetAllTenantsAction;
 use App\Containers\Vendor\Tenanter\Actions\UpdateTenantAction;
+use App\Containers\Vendor\Tenanter\Actions\CreateTenantAction;
 use App\Containers\Vendor\Tenanter\UI\API\Requests\ActivateTenantRequest;
 use App\Containers\Vendor\Tenanter\UI\API\Requests\CreateTenantRequest;
+use App\Containers\Vendor\Tenanter\UI\API\Requests\RegisterTenantRequest;
 use App\Containers\Vendor\Tenanter\UI\API\Requests\DeactivateTenantRequest;
 use App\Containers\Vendor\Tenanter\UI\API\Requests\DeleteTenantRequest;
 use App\Containers\Vendor\Tenanter\UI\API\Requests\GetAllTenantsRequest;
@@ -36,6 +38,16 @@ class Controller extends ApiController
     public function createTenant(CreateTenantRequest $request)
     {
         $tenant = app(CreateTenantAction::class)->run($request);
+        return $this->created($this->transform($tenant, TenantTransformer::class));
+    }
+
+    /**
+     * @param RegisterTenantRequest $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function registerTenant(RegisterTenantRequest $request)
+    {
+        $tenant = app(RegisterTenantAction::class)->run($request);
         return $this->created($this->transform($tenant, TenantTransformer::class));
     }
 
