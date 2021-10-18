@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @apiGroup           Tenanter
+ * @apiGroup           Tenant
  * @apiName            createTenant
  *
  * @api                {POST} /v1/tenants Create Tenant
