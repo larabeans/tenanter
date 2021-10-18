@@ -11,13 +11,12 @@ class UpdateTenantAction extends Action
     public function run(UpdateTenantRequest $request)
     {
         $data = $request->sanitizeInput([
-            // add your request data here
+            'name',
+            'is_active',
+            'mode'
         ]);
 
-        $tenant = app(UpdateTenantTask::class)->run($request->id, [
-            'name' => $request->name,
-            'is_active' => $request->status
-        ]);
+        $tenant = app(UpdateTenantTask::class)->run($request->id, $data);
 
         return $tenant;
     }

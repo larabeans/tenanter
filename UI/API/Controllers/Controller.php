@@ -99,7 +99,7 @@ class Controller extends ApiController
      * @param ActivateTenantRequest $request
      * @return array
      */
-    public function activateTenant(ActivateTenantRequest $request)
+    public function activateTenant(UpdateTenantRequest $request)
     {
         $tenant = app(ActivateTenantAction::class)->run($request);
 
@@ -110,7 +110,7 @@ class Controller extends ApiController
      * @param DeactivateTenantRequest $request
      * @return array
      */
-    public function deactivateTenant(DeactivateTenantRequest $request)
+    public function deactivateTenant(UpdateTenantRequest $request)
     {
         $tenant = app(DeactivateTenantAction::class)->run($request);
 

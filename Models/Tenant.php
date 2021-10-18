@@ -11,6 +11,7 @@ class Tenant extends Model
         'name',
         'is_active',
         'domain',
+        'mode'
     ];
 
     protected $attributes = [
