@@ -2,6 +2,7 @@
 
 namespace App\Containers\Vendor\Tenanter\Actions;
 
+use App\Containers\Vendor\Tenanter\Events\TenantRegisteredEvent;
 use App\Containers\Vendor\Tenanter\Models\Tenant;
 use App\Ship\Parents\Actions\Action;
 use App\Containers\Vendor\Tenanter\Tasks\CreateTenantTask;
@@ -16,6 +17,7 @@ class RegisterTenantAction extends Action
         //dd($request);
         $tenant = app(CreateTenantTask::class)->run(null, $request->name, 0,$request->domain,'active');
         $user = app(CreateTenantUserTask::class)->run(true,  $tenant->id, $request->email,$request->password);
+        TenantRegisteredEvent::dispatch($tenant);
         return $tenant;
     }
 }
