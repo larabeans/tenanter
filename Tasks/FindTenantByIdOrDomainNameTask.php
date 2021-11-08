@@ -20,7 +20,7 @@ class FindTenantByIdOrDomainNameTask extends Task
     public function run($idOrDomain)
     {
         try {
-            $query = (is_numeric($idOrDomain)||Str::isUuid($idOrDomain))?['id'=>$idOrDomain]:['domain'=>$idOrDomain];
+            $query = (is_numeric($idOrDomain) || Str::isUuid($idOrDomain)) ? ['id' => $idOrDomain] : ['domain' => $idOrDomain];
             return $this->repository->findWhere($query)->first();
         } catch (Exception $exception) {
             throw new NotFoundException($exception);

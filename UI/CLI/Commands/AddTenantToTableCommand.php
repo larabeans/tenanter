@@ -29,7 +29,7 @@ class AddTenantToTableCommand extends Command
 
         $data = $this->ask("enter a name or list on tables name separated by comma.<fg=magenta> eg: users,tenants");
         if ($data == null) {
-            $this->line('<fg=red>'. "No Data Inserted");
+            $this->line('<fg=red>' . "No Data Inserted");
         } else {
             $data = explode(",", $data);
             foreach ($data as $d) {
@@ -42,19 +42,19 @@ class AddTenantToTableCommand extends Command
                             if (Schema::hasColumn($t->getTable(), 'id')) {
                                 if (config('uuider.installed', false)) {
                                     $t->uuid('tenant_id')->after('id')->index('tenant_id')->nullable();
-                                    array_push($this->result,$t->getTable());
+                                    array_push($this->result, $t->getTable());
                                 } else {
                                     $t->integer('tenant_id')->after('id')->index('tenant_id')->nullable();
-                                    array_push($this->result,$t->getTable());
+                                    array_push($this->result, $t->getTable());
                                 }
 
                             } else {
                                 if (config('uuider.installed', false)) {
                                     $t->uuid('tenant_id')->first()->index('tenant_id')->nullable();
-                                    array_push($this->result,$t->getTable());
+                                    array_push($this->result, $t->getTable());
                                 } else {
                                     $t->integer('tenant_id')->first()->index('tenant_id')->nullable();
-                                    array_push($this->result,$t->getTable());
+                                    array_push($this->result, $t->getTable());
                                 }
                             }
                         }
@@ -67,10 +67,9 @@ class AddTenantToTableCommand extends Command
                     $this->line('<fg=red>' . $d . " table not found\n");
                 }
             }
-            if(!empty($this->result))
-            {
-                $r = implode(",",$this->result);
-                $this->line("<fg=green>"."In tables " .$r." tenant_id inserted");
+            if (!empty($this->result)) {
+                $r = implode(",", $this->result);
+                $this->line("<fg=green>" . "In tables " . $r . " tenant_id inserted");
             }
         }
     }

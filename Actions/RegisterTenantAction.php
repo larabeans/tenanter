@@ -12,11 +12,10 @@ use App\Containers\Vendor\Tenanter\UI\API\Requests\RegisterTenantRequest;
 
 class RegisterTenantAction extends Action
 {
-    public function run(RegisterTenantRequest $request) : Tenant
+    public function run(RegisterTenantRequest $request): Tenant
     {
-        //dd($request);
-        $tenant = app(CreateTenantTask::class)->run(null, $request->name, 0,$request->domain,'active');
-        $user = app(CreateTenantUserTask::class)->run(true,  $tenant->id, $request->email,$request->password);
+        $tenant = app(CreateTenantTask::class)->run(null, $request->name, 0, $request->domain, 'active');
+        $user = app(CreateTenantUserTask::class)->run(true, $tenant->id, $request->email, $request->password);
         TenantRegisteredEvent::dispatch($tenant);
         return $tenant;
     }

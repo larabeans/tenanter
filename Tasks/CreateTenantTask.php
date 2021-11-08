@@ -36,7 +36,6 @@ class CreateTenantTask extends Task
             'domain' => $domain,
             'mode' => $mode
         ];
-        // dd($data);
 
         if (!is_null($id)) {
             $data['id'] = $id;

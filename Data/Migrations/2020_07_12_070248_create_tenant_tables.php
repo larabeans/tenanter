@@ -13,25 +13,20 @@ class CreateTenantTables extends Migration
     {
         Schema::create('tenants', function (Blueprint $table) {
 
-            if(config('uuider.installed', false)) $table->uuid('id')->primary('id');
+            if (config('uuider.installed', false)) $table->uuid('id')->primary('id');
             else $table->increments('id')->primary('id');
 
             $table->string("slug")->unique();
             $table->string("name");
             $table->string("domain");
             $table->boolean("is_active");
-            $table->enum('mode',['active','passive'])->default('active');
+            $table->enum('mode', ['active', 'passive'])->default('active');
 
 
             $table->timestamps();
             $table->softDeletes();
 
         });
-//        Schema::table('tenants', function (Blueprint $table) {
-//
-//
-//        });
-
 
 
     }
