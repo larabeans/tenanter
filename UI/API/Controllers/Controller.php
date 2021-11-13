@@ -23,7 +23,6 @@ use App\Containers\Vendor\Tenanter\UI\API\Requests\FindTenantByIdOrDomainNameReq
 use App\Containers\Vendor\Tenanter\UI\API\Requests\UpdateTenantRequest;
 use App\Containers\Vendor\Tenanter\UI\API\Transformers\TenantTransformer;
 
-
 /**
  * Class Controller
  *

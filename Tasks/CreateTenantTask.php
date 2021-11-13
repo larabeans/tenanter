@@ -10,10 +10,8 @@ use Illuminate\Support\Str;
 use Exception;
 use phpDocumentor\Reflection\Types\String_;
 
-
 class CreateTenantTask extends Task
 {
-
     protected $repository;
 
     public function __construct(TenantRepository $repository)
@@ -27,8 +25,7 @@ class CreateTenantTask extends Task
         bool $isActive = null,
         string $domain,
         string $mode
-    ): Tenant
-    {
+    ): Tenant {
         $data = [
             'slug' => Str::slug($name),
             'name' => $name,

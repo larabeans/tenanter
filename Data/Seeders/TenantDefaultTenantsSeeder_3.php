@@ -19,6 +19,5 @@ class TenantDefaultTenantsSeeder_3 extends Seeder
                 'active'
             );
         }
-
     }
 }

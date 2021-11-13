@@ -9,7 +9,6 @@ use App\Containers\Vendor\Tenanter\Tasks\CreateTenantTask;
 use App\Containers\Vendor\Tenanter\Tasks\CreateTenantUserTask;
 use App\Containers\Vendor\Tenanter\UI\API\Requests\RegisterTenantRequest;
 
-
 class RegisterTenantAction extends Action
 {
     public function run(RegisterTenantRequest $request): Tenant

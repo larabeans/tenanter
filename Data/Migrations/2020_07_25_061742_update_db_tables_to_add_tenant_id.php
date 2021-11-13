@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\DB;
 
 class UpdateDbTablesToAddTenantId extends Migration
 {
-
     /**
      * Run the migrations.
      */
@@ -23,7 +22,6 @@ class UpdateDbTablesToAddTenantId extends Migration
                             } else {
                                 $t->integer('tenant_id')->after('id')->nullable();
                             }
-
                         } else {
                             if (config('uuider.installed', false)) {
                                 $t->uuid('tenant_id')->first()->nullable();
@@ -44,7 +42,7 @@ class UpdateDbTablesToAddTenantId extends Migration
     {
         $tables = DB::select('SHOW TABLES');
         foreach ($tables as $table) {
-            foreach ($table as $key => $name)
+            foreach ($table as $key => $name) {
                 if (Config::get('tenanter.enabled') && !in_array($name, Config::get('tenanter.ignore_tables'))) {
                     Schema::table($name, function (Blueprint $t) {
                         if (Schema::hasColumn($t->getTable(), 'tenant_id')) {
@@ -52,6 +50,7 @@ class UpdateDbTablesToAddTenantId extends Migration
                         }
                     });
                 }
+            }
         }
     }
 }

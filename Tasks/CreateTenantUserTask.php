@@ -18,12 +18,12 @@ class CreateTenantUserTask extends Task
         $this->repository = $repository;
     }
 
-    public function run(bool $is_admin,
-                        string $tenant_id,
-                        string $email,
-                        string $password
-    )
-    {
+    public function run(
+        bool $is_admin,
+        string $tenant_id,
+        string $email,
+        string $password
+    ) {
         try {
             return $this->repository->create([
                 'is_admin' => $is_admin,

@@ -21,4 +21,3 @@ use Illuminate\Support\Facades\Route;
 Route::get('tenant/{id}', [Controller::class, 'findTenantByIdOrDomainName'])
     ->name('api_tenanter_find_tenant_by_domain')
     ->middleware(['auth:api']);
-

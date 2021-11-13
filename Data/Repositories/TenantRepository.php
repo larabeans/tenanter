@@ -9,7 +9,6 @@ use App\Ship\Parents\Repositories\Repository;
  */
 class TenantRepository extends Repository
 {
-
     /**
      * @var array
      */
@@ -19,5 +18,4 @@ class TenantRepository extends Repository
         'domain' => 'like',
         'slug' => 'like'
     ];
-
 }

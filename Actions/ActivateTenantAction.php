@@ -11,7 +11,6 @@ class ActivateTenantAction extends Action
 {
     public function run(UpdateTenantRequest $request): Tenant
     {
-
         $tenant = app(UpdateTenantTask::class)->run($request->id, [
             'is_active' => true
         ]);

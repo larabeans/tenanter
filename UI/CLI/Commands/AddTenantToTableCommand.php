@@ -37,7 +37,6 @@ class AddTenantToTableCommand extends Command
                     Schema::table($d, function (Blueprint $t) {
                         if (Schema::hasColumn($t->getTable(), 'tenant_id')) {
                             $this->line('<fg=red>' . $t->getTable() . " has tenant_id already exists");
-
                         } else {
                             if (Schema::hasColumn($t->getTable(), 'id')) {
                                 if (config('uuider.installed', false)) {
@@ -47,7 +46,6 @@ class AddTenantToTableCommand extends Command
                                     $t->integer('tenant_id')->after('id')->index('tenant_id')->nullable();
                                     array_push($this->result, $t->getTable());
                                 }
-
                             } else {
                                 if (config('uuider.installed', false)) {
                                     $t->uuid('tenant_id')->first()->index('tenant_id')->nullable();
@@ -58,10 +56,9 @@ class AddTenantToTableCommand extends Command
                                 }
                             }
                         }
-
                     });
 
-                    //$this->info("id inserted successfully");
+                //$this->info("id inserted successfully");
                 } else {
                     //echo($d . " table nahi ha \n");
                     $this->line('<fg=red>' . $d . " table not found\n");
@@ -74,7 +71,7 @@ class AddTenantToTableCommand extends Command
         }
     }
 
-//$this->line('<fg=black>Black <fg=red>Red <fg=green>Green <fg=yellow>Yellow
+    //$this->line('<fg=black>Black <fg=red>Red <fg=green>Green <fg=yellow>Yellow
 //             <fg=blue>Blue <fg=magenta>Magenta <fg=cyan>Cyan
 //             <fg=white;bg=black>White <fg=default;bg=black>Default</>');
 }

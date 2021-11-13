@@ -34,7 +34,6 @@ class AddIdToAllCommand extends Command
                 Schema::table($d, function (Blueprint $t) {
                     if (Schema::hasColumn($t->getTable(), 'tenant_id')) {
                         $this->line('<fg=red>' . $t->getTable() . " has tenant_id already exists");
-
                     } else {
                         if (Schema::hasColumn($t->getTable(), 'id')) {
                             if (config('uuider.installed', false)) {
@@ -44,7 +43,6 @@ class AddIdToAllCommand extends Command
                                 $t->integer('tenant_id')->after('id')->index('tenant_id')->nullable();
                                 array_push($this->result, $t->getTable());
                             }
-
                         } else {
                             if (config('uuider.installed', false)) {
                                 $t->uuid('tenant_id')->first()->index('tenant_id')->nullable();
@@ -55,10 +53,7 @@ class AddIdToAllCommand extends Command
                             }
                         }
                     }
-
                 });
-
-
             }
         }
         if (!empty($this->result)) {
@@ -68,7 +63,7 @@ class AddIdToAllCommand extends Command
         //}
     }
 
-//$this->line('<fg=black>Black <fg=red>Red <fg=green>Green <fg=yellow>Yellow
+    //$this->line('<fg=black>Black <fg=red>Red <fg=green>Green <fg=yellow>Yellow
 //             <fg=blue>Blue <fg=magenta>Magenta <fg=cyan>Cyan
 //             <fg=white;bg=black>White <fg=default;bg=black>Default</>');
 }

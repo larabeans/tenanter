@@ -24,4 +24,3 @@ use Illuminate\Support\Facades\Route;
 Route::post('tenants', [Controller::class, 'createTenant'])
     ->name('api_tenanter_create_tenant')
     ->middleware(['auth:api']);
-

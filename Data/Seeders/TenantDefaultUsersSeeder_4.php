@@ -34,6 +34,5 @@ class TenantDefaultUsersSeeder_4 extends Seeder
             //            '0.323565666'
             //        ]);
         }
-
     }
 }

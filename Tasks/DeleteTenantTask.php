@@ -9,7 +9,6 @@ use Exception;
 
 class DeleteTenantTask extends Task
 {
-
     protected $repository;
 
     public function __construct(TenantRepository $repository)
