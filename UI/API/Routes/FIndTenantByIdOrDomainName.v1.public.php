@@ -18,7 +18,7 @@
 use App\Containers\Vendor\Tenanter\UI\API\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 
-Route::get('domain/tenant', [Controller::class, 'findTenantByDomain'])
+Route::get('tenant/{id}', [Controller::class, 'findTenantByIdOrDomainName'])
     ->name('api_tenanter_find_tenant_by_domain')
     ->middleware(['auth:api']);
 

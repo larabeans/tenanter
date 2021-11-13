@@ -8,24 +8,22 @@ use App\Ship\Parents\Tasks\Task;
 use Exception;
 use Illuminate\Support\Str;
 
-class FindTenantTask extends Task
+class FindTenantByIdOrDomainNameTask extends Task
 {
-
-    protected $repository;
+    protected TenantRepository $repository;
 
     public function __construct(TenantRepository $repository)
     {
         $this->repository = $repository;
     }
 
-    public function run($nameOrId)
+    public function run($idOrDomain)
     {
         try {
-            $query = (is_numeric($nameOrId) || Str::isUuid($nameOrId)) ? ['id' => $nameOrId] : ['name' => $nameOrId];
-
+            $query = (is_numeric($idOrDomain) || Str::isUuid($idOrDomain)) ? ['id' => $idOrDomain] : ['domain' => $idOrDomain];
             return $this->repository->findWhere($query)->first();
         } catch (Exception $exception) {
-            throw new NotFoundException();
+            throw new NotFoundException($exception);
         }
     }
 }

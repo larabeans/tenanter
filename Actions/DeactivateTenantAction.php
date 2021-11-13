@@ -10,9 +10,6 @@ class DeactivateTenantAction extends Action
 {
     public function run(UpdateTenantRequest $request)
     {
-        $data = $request->sanitizeInput([
-            // add your request data here
-        ]);
 
         $tenant = app(UpdateTenantTask::class)->run($request->id, [
             'is_active' => false

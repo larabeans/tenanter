@@ -12,6 +12,7 @@ use App\Containers\Vendor\Tenanter\Traits\IsTenantAdminTrait;
 class UpdateTenantTask extends Task
 {
     use IsTenantAdminTrait;
+
     protected $repository;
 
     public function __construct(TenantRepository $repository)
@@ -21,14 +22,13 @@ class UpdateTenantTask extends Task
 
     public function run($id, $data)
     {
-        if($this->isTenantAdmin($id)) {
+        if ($this->isTenantAdmin($id)) {
             try {
                 return $this->repository->update($data, $id);
             } catch (Exception $exception) {
                 throw new UpdateResourceFailedException($exception);
             }
-        }
-        else{
+        } else {
             throw new NotAuthorizedResourceException();
         }
     }

@@ -8,7 +8,7 @@ use App\Containers\Vendor\Tenanter\Actions\RegisterTenantAction;
 use App\Containers\Vendor\Tenanter\Actions\DeactivateTenantAction;
 use App\Containers\Vendor\Tenanter\Actions\DeleteTenantAction;
 use App\Containers\Vendor\Tenanter\Actions\FindTenantAction;
-use App\Containers\Vendor\Tenanter\Actions\FindTenantByDomainAction;
+use App\Containers\Vendor\Tenanter\Actions\FindTenantByIdOrDomainNameAction;
 use App\Containers\Vendor\Tenanter\Actions\GetAllTenantsAction;
 use App\Containers\Vendor\Tenanter\Actions\UpdateTenantAction;
 use App\Containers\Vendor\Tenanter\Actions\CreateTenantAction;
@@ -19,7 +19,7 @@ use App\Containers\Vendor\Tenanter\UI\API\Requests\DeactivateTenantRequest;
 use App\Containers\Vendor\Tenanter\UI\API\Requests\DeleteTenantRequest;
 use App\Containers\Vendor\Tenanter\UI\API\Requests\GetAllTenantsRequest;
 use App\Containers\Vendor\Tenanter\UI\API\Requests\FindTenantByIdRequest;
-use App\Containers\Vendor\Tenanter\UI\API\Requests\FindTenantByDomainRequest;
+use App\Containers\Vendor\Tenanter\UI\API\Requests\FindTenantByIdOrDomainNameRequest;
 use App\Containers\Vendor\Tenanter\UI\API\Requests\UpdateTenantRequest;
 use App\Containers\Vendor\Tenanter\UI\API\Transformers\TenantTransformer;
 
@@ -52,23 +52,12 @@ class Controller extends ApiController
     }
 
     /**
-     * @param FindTenantByIdRequest $request
+     * @param FindTenantByIdOrDomainNameRequest $request
      * @return array
      */
-    public function findTenantById(FindTenantByIdRequest $request)
+    public function findTenantByIdOrDomainName(FindTenantByIdOrDomainNameRequest $request)
     {
-        $tenant = app(FindTenantAction::class)->run($request);
-
-        return $this->transform($tenant, TenantTransformer::class);
-    }
-
-    /**
-     * @param FindTenantByDomainRequest $request
-     * @return array
-     */
-    public function findTenantByDomain(FindTenantByDomainRequest $request)
-    {
-        $tenant = app(FindTenantByDomainAction::class)->run($request);
+        $tenant = app(FindTenantByIdOrDomainNameAction::class)->run($request);
 
         return $this->transform($tenant, TenantTransformer::class);
     }
