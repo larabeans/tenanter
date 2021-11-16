@@ -15,7 +15,7 @@ class RegisterTenantAction extends Action
     public function run(RegisterTenantRequest $request): Tenant
     {
         $tenant = app(CreateTenantTask::class)->run(null, $request->name, 0, $request->domain, 'active');
-        $user = app(CreateTenantUserTask::class)->run(true, $tenant->id, $request->email, $request->password);
+        $user = app(CreateTenantUserTask::class)->run(false, $tenant->id, $request->email, $request->password);
         TenantRegisteredEvent::dispatch($tenant);
         return $tenant;
     }
