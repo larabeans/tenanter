@@ -10,12 +10,15 @@ trait IsTenantAdminTrait
     {
         $user = Auth::user();
 
-        // dd(app(GetAuthenticatedUserTask::class)->run());
-        if ($user->roles[0]->name=="tenant-admin") {
-            if (Auth::user()->tenant_id == $tenant_id) {
-                return true;
+        if (sizeof($user->roles) == 0) {
+            return false;
+        } else {
+            foreach ($user->roles as $role) {
+                if ($role->name == "tenant-admin" && Auth::user()->tenant_id == $tenant_id) {
+                    return true;
+                }
             }
+            return false;
         }
-        return false;
     }
 }
