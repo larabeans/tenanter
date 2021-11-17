@@ -42,8 +42,7 @@ return [
         "oauth_personal_access_clients",
         "oauth_refresh_tokens",
         "password_resets",
-
-        "roles",
+        
         "permissions",
         "role_has_permissions",
         "model_has_permissions",
