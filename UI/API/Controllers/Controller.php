@@ -2,6 +2,8 @@
 
 namespace App\Containers\Vendor\Tenanter\UI\API\Controllers;
 
+use App\Containers\Vendor\Tenanter\Actions\ChangeTenantModeAction;
+use App\Containers\Vendor\Tenanter\UI\API\Requests\ChangeTenantModeRequest;
 use App\Ship\Parents\Controllers\ApiController;
 use App\Containers\Vendor\Tenanter\Actions\ActivateTenantAction;
 use App\Containers\Vendor\Tenanter\Actions\RegisterTenantAction;
@@ -57,6 +59,17 @@ class Controller extends ApiController
     public function findTenantByIdOrDomainName(FindTenantByIdOrDomainNameRequest $request)
     {
         $tenant = app(FindTenantByIdOrDomainNameAction::class)->run($request);
+
+        return $this->transform($tenant, TenantTransformer::class);
+    }
+
+    /**
+     * @param ChangeTenantModeRequest $request
+     * @return array
+     */
+    public function changeTenantMode(ChangeTenantModeRequest $request)
+    {
+        $tenant = app(ChangeTenantModeAction::class)->run($request);
 
         return $this->transform($tenant, TenantTransformer::class);
     }
