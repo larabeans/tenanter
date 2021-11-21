@@ -2,10 +2,11 @@
 
 namespace App\Containers\Vendor\Tenanter\Tasks;
 
-use App\Containers\Vendor\Tenanter\Data\Repositories\TenantRepository;
-use App\Ship\Exceptions\DeleteResourceFailedException;
-use App\Ship\Parents\Tasks\Task;
 use Exception;
+use App\Ship\Parents\Tasks\Task;
+use App\Containers\Vendor\Tenanter\Data\Repositories\TenantRepository;
+
+
 
 class DeleteTenantTask extends Task
 {

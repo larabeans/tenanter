@@ -15,7 +15,7 @@ class CreateTenantRequest extends Request
      * @var  array
      */
     protected $access = [
-        'permissions' => 'create-tenant',
+        'permissions' => 'manage-tenant|create-tenant',
         'roles' => 'admin',
     ];
 

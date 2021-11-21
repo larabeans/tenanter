@@ -11,8 +11,7 @@
  * @apiPermission      Authenticated User, tenant-admin, edit-tenant
  *
  * @apiParam           {String}   name
- * @apiParam           {Boolean}  is_active
- * @apiParam           {String}   mode active,passive
+ * @apiParam           {String}   domain
  *
  * @apiUse             TenantSuccessSingleResponse
  */

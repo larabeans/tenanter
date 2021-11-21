@@ -12,8 +12,7 @@ class UpdateTenantAction extends Action
     {
         $data = $request->sanitizeInput([
             'name',
-            'is_active',
-            'mode'
+            'domain'
         ]);
 
         $tenant = app(UpdateTenantTask::class)->run($request->id, $data);

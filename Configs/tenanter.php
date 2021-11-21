@@ -42,8 +42,7 @@ return [
         "oauth_personal_access_clients",
         "oauth_refresh_tokens",
         "password_resets",
-
-        "roles",
+        
         "permissions",
         "role_has_permissions",
         "model_has_permissions",
@@ -54,7 +53,14 @@ return [
         "cities",
 
         "tenants",
-    ]
+    ],
 
+    // TODO: skip-these permissions while assigning all permissions to tenant-admin
+    // TODO: Check if tenant-admin can create roles (that already exists with other tenants), what are other implications
+    'only-admin-permissions' => [
+        'manage-tenant',
+        'create-tenant',
+        'delete-tenant'
+    ]
 
 ];

@@ -2,7 +2,10 @@
 
 namespace App\Containers\Vendor\Tenanter\Providers;
 
+use App\Containers\Vendor\Tenanter\Events\Handlers\CheckForTenantColumnForUpdatedTable;
 use App\Ship\Parents\Providers\MainProvider;
+use Illuminate\Database\Events\MigrationEnded;
+use Illuminate\Support\Facades\Event;
 
 /**
  * Class MainServiceProvider.
@@ -35,8 +38,17 @@ class MainServiceProvider extends MainProvider
     public function register(): void
     {
         parent::register();
+    }
 
-        // $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
-        // ...
+    /**
+     * Boot anything in the container.
+     */
+    public function boot(): void
+    {
+        parent::boot();
+
+        Event::listen(MigrationEnded::class, [
+            CheckForTenantColumnForUpdatedTable::class, "handle"
+        ]);
     }
 }

@@ -6,14 +6,14 @@ use App\Ship\Parents\Events\Event;
 use App\Containers\Vendor\Tenanter\Models\Tenant;
 use Illuminate\Queue\SerializesModels;
 
-class TenantRegisteredEvent extends Event
+class TenantRegistered extends Event
 {
     use SerializesModels;
 
     public Tenant $entity;
 
     /**
-     * TenantRegisteredEvent constructor.
+     * TenantRegistered constructor.
      *
      * @param $entity
      */

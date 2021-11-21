@@ -6,16 +6,8 @@ use Illuminate\Support\Facades\Auth;
 
 trait IsTenantAdminTrait
 {
-    public function isTenantAdmin(string $tenant_id): bool
+    public function isTenantAdmin(string $tenantId): bool
     {
-        $user = Auth::user();
-
-        // dd(app(GetAuthenticatedUserTask::class)->run());
-        if ($user->roles[0]->name=="tenant-admin") {
-            if (Auth::user()->tenant_id == $tenant_id) {
-                return true;
-            }
-        }
-        return false;
+        return Auth::user()->hasRole('tenant-admin') && Auth::user()->tenant_id == $tenantId;
     }
 }
