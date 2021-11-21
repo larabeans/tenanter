@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Events\Handlers;
+namespace App\Containers\Vendor\Tenanter\Listeners;
 
 use Illuminate\Database\Events\MigrationEnded;
 use Illuminate\Contracts\Queue\ShouldQueue;

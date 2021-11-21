@@ -2,7 +2,7 @@
 
 namespace App\Containers\Vendor\Tenanter\Providers;
 
-use App\Containers\Vendor\Tenanter\Events\Handlers\CheckForTenantColumnForUpdatedTable;
+use App\Containers\Vendor\Tenanter\Listeners\CheckForTenantColumnForUpdatedTable;
 use App\Ship\Parents\Providers\MainProvider;
 use Illuminate\Database\Events\MigrationEnded;
 use Illuminate\Support\Facades\Event;
