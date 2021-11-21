@@ -2,11 +2,12 @@
 
 namespace App\Containers\Vendor\Tenanter\Tasks;
 
-use App\Containers\Vendor\Tenanter\Data\Repositories\TenantRepository;
-use App\Ship\Exceptions\NotFoundException;
-use App\Ship\Parents\Tasks\Task;
 use Exception;
 use Illuminate\Support\Str;
+use App\Ship\Parents\Tasks\Task;
+use App\Containers\Vendor\Tenanter\Data\Repositories\TenantRepository;
+
+
 
 class FindTenantByIdOrDomainNameTask extends Task
 {

@@ -2,12 +2,10 @@
 
 namespace App\Containers\Vendor\Tenanter\Tasks;
 
-use App\Containers\AppSection\User\Data\Repositories\UserRepository;
-use App\Containers\AppSection\User\Models\User;
-use App\Ship\Exceptions\CreateResourceFailedException;
-use App\Ship\Parents\Tasks\Task;
 use Exception;
 use Illuminate\Support\Facades\Hash;
+use App\Ship\Parents\Tasks\Task;
+use App\Containers\AppSection\User\Data\Repositories\UserRepository;
 
 class CreateTenantUserTask extends Task
 {

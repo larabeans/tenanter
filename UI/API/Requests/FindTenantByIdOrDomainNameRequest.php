@@ -10,8 +10,8 @@ class FindTenantByIdOrDomainNameRequest extends Request
      * Define which Roles and/or Permissions has access to this request.
      */
     protected array $access = [
-        //'permissions' => 'view-tenant',
-       // 'roles' => 'tenant-admin',
+        'permissions' => '',
+        'roles' => '',
     ];
 
     /**

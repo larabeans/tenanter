@@ -2,6 +2,7 @@
 
 namespace App\Containers\Vendor\Tenanter\UI\API\Requests;
 
+use App\Containers\Vendor\Tenanter\Traits\IsTenantOwnerTrait;
 use App\Ship\Parents\Requests\Request;
 
 /**
@@ -9,6 +10,8 @@ use App\Ship\Parents\Requests\Request;
  */
 class UpdateTenantRequest extends Request
 {
+    use IsTenantOwnerTrait;
+
     /**
      * Define which Roles and/or Permissions has access to this request.
      *
@@ -16,7 +19,7 @@ class UpdateTenantRequest extends Request
      */
     protected $access = [
         'permissions' => 'edit-tenant|manage-tenant',
-        'roles' => '',
+        'roles' => 'admin|tenant-admin',
     ];
 
     /**
@@ -55,7 +58,7 @@ class UpdateTenantRequest extends Request
     public function authorize()
     {
         return $this->check([
-            'hasAccess',
+            'hasAccess|IsTenantOwner',
         ]);
     }
 }
