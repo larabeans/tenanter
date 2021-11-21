@@ -16,17 +16,19 @@ class UpdateDbTablesToAddTenantId extends Migration
             foreach ($table as $key => $name) {
                 if (Config::get('tenanter.enabled') && !in_array($name, Config::get('tenanter.ignore_tables'))) {
                     Schema::table($name, function (Blueprint $t) {
-                        if (Schema::hasColumn($t->getTable(), 'id')) {
-                            if (config('uuider.installed', false)) {
-                                $t->uuid('tenant_id')->after('id')->nullable();
+                        if(Schema::hasColumn($t->getTable(), 'tenant_id') === false){
+                            if (Schema::hasColumn($t->getTable(), 'id')) {
+                                if (config('uuider.installed', false)) {
+                                    $t->uuid('tenant_id')->after('id')->nullable();
+                                } else {
+                                    $t->integer('tenant_id')->after('id')->nullable();
+                                }
                             } else {
-                                $t->integer('tenant_id')->after('id')->nullable();
-                            }
-                        } else {
-                            if (config('uuider.installed', false)) {
-                                $t->uuid('tenant_id')->first()->nullable();
-                            } else {
-                                $t->integer('tenant_id')->first()->nullable();
+                                if (config('uuider.installed', false)) {
+                                    $t->uuid('tenant_id')->first()->nullable();
+                                } else {
+                                    $t->integer('tenant_id')->first()->nullable();
+                                }
                             }
                         }
                     });
