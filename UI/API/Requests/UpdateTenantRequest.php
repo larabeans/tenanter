@@ -2,6 +2,7 @@
 
 namespace App\Containers\Vendor\Tenanter\UI\API\Requests;
 
+use App\Containers\Vendor\Tenanter\Traits\CheckDomainNameTrait;
 use App\Containers\Vendor\Tenanter\Traits\IsTenantOwnerTrait;
 use App\Ship\Parents\Requests\Request;
 
@@ -48,7 +49,9 @@ class UpdateTenantRequest extends Request
     {
         return [
             'id' => 'required',
-            'name' => 'unique:tenants,name'
+            'name' => 'unique:tenants,name',
+            'domain' => "regex:/(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9]/|unique:tenants,domain"
+
         ];
     }
 
