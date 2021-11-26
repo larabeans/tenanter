@@ -15,8 +15,8 @@ class GetAllTenantsRequest extends Request
      * @var  array
      */
     protected $access = [
-        'permissions' => 'manage-tenant',
-        'roles' => 'admin',
+        'permissions' => 'view-tenant',
+        'roles' => '',
     ];
 
     /**
