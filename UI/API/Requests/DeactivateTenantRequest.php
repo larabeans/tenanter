@@ -15,7 +15,7 @@ class DeactivateTenantRequest extends Request
      * @var  array
      */
     protected $access = [
-        'permissions' => 'manage-tenant|edit-tenant',
+        'permissions' => 'manage-tenant',
         'roles' => 'admin',
     ];
 
