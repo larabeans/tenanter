@@ -36,7 +36,7 @@ class RegisterTenantRequest extends Request
     {
         return [
             'name' => 'required|unique:tenants,name',
-            'domain' => 'regex:/(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9]/|unique:tenants,domain',
+           // 'domain' => 'regex:/(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9]/|unique:tenants,domain',
             'email' => 'required|unique:users,email',
             'password' => 'required'
         ];
