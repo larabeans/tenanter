@@ -2,6 +2,7 @@
 
 namespace App\Containers\Vendor\Tenanter\Tasks;
 
+use App\Ship\Exceptions\CreateResourceFailedException;
 use Exception;
 use Illuminate\Support\Str;
 use App\Ship\Parents\Tasks\Task;
@@ -21,14 +22,12 @@ class CreateTenantTask extends Task
         string $id = null,
         string $name,
         bool $isActive = null,
-        string $domain,
         string $mode
     ): Tenant {
         $data = [
             'slug' => Str::slug($name),
             'name' => $name,
             'is_active' => $isActive ? true : false,
-            'domain' => $domain,
             'mode' => $mode
         ];
 
