@@ -2,6 +2,7 @@
 
 namespace App\Containers\Vendor\Tenanter\UI\API\Requests;
 
+use App\Containers\Vendor\Tenanter\Traits\CheckDomainNameTrait;
 use App\Containers\Vendor\Tenanter\Traits\IsTenantOwnerTrait;
 use App\Ship\Parents\Requests\Request;
 
@@ -18,7 +19,7 @@ class UpdateTenantRequest extends Request
      * @var  array
      */
     protected $access = [
-        'permissions' => 'edit-tenant|manage-tenant',
+        'permissions' => 'edit-tenant',
         'roles' => 'admin|tenant-admin',
     ];
 
@@ -48,7 +49,9 @@ class UpdateTenantRequest extends Request
     {
         return [
             'id' => 'required',
-            'name' => 'unique:tenants,name'
+            'name' => 'unique:tenants,name',
+            'domain' => "regex:/(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9]/|unique:tenants,domain"
+
         ];
     }
 
@@ -58,7 +61,8 @@ class UpdateTenantRequest extends Request
     public function authorize()
     {
         return $this->check([
-            'hasAccess|IsTenantOwner',
+            'hasAccess',
+            'IsTenantOwner'
         ]);
     }
 }

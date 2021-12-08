@@ -3,7 +3,9 @@
 namespace App\Containers\Vendor\Tenanter\Providers;
 
 use App\Containers\Vendor\Tenanter\Listeners\CheckForTenantColumnForUpdatedTable;
+use App\Containers\Vendor\Tenanter\Listeners\AuthenticatedListener;
 use App\Ship\Parents\Providers\MainProvider;
+use Illuminate\Auth\Events\Authenticated;
 use Illuminate\Database\Events\MigrationEnded;
 use Illuminate\Support\Facades\Event;
 
@@ -50,5 +52,11 @@ class MainServiceProvider extends MainProvider
         Event::listen(MigrationEnded::class, [
             CheckForTenantColumnForUpdatedTable::class, "handle"
         ]);
+
+        // listener in not working
+        Event::listen(Authenticated::class, [
+            AuthenticatedListener::class, 'handle',
+        ]);
+
     }
 }

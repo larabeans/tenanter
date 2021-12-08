@@ -35,7 +35,10 @@ class RegisterTenantRequest extends Request
     public function rules(): array
     {
         return [
-            // 'id' => 'required'
+            'name' => 'required|unique:tenants,name',
+            'domain' => 'regex:/(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9]/|unique:tenants,domain',
+            'email' => 'required|unique:users,email',
+            'password' => 'required'
         ];
     }
 
