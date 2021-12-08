@@ -4,7 +4,7 @@ namespace App\Containers\Vendor\Tenanter\Actions;
 
 use App\Containers\AppSection\Authorization\Tasks\AssignUserToRoleTask;
 use App\Containers\AppSection\Authorization\Tasks\FindRoleTask;
-use App\Containers\Vendor\Tenanter\Events\TenantRegistered;
+use App\Containers\Vendor\Tenanter\Events\TenantCreated;
 use App\Containers\Vendor\Tenanter\Models\Tenant;
 use App\Ship\Parents\Actions\Action;
 use App\Containers\Vendor\Tenanter\Tasks\CreateTenantTask;
@@ -23,7 +23,7 @@ class RegisterTenantAction extends Action
             app(AssignUserToRoleTask::class)->run($user, [$role]);
         }
 
-        TenantRegistered::dispatch($tenant);
+        TenantCreated::dispatch($tenant);
         return $tenant;
     }
 }

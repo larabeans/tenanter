@@ -3,26 +3,24 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateTenantTables extends Migration
+class CreateDomainTable extends Migration
 {
     /**
      * Run the migrations.
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('tenants', function (Blueprint $table) {
+        Schema::create('domains', function (Blueprint $table) {
             if (config('uuider.installed', false)) {
                 $table->uuid('id')->primary('id');
             } else {
                 $table->increments('id')->primary('id');
             }
 
-            $table->string("slug")->unique();
-            $table->string("name");
+            $table->string("domain")->unique();
             $table->boolean("is_active");
-            $table->enum('mode', ['active', 'passive'])->default('active');
-
-
+            $table->boolean("is_verified");
+            $table->timestamp('verified_at');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -31,8 +29,8 @@ class CreateTenantTables extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down()
+    public function down(): void
     {
-        Schema::dropIfExists('tenants');
+        Schema::dropIfExists('domains');
     }
 }

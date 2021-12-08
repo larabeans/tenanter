@@ -17,7 +17,7 @@ class GivePermissionToTenantAdminCommand extends Command
     {
 
         $finalPermissions = [];
-        $ignorePermissions = config('tenanter.ignore_permissions');
+        $ignorePermissions = config('tenanter.only-admin-permissions');
         $roleName = 'tenant-admin';
         $allPermissions = app(GetAllPermissionsTask::class)->run(true);
 

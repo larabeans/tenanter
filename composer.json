@@ -26,6 +26,11 @@
     "larabeans/core": "*"
   },
   "require-dev": {},
+  "autoload": {
+    "files": [
+       "helpers.php"
+    ]
+  },
   "extra": {
     "apiato": {
       "container": {
