@@ -24,7 +24,7 @@ trait InvalidatesTenantsResolverCache
                 /** @var CachedTenantResolver $resolver */
                 $resolver = app($resolver);
 
-                $resolver->invalidateCache($model->tenant);
+                //$resolver->invalidateCache($model->tenant);
             }
         });
     }
