@@ -20,6 +20,8 @@ class CreateDomainTable extends Migration
             $table->string("domain")->unique();
             $table->boolean("is_active");
             $table->boolean("is_verified");
+            $table->string('dns_verification_hostname')->nullable();
+            $table->string('dns_verification_code')->nullable();
             $table->timestamp('verified_at');
             $table->timestamps();
             $table->softDeletes();
