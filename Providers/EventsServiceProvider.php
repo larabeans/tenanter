@@ -21,6 +21,7 @@ class EventsServiceProvider extends EventsProvider
         // Migration events
         MigrationsEnded::class => [
             Listeners\EnsureTenantColumnExistence::class,
+            Listeners\UpdateRoleTableToChangeUniqueIndex::class
         ],
 
         // Tenant events
