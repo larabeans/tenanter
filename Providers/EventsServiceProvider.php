@@ -26,7 +26,9 @@ class EventsServiceProvider extends EventsProvider
 
         // Tenant events
         Events\CreatingTenant::class => [],
-        Events\TenantCreated::class => [],
+        Events\TenantCreated::class => [
+            Listeners\AssignDomainToTenant::class,
+        ],
         Events\SavingTenant::class => [],
         Events\TenantSaved::class => [],
         Events\UpdatingTenant::class => [],
