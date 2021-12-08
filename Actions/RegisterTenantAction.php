@@ -15,15 +15,14 @@ class RegisterTenantAction extends Action
 {
     public function run(RegisterTenantRequest $request): Tenant
     {
-        $tenant = app(CreateTenantTask::class)->run(null, $request->name, 0, $request->domain, 'active');
+        $tenant = app(CreateTenantTask::class)->run(null, $request->name, 0, 'active');
         $user = app(CreateTenantUserTask::class)->run(false, $tenant->id, $request->email, $request->password);
         $role = app(FindRoleTask::class)->run('tenant-admin');
 
         if ($role !== null) {
             app(AssignUserToRoleTask::class)->run($user, [$role]);
         }
-
-        TenantCreated::dispatch($tenant);
+        
         return $tenant;
     }
 }
