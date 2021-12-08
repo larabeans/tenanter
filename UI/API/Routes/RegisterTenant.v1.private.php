@@ -11,7 +11,6 @@
  * @apiPermission      none
  *
  * @apiParam           {String}  name unique
- * @apiParam           {String} domain  www.example.com
  * @apiParam           {String} email  user email(unique)
  * @apiParam           {String} password  user password
  *
