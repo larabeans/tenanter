@@ -2,7 +2,8 @@
 
 namespace App\Containers\Vendor\Tenanter\Models;
 
-use Illuminate\Database\Eloquent\Model;
+//use Illuminate\Database\Eloquent\Model;
+use App\Containers\Vendor\Beaner\Parents\Models\Model;
 use App\Containers\Vendor\Tenanter\Contracts;
 use App\Containers\Vendor\Tenanter\Events;
 use App\Containers\Vendor\Tenanter\Tenant;
@@ -19,7 +20,16 @@ use App\Containers\Vendor\Tenanter\Models\Concerns\InvalidatesTenantsResolverCac
  */
 class Domain extends Model implements Contracts\Domain
 {
-    use EnsuresDomainIsNotOccupied, ConvertsDomainsToLowercase, InvalidatesTenantsResolverCache;
+    use  ConvertsDomainsToLowercase, InvalidatesTenantsResolverCache;
+
+    protected $fillable = [
+        'domain',
+        'is_active',
+        'is_verified',
+        'verified_at',
+        'dns_verification_hostname',
+        'dns_verification_code'
+    ];
 
     protected $guarded = [];
 
