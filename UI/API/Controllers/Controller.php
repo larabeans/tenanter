@@ -2,8 +2,12 @@
 
 namespace App\Containers\Vendor\Tenanter\UI\API\Controllers;
 
+use App\Containers\Vendor\Tenanter\Actions\AddNewDomainAction;
 use App\Containers\Vendor\Tenanter\Actions\ChangeTenantModeAction;
+use App\Containers\Vendor\Tenanter\Models\Domain;
+use App\Containers\Vendor\Tenanter\UI\API\Requests\AddNewDomainRequest;
 use App\Containers\Vendor\Tenanter\UI\API\Requests\ChangeTenantModeRequest;
+use App\Containers\Vendor\Tenanter\UI\API\Transformers\DomainTransformer;
 use App\Ship\Parents\Controllers\ApiController;
 use App\Containers\Vendor\Tenanter\Actions\ActivateTenantAction;
 use App\Containers\Vendor\Tenanter\Actions\RegisterTenantAction;
@@ -50,6 +54,12 @@ class Controller extends ApiController
     {
         $tenant = app(RegisterTenantAction::class)->run($request);
         return $this->created($this->transform($tenant, TenantTransformer::class));
+    }
+
+    public function addNewDomain(AddNewDomainRequest $request)
+    {
+        $tenant = app(AddNewDomainAction::class)->run($request);
+        return $this->transform($tenant, DomainTransformer::class);
     }
 
     /**
