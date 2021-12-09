@@ -22,7 +22,7 @@ class CreateDomainTable extends Migration
             $table->boolean("is_verified");
             $table->string('dns_verification_hostname')->nullable();
             $table->string('dns_verification_code')->nullable();
-            $table->timestamp('verified_at');
+            $table->timestamp('verified_at')->nullable()->default(null);
             $table->timestamps();
             $table->softDeletes();
         });
