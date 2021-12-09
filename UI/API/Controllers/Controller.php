@@ -2,11 +2,17 @@
 
 namespace App\Containers\Vendor\Tenanter\UI\API\Controllers;
 
+use App\Containers\Vendor\Tenanter\Actions\ActivateDomainAction;
 use App\Containers\Vendor\Tenanter\Actions\AddNewDomainAction;
 use App\Containers\Vendor\Tenanter\Actions\ChangeTenantModeAction;
+use App\Containers\Vendor\Tenanter\Actions\DeactivateDomainAction;
+use App\Containers\Vendor\Tenanter\Actions\GetAllTenantDomainsAction;
 use App\Containers\Vendor\Tenanter\Models\Domain;
+use App\Containers\Vendor\Tenanter\UI\API\Requests\ActivateDomainRequest;
 use App\Containers\Vendor\Tenanter\UI\API\Requests\AddNewDomainRequest;
 use App\Containers\Vendor\Tenanter\UI\API\Requests\ChangeTenantModeRequest;
+use App\Containers\Vendor\Tenanter\UI\API\Requests\DeactivateDomainRequest;
+use App\Containers\Vendor\Tenanter\UI\API\Requests\GetAllTenantDomainsRequest;
 use App\Containers\Vendor\Tenanter\UI\API\Transformers\DomainTransformer;
 use App\Ship\Parents\Controllers\ApiController;
 use App\Containers\Vendor\Tenanter\Actions\ActivateTenantAction;
@@ -94,6 +100,39 @@ class Controller extends ApiController
         $tenants = app(GetAllTenantsAction::class)->run($request);
 
         return $this->transform($tenants, TenantTransformer::class);
+    }
+
+    /**
+     * @param GetAllTenantDomainsRequest $request
+     * @return array
+     */
+    public function getAllTenantDomains(GetAllTenantDomainsRequest $request)
+    {
+        $tenants = app(GetAllTenantDomainsAction::class)->run($request);
+
+        return $this->transform($tenants, DomainTransformer::class);
+    }
+
+    /**
+     * @param ActivateDomainRequest $request
+     * @return array
+     */
+    public function activateDomain(ActivateDomainRequest $request)
+    {
+        $tenants = app(ActivateDomainAction::class)->run($request);
+
+        return $this->transform($tenants, DomainTransformer::class);
+    }
+
+    /**
+     * @param ActivateDomainRequest $request
+     * @return array
+     */
+    public function deactivateDomain(DeactivateDomainRequest $request)
+    {
+        $tenants = app(DeactivateDomainAction::class)->run($request);
+
+        return $this->transform($tenants, DomainTransformer::class);
     }
 
     /**
