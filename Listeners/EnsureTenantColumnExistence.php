@@ -2,6 +2,7 @@
 
 namespace App\Containers\Vendor\Tenanter\Listeners;
 
+use App\Containers\Vendor\Tenanter\Events\TenantColumnInserted;
 use Illuminate\Database\Events\MigrationsEnded;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
@@ -20,7 +21,7 @@ class EnsureTenantColumnExistence
 
         foreach ($tables as $table) {
             foreach ($table as $key => $name) {
-                if (Config::get('tenanter.enabled') && !in_array($name, Config::get('tenanter.ignore_tables'))) {
+                if (!in_array($name, Config::get('tenanter.ignore_tables'))) {
                     Schema::table($name, function (Blueprint $t) {
                         if(Schema::hasColumn($t->getTable(), 'tenant_id') === false){
                             if (Schema::hasColumn($t->getTable(), 'id')) {
@@ -36,6 +37,7 @@ class EnsureTenantColumnExistence
                                     $t->integer('tenant_id')->first()->nullable();
                                 }
                             }
+                            TenantColumnInserted::dispatch();
                         }
                     });
                 }
