@@ -25,6 +25,7 @@ class DomainTransformer extends Transformer
     {
         $response = [
             'object' => $domain->getResourceKey(),
+            'id' => $domain->id,
             'tenant_id' => $domain->tenant_id,
             'domain' => $domain->domain,
             'is_active' => $domain->is_active,
