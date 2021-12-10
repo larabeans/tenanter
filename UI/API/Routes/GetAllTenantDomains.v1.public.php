@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @apiGroup           Tenanter
+ * @apiGroup           Tenant
  * @apiName            getAllTenantDomains
  *
  * @api                {GET} /v1/tenant/{id}/domains Get All Tenant Domains

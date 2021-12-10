@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @apiGroup           Tenanter
+ * @apiGroup           Tenant
  * @apiName            changeTenantMode
  *
  * @api                {PATCH} /v1/tenanter/:id/mode Change Tenant Mode

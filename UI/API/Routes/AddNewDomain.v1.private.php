@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @apiGroup           Tenanter
+ * @apiGroup           Tenant
  * @apiName            addNewDomain
  *
  * @api                {POST} /v1/tenant/domain Add New Domain

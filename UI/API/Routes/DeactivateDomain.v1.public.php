@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @apiGroup           Tenanter
+ * @apiGroup           Tenant
  * @apiName            deactivateDomain
  *
  * @api                {PATCH} /v1/domain/:id/deactivate Deactivate Domain
