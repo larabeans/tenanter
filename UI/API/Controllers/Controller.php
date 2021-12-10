@@ -6,13 +6,17 @@ use App\Containers\Vendor\Tenanter\Actions\ActivateDomainAction;
 use App\Containers\Vendor\Tenanter\Actions\AddNewDomainAction;
 use App\Containers\Vendor\Tenanter\Actions\ChangeTenantModeAction;
 use App\Containers\Vendor\Tenanter\Actions\DeactivateDomainAction;
+use App\Containers\Vendor\Tenanter\Actions\FindDomainByIdAction;
 use App\Containers\Vendor\Tenanter\Actions\GetAllTenantDomainsAction;
+use App\Containers\Vendor\Tenanter\Actions\VerifyDomainAction;
 use App\Containers\Vendor\Tenanter\Models\Domain;
 use App\Containers\Vendor\Tenanter\UI\API\Requests\ActivateDomainRequest;
 use App\Containers\Vendor\Tenanter\UI\API\Requests\AddNewDomainRequest;
 use App\Containers\Vendor\Tenanter\UI\API\Requests\ChangeTenantModeRequest;
 use App\Containers\Vendor\Tenanter\UI\API\Requests\DeactivateDomainRequest;
+use App\Containers\Vendor\Tenanter\UI\API\Requests\FindDomainByIdRequest;
 use App\Containers\Vendor\Tenanter\UI\API\Requests\GetAllTenantDomainsRequest;
+use App\Containers\Vendor\Tenanter\UI\API\Requests\VerifyDomainRequest;
 use App\Containers\Vendor\Tenanter\UI\API\Transformers\DomainTransformer;
 use App\Ship\Parents\Controllers\ApiController;
 use App\Containers\Vendor\Tenanter\Actions\ActivateTenantAction;
@@ -64,8 +68,8 @@ class Controller extends ApiController
 
     public function addNewDomain(AddNewDomainRequest $request)
     {
-        $tenant = app(AddNewDomainAction::class)->run($request);
-        return $this->transform($tenant, DomainTransformer::class);
+        $domain = app(AddNewDomainAction::class)->run($request);
+        return $this->transform($domain, DomainTransformer::class);
     }
 
     /**
@@ -77,6 +81,28 @@ class Controller extends ApiController
         $tenant = app(FindTenantByIdOrDomainNameAction::class)->run($request);
 
         return $this->transform($tenant, TenantTransformer::class);
+    }
+
+    /**
+     * @param FindDomainByIdRequest $request
+     * @return array
+     */
+    public function findDomainById(FindDomainByIdRequest $request)
+    {
+        $domain = app(FindDomainByIdAction::class)->run($request);
+
+        return $this->transform($domain, DomainTransformer::class);
+    }
+
+    /**
+     * @param FindDomainByIdRequest $request
+     * @return array
+     */
+    public function verifyDomain(VerifyDomainRequest $request)
+    {
+        $domain = app(VerifyDomainAction::class)->run($request);
+
+        return $this->transform($domain, DomainTransformer::class);
     }
 
     /**
@@ -108,9 +134,9 @@ class Controller extends ApiController
      */
     public function getAllTenantDomains(GetAllTenantDomainsRequest $request)
     {
-        $tenants = app(GetAllTenantDomainsAction::class)->run($request);
+        $domains = app(GetAllTenantDomainsAction::class)->run($request);
 
-        return $this->transform($tenants, DomainTransformer::class);
+        return $this->transform($domains, DomainTransformer::class);
     }
 
     /**
@@ -119,9 +145,9 @@ class Controller extends ApiController
      */
     public function activateDomain(ActivateDomainRequest $request)
     {
-        $tenants = app(ActivateDomainAction::class)->run($request);
+        $domain = app(ActivateDomainAction::class)->run($request);
 
-        return $this->transform($tenants, DomainTransformer::class);
+        return $this->transform($domain, DomainTransformer::class);
     }
 
     /**
@@ -130,9 +156,9 @@ class Controller extends ApiController
      */
     public function deactivateDomain(DeactivateDomainRequest $request)
     {
-        $tenants = app(DeactivateDomainAction::class)->run($request);
+        $domain = app(DeactivateDomainAction::class)->run($request);
 
-        return $this->transform($tenants, DomainTransformer::class);
+        return $this->transform($domain, DomainTransformer::class);
     }
 
     /**
