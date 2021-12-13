@@ -52,7 +52,7 @@ class MainServiceProvider extends MainProvider
         // Feed configurations to global container
         $targetConfigurableTypes = config('configurationer.entities');
         $sourceConfigurableTypes = config('tenanter.configurable_entities');
-        $configurableTypes       = array_push($targetConfigurableTypes, $sourceConfigurableTypes);
+        $configurableTypes       = array_merge($targetConfigurableTypes, $sourceConfigurableTypes);
         config(['configurationer.entities' => $configurableTypes]);
         config(['configurationer.system.tenancy' => config('tenanter.tenancy', [])]);
 
