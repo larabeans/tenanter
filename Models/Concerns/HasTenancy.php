@@ -21,20 +21,16 @@ trait HasTenancy
     {
         static::addGlobalScope(new TenantScope);
 
-        if (tenancy()->initialized && tenancy()->validTenantUser()) {
-
-            static::creating(function ($model) {
-                 // Schema::hasColumn($model->getTable(), 'tenant_id')
-                 if (tenancy()->validTable($model->getTable())) {
-                     if (! $model->getAttribute(config('tenanter.tenant_column')) && ! $model->relationLoaded('tenant')) {
-                         if (tenancy()->initialized) {
-                             $model->setAttribute(config('tenanter.tenant_column'), tenant()->getTenantKey());
-                             $model->setRelation('tenant', tenant());
-                         }
-                     }
+        static::creating(function ($model) {
+             // Schema::hasColumn($model->getTable(), 'tenant_id')
+             if (tenancy()->initialized && tenancy()->validTenantUser() && tenancy()->validTable($model->getTable())) {
+                 if (! $model->getAttribute(config('tenanter.tenant_column')) && ! $model->relationLoaded('tenant')) {
+                     $model->setAttribute(config('tenanter.tenant_column'), tenant()->getTenantKey());
+                     $model->setRelation('tenant', tenant());
                  }
-            });
-        }
+             }
+        });
+
     }
 
 }
