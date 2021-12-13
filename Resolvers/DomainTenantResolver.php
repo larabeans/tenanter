@@ -7,7 +7,7 @@ use App\Containers\Vendor\Tenanter\Contracts\Domain;
 use App\Containers\Vendor\Tenanter\Contracts\Tenant;
 use App\Containers\Vendor\Tenanter\Exceptions\TenantCouldNotBeIdentifiedOnDomainException;
 
-class DomainTenantTenantResolver extends Contracts\CachedTenantResolver
+class DomainTenantResolver extends Contracts\CachedTenantResolver
 {
     /**
      * The model representing the domain that the tenant was identified on.

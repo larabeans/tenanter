@@ -1,6 +1,26 @@
 <?php
-
 return [
+
+    /**
+     * Feed in configurationer system sections
+     */
+    'tenancy' => [
+        'is_enabled' => true,
+        'header_attribute' => 'Axis-Host',
+        'ignore_feature_check_for_host_users' => false,
+        'sides' => [
+            'host' => 2, // Who is hosting multiple tenants
+            'tenant' => 1 // A customer which has its own users, roles, permissions, settings... and uses the application completely isolated from other tenants
+        ],
+    ],
+
+    'configurable_entities' => [
+        'tenant' => [
+            'identifier' => 'tenant',
+            'name' => 'Tenant',
+            'model' => \App\Containers\Vendor\Tenanter\Models\Tenant::class
+        ]
+    ],
 
     /**
      * The list of host domains.
@@ -97,7 +117,7 @@ return [
 
     /**
      * Filesystem tenancy config. Used by FilesystemTenancyBootstrapper.
-     * https://tenancyforlaravel.com/docs/v3/tenancy-bootstrappers/#filesystem-tenancy-boostrapper.
+     * https://larabeans.com/docs/v3/tenancy-bootstrappers/#filesystem-tenancy-boostrapper.
      */
     'filesystem' => [
         /**
@@ -113,7 +133,7 @@ return [
         /**
          * Use this for local disks.
          *
-         * See https://tenancyforlaravel.com/docs/v3/tenancy-bootstrappers/#filesystem-tenancy-boostrapper
+         * See https://larabeans.com/docs/v3/tenancy-bootstrappers/#filesystem-tenancy-boostrapper
          */
         'root_override' => [
             // Disks whose roots should be overriden after storage_path() is suffixed.

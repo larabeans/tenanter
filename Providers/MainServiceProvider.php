@@ -3,6 +3,7 @@
 namespace App\Containers\Vendor\Tenanter\Providers;
 
 use App\Ship\Parents\Providers\MainProvider;
+use App\Containers\Vendor\Tenanter\Models\Tenant;
 
 
 /**
@@ -47,5 +48,13 @@ class MainServiceProvider extends MainProvider
     public function boot(): void
     {
         parent::boot();
+
+        // Feed configurations to global container
+        $targetConfigurableTypes = config('configurationer.entities');
+        $sourceConfigurableTypes = config('tenanter.configurable_entities');
+        $configurableTypes       = array_push($targetConfigurableTypes, $sourceConfigurableTypes);
+        config(['configurationer.entities' => $configurableTypes]);
+        config(['configurationer.system.tenancy' => config('tenanter.tenancy', [])]);
+
     }
 }

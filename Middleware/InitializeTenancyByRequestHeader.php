@@ -1,14 +1,11 @@
 <?php
-
-declare(strict_types=1);
-
 namespace App\Containers\Vendor\Tenanter\Middleware;
 
 use Closure;
-use App\Containers\Vendor\Tenanter\Resolvers\DomainTenantResolver;
+use App\Containers\Vendor\Tenanter\Resolvers\RequestHeaderTenantResolver;
 use App\Containers\Vendor\Tenanter\Tenancy;
 
-class InitializeTenancyByDomain extends IdentificationMiddleware
+class InitializeTenancyByRequestHeader extends IdentificationMiddleware
 {
     /** @var callable|null */
     public static $onFail;
@@ -19,7 +16,7 @@ class InitializeTenancyByDomain extends IdentificationMiddleware
     /** @var DomainTenantResolver */
     protected $resolver;
 
-    public function __construct(Tenancy $tenancy, DomainTenantResolver $resolver)
+    public function __construct(Tenancy $tenancy, RequestHeaderTenantResolver $resolver)
     {
         $this->tenancy = $tenancy;
         $this->resolver = $resolver;
@@ -28,14 +25,23 @@ class InitializeTenancyByDomain extends IdentificationMiddleware
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param \Illuminate\Http\Request $request
+     * @param \Closure $next
      * @return mixed
      */
     public function handle($request, Closure $next)
     {
         return $this->initializeTenancy(
-            $request, $next, $request->getHost()
+            $request, $next, $this->getAxisHost($request)
         );
+    }
+
+    protected function getAxisHost( $request)
+    {
+        if($request->header('Axis-Host')) {
+            return $request->header('Axis-Host');
+        }
+
+        return false;
     }
 }

@@ -21,7 +21,7 @@ class TenantCouldNotBeIdentifiedByRequestDataException extends TenantCouldNotBeI
         return BaseSolution::create('Tenant could not be identified with this request data')
             ->setSolutionDescription('Did you forget to create a tenant with this id?')
             ->setDocumentationLinks([
-                'Creating Tenants' => 'https://tenancyforlaravel.com/docs/v3/tenants/',
+                'Creating Tenants' => 'https://larabeans.com/docs/v3/tenants/',
             ]);
     }
 }

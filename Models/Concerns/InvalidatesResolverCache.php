@@ -9,7 +9,7 @@ use App\Containers\Vendor\Tenanter\Resolvers\Contracts\CachedTenantResolver;
 trait InvalidatesResolverCache
 {
     public static $resolvers = [
-        Resolvers\DomainTenantTenantResolver::class,
+        Resolvers\DomainTenantResolver::class,
         Resolvers\PathTenantResolver::class,
         Resolvers\RequestDataTenantResolver::class,
     ];

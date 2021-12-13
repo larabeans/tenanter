@@ -28,12 +28,8 @@ class InitializeHostContext
      */
     public function handle($request, Closure $next)
     {
-        //dd($request->getHttpHost()); // with port
-        //dd($request->getHost()) // without port
-        //dd($request->header('Axis-Host'));
-        $host = 'localhost:4200';
         return $this->checkHost(
-            $request, $next, $host
+            $request, $next, $request->header(config('tenanter.tenancy.header_attribute'))
         );
     }
 

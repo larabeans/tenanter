@@ -4,7 +4,7 @@
  * @apiGroup           Tenant
  * @apiName            deleteDomain
  *
- * @api                {DELETE} /v1/domain/:id  Delete Domain
+ * @api                {DELETE} /v1/domains/:id  Delete Domain
  * @apiDescription     Endpoint description here..
  *
  * @apiVersion         1.0.0
@@ -22,7 +22,7 @@
 use App\Containers\Vendor\Tenanter\UI\API\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 
-Route::delete('domain/{id}', [Controller::class, 'deleteDomain'])
+Route::delete('domains/{id}', [Controller::class, 'deleteDomain'])
     ->name('api_tenanter_delete_domain')
     ->middleware(['auth:api']);
 

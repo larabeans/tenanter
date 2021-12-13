@@ -22,7 +22,7 @@
 use App\Containers\Vendor\Tenanter\UI\API\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 
-Route::post('tenant/domain', [Controller::class, 'addNewDomain'])
+Route::post('domains', [Controller::class, 'addNewDomain'])
     ->name('api_tenanter_add_new_domain')
     ->middleware(['auth:api']);
 
