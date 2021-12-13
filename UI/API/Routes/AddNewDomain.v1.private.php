@@ -4,7 +4,7 @@
  * @apiGroup           Tenant
  * @apiName            addNewDomain
  *
- * @api                {POST} /v1/tenant/domain Add New Domain
+ * @api                {POST} /v1/domains Add New Domain
  * @apiDescription     Endpoint description here..
  *
  * @apiVersion         1.0.0
