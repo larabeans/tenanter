@@ -35,11 +35,14 @@ Includes seeders for
 
 - tenant roles
 - tenant permissions
-- root admin
 - tenant admin
-- default root admin
-- default tenant admin
-- default tenant
+
+---
+
+## USAGE
+
+- Use HasTenancy traits in User, Roles, ParentModel in core/beanner ( or your own recpective models accordingly)
+- Use Authentication Trait in User modes on core/beanner ( or your own recpective models accordingly)  
 
 ---
 
