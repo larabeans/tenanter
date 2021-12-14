@@ -2,6 +2,7 @@
 
 namespace App\Containers\Vendor\Tenanter\UI\API\Controllers;
 
+use App\Containers\Vendor\Tenanter\UI\API\Requests\GetDomainConfigurationRequest;
 use App\Containers\Vendor\Tenanter\Actions\ActivateDomainAction;
 use App\Containers\Vendor\Tenanter\Actions\AddNewDomainAction;
 use App\Containers\Vendor\Tenanter\Actions\ChangeTenantModeAction;
@@ -9,6 +10,8 @@ use App\Containers\Vendor\Tenanter\Actions\DeactivateDomainAction;
 use App\Containers\Vendor\Tenanter\Actions\DeleteDomainAction;
 use App\Containers\Vendor\Tenanter\Actions\FindDomainByIdAction;
 use App\Containers\Vendor\Tenanter\Actions\GetAllTenantDomainsAction;
+use App\Containers\Vendor\Tenanter\Actions\GetDomainConfigurationAction;
+use App\Containers\Vendor\Tenanter\Actions\GetTenantConfigurationAction;
 use App\Containers\Vendor\Tenanter\Actions\UpdateConfigurationAction;
 use App\Containers\Vendor\Tenanter\Actions\VerifyDomainAction;
 use App\Containers\Vendor\Tenanter\Models\Domain;
@@ -19,6 +22,7 @@ use App\Containers\Vendor\Tenanter\UI\API\Requests\DeactivateDomainRequest;
 use App\Containers\Vendor\Tenanter\UI\API\Requests\DeleteDomainRequest;
 use App\Containers\Vendor\Tenanter\UI\API\Requests\FindDomainByIdRequest;
 use App\Containers\Vendor\Tenanter\UI\API\Requests\GetAllTenantDomainsRequest;
+use App\Containers\Vendor\Tenanter\UI\API\Requests\GetTenantConfigurationRequest;
 use App\Containers\Vendor\Tenanter\UI\API\Requests\UpdateConfigurationRequest;
 use App\Containers\Vendor\Tenanter\UI\API\Requests\VerifyDomainRequest;
 use App\Containers\Vendor\Tenanter\UI\API\Transformers\DomainTransformer;
@@ -130,6 +134,28 @@ class Controller extends ApiController
         $tenants = app(GetAllTenantsAction::class)->run($request);
 
         return $this->transform($tenants, TenantTransformer::class);
+    }
+
+    /**
+     * @param GetTenantConfigurationRequest $request
+     * @return array
+     */
+    public function getTenantConfiguration(GetTenantConfigurationRequest $request)
+    {
+        $tenants = app(GetTenantConfigurationAction::class)->run($request);
+
+        return $tenants;
+    }
+
+    /**
+     * @param GetDomainConfigurationRequest $request
+     * @return array
+     */
+    public function getDomainConfiguration(GetDomainConfigurationRequest $request)
+    {
+        $tenants = app(GetDomainConfigurationAction::class)->run($request);
+
+        return $tenants;
     }
 
     /**

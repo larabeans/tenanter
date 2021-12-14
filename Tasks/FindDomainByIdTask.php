@@ -6,6 +6,7 @@ use App\Containers\Vendor\Tenanter\Data\Repositories\DomainRepository;
 use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Tasks\Task;
 use Exception;
+use Illuminate\Support\Str;
 
 class FindDomainByIdTask extends Task
 {
@@ -16,10 +17,11 @@ class FindDomainByIdTask extends Task
         $this->repository = $repository;
     }
 
-    public function run($id)
+    public function run($idOrDomain)
     {
         try {
-            return $this->repository->find($id);
+            $query = (is_numeric($idOrDomain) || Str::isUuid($idOrDomain)) ? ['id' => $idOrDomain] : ['domain' => $idOrDomain];
+            return $this->repository->findWhere($query)->first();
         }
         catch (Exception $exception) {
             throw new NotFoundException();
