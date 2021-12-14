@@ -2,6 +2,7 @@
 
 namespace App\Containers\Vendor\Tenanter\Models\Concerns;
 
+use Illuminate\Support\Facades\Auth;
 use App\Containers\Vendor\Tenanter\Models\Scopes\TenantScope;
 
 /**
