@@ -1,10 +1,10 @@
 <?php
 
 /**
- * @apiGroup           Tenanter
+ * @apiGroup           Tenant
  * @apiName            getDomainConfiguration
  *
- * @api                {GET} /v1/domains/configuration Endpoint title here..
+ * @api                {GET} /v1/domain/configuration  Get Domain Configuration
  * @apiDescription     Endpoint description here..
  *
  * @apiVersion         1.0.0

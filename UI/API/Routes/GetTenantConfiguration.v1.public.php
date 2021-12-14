@@ -1,14 +1,14 @@
 <?php
 
 /**
- * @apiGroup           Tenanter
+ * @apiGroup           Tenant
  * @apiName            getTenantConfiguration
  *
- * @api                {GET} /v1/tenants/configuration Endpoint title here..
+ * @api                {GET} /v1/tenants/configuration Get Tenant Configuration
  * @apiDescription     Endpoint description here..
  *
  * @apiVersion         1.0.0
- * @apiPermission      none
+ * @apiPermission      Authenticated User
  *
  * @apiParam           {String}  parameters here..
  *
