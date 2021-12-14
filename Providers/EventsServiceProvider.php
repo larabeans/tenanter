@@ -40,7 +40,9 @@ class EventsServiceProvider extends EventsProvider
 
         // Domain events
         Events\CreatingDomain::class => [],
-        Events\DomainCreated::class => [],
+        Events\DomainCreated::class => [
+            Listeners\CreateDomainConfigurations::class
+        ],
         Events\SavingDomain::class => [],
         Events\DomainSaved::class => [],
         Events\UpdatingDomain::class => [],

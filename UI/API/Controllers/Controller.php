@@ -9,6 +9,7 @@ use App\Containers\Vendor\Tenanter\Actions\DeactivateDomainAction;
 use App\Containers\Vendor\Tenanter\Actions\DeleteDomainAction;
 use App\Containers\Vendor\Tenanter\Actions\FindDomainByIdAction;
 use App\Containers\Vendor\Tenanter\Actions\GetAllTenantDomainsAction;
+use App\Containers\Vendor\Tenanter\Actions\UpdateConfigurationAction;
 use App\Containers\Vendor\Tenanter\Actions\VerifyDomainAction;
 use App\Containers\Vendor\Tenanter\Models\Domain;
 use App\Containers\Vendor\Tenanter\UI\API\Requests\ActivateDomainRequest;
@@ -18,6 +19,7 @@ use App\Containers\Vendor\Tenanter\UI\API\Requests\DeactivateDomainRequest;
 use App\Containers\Vendor\Tenanter\UI\API\Requests\DeleteDomainRequest;
 use App\Containers\Vendor\Tenanter\UI\API\Requests\FindDomainByIdRequest;
 use App\Containers\Vendor\Tenanter\UI\API\Requests\GetAllTenantDomainsRequest;
+use App\Containers\Vendor\Tenanter\UI\API\Requests\UpdateConfigurationRequest;
 use App\Containers\Vendor\Tenanter\UI\API\Requests\VerifyDomainRequest;
 use App\Containers\Vendor\Tenanter\UI\API\Transformers\DomainTransformer;
 use App\Ship\Parents\Controllers\ApiController;
@@ -172,6 +174,17 @@ class Controller extends ApiController
         $tenant = app(UpdateTenantAction::class)->run($request);
 
         return $this->transform($tenant, TenantTransformer::class);
+    }
+
+    /**
+     * @param UpdateConfigurationRequest $request
+     * @return array
+     */
+    public function updateConfiguration(UpdateConfigurationRequest $request)
+    {
+        $tenant = app(UpdateConfigurationAction::class)->run($request);
+
+        return $tenant;
     }
 
     /**

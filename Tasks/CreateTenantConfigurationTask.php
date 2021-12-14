@@ -28,14 +28,20 @@ class CreateTenantConfigurationTask extends Task
                 $index = $value['model'];
             }
         }
-        $Configurable_id = $data['tenant_id'];
         $configurationData = json_encode($data['configuration']);
         $queryData = [
             'configurable_type' => $index,
-            'configurable_id' => $Configurable_id,
             'configuration' => $configurationData,
-            'tenant_id' => $data['tenant_id']
         ];
+        if ($data['configurable_type'] == 'tenant') {
+
+            $queryData['configurable_id'] = $data['tenant_id'];
+            $queryData['tenant_id'] = $data['tenant_id'];
+        } elseif ($data['configurable_type'] == 'domain') {
+
+            $queryData['configurable_id'] = $data['id'];
+            $queryData['tenant_id'] = tenant()->getKey();
+        }
 
         try {
             return $this->repository->create($queryData);

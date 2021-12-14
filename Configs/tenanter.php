@@ -19,6 +19,11 @@ return [
             'identifier' => 'tenant',
             'name' => 'Tenant',
             'model' => \App\Containers\Vendor\Tenanter\Models\Tenant::class
+        ],
+        'domain' => [
+            'identifier' => 'domain',
+            'name' => 'Domain',
+            'model' => \App\Containers\Vendor\Tenanter\Models\Domain::class
         ]
     ],
 
