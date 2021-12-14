@@ -5,8 +5,7 @@ namespace App\Containers\Vendor\Tenanter\Models\Scopes;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Scope;
-use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Auth;
 
 class TenantScope implements Scope
 {
@@ -19,7 +18,7 @@ class TenantScope implements Scope
      */
     public function apply(Builder $builder, Model $model)
     {
-        if (tenancy()->validTenantUser()) {
+        if (tenancy()->initialized && (!Auth::check || tenancy()->validTenantUser())) {
 
             if (tenancy()->validTable($model->getTable())) {
                 if (! $this->gettingRolesForAuthenticatedUser($builder, $model)) {
@@ -28,11 +27,11 @@ class TenantScope implements Scope
             } else if ($model->getTable() == 'tenants') {
                 // if table in context is `tenant`, apply tenant id check, so one tenant can only view its own tenant
                 // if (! $this->gettingRolesForAuthenticatedUser($builder, $model)) {
-                    $builder->where($model->qualifyColumn(tenant()->getTenantKeyName(), tenant()->getTenantKey()));
+                $builder->where($model->qualifyColumn(tenant()->getTenantKeyName(), tenant()->getTenantKey()));
                 // }
             }
 
-        } else if (tenancy()->validHostUser()) {
+        } else if (tenancy()->host && (!Auth::check || tenancy()->validHostUser())) {
 
             // Only return rows/data that don't belong to any tenant
             if (tenancy()->validTable($model->getTable())) {
