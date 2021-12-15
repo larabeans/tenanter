@@ -42,6 +42,19 @@ Includes seeders for
 
 ---
 
+## USAGE
+
+- Use HasTenancy traits in User, Roles, ParentModel in core/beanner ( or your own recpective models accordingly)
+- Use Authentication Trait in User modes on core/beanner ( or your own recpective models accordingly)
+- In User container we need to modify two requests, email validation rules as give below
+    - \app\Containers\AppSection\User\UI\API\Requests\RegisterUserRequest.php
+    - \app\Containers\AppSection\User\UI\API\Requests\CreateAdminRequest.php
+
+  `'email' => 'required|email|max:40|unique:users,email,NULL,id,tenant_id,' . tenant()->getTenantKey(),`
+- Update role name validation rule in AppSection/Authorization/UI/API/Requests/CreateRoleRequest.php as below
+  `'name' => 'required|unique:' . config('permission.table_names.roles') . ',name,NULL,id,tenant_id,' . tenant()->getTenantKey() . '|min:2|max:20|no_spaces',`
+---
+
 ## TODO
 
 - Implement cli (artisan) command to add tenant column to any table (specifying table name and column type i.e. incement
