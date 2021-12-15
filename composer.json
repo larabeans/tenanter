@@ -23,8 +23,7 @@
   ],
   "license": "MIT",
   "require": {
-    "larabeans/core": "*",
-    "larabeans/configurationer": "*"
+    "larabeans/core": "*"
   },
   "require-dev": {},
   "autoload": {

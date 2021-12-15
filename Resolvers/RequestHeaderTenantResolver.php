@@ -3,6 +3,7 @@
 namespace App\Containers\Vendor\Tenanter\Resolvers;
 
 use Illuminate\Database\Eloquent\Builder;
+use App\Containers\Vendor\Tenanter\Tenancy;
 use App\Containers\Vendor\Tenanter\Contracts\Domain;
 use App\Containers\Vendor\Tenanter\Contracts\Tenant;
 use App\Containers\Vendor\Tenanter\Exceptions\TenantCouldNotBeIdentifiedByRequestHeaderException;
@@ -54,6 +55,7 @@ class RequestHeaderTenantResolver extends Contracts\CachedTenantResolver
     protected function setCurrentDomain(Tenant $tenant, string $domain): void
     {
         static::$currentDomain = $tenant->domains->where('domain', $domain)->first();
+        Tenancy::$currentDomain = static::$currentDomain;
     }
 
     public function getArgsForTenant(Tenant $tenant): array

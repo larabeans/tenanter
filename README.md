@@ -19,7 +19,6 @@
 - Add functionality to activate/de-activate tenant account.
 - Updates existing database structure to make it compatible with multi-tenant application
 
----
 
 ## Migrations
 
@@ -35,20 +34,12 @@ Includes seeders for
 
 - tenant roles
 - tenant permissions
+- root admin
 - tenant admin
+- default root admin
+- default tenant admin
+- default tenant
 
----
-
-## USAGE
-
-- Use HasTenancy traits in User, Roles, ParentModel in core/beanner ( or your own recpective models accordingly)
-- Use Authentication Trait in User modes on core/beanner ( or your own recpective models accordingly)  
-- In User container we need to modify two requests, email validation rules as give below
-  - \app\Containers\AppSection\User\UI\API\Requests\RegisterUserRequest.php
-  - \app\Containers\AppSection\User\UI\API\Requests\CreateAdminRequest.php
-
-  `'email' => 'required|email|max:40|unique:users,email,NULL,id,tenant_id,' . tenant()->getTenantKey(),`
----
 ---
 
 ## TODO

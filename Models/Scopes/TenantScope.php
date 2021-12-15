@@ -18,20 +18,18 @@ class TenantScope implements Scope
      */
     public function apply(Builder $builder, Model $model)
     {
-        if (tenancy()->initialized && (!Auth::check || tenancy()->validTenantUser())) {
+        if (tenancy()->initialized && (!Auth::check() || tenancy()->validTenantUser())) {
 
             if (tenancy()->validTable($model->getTable())) {
                 if (! $this->gettingRolesForAuthenticatedUser($builder, $model)) {
                     $builder->where($model->qualifyColumn(config('tenanter.tenant_column')), tenant()->getTenantKey());
                 }
-            } else if ($model->getTable() == 'tenants') {
+            } else if ($model->getTable() == 'tenants' && !empty(tenant()->getTenantKey())) {
                 // if table in context is `tenant`, apply tenant id check, so one tenant can only view its own tenant
-                // if (! $this->gettingRolesForAuthenticatedUser($builder, $model)) {
-                $builder->where($model->qualifyColumn(tenant()->getTenantKeyName(), tenant()->getTenantKey()));
-                // }
+                $builder->where($model->qualifyColumn(tenant()->getTenantKeyName()), tenant()->getTenantKey());
             }
 
-        } else if (tenancy()->host && (!Auth::check || tenancy()->validHostUser())) {
+        } else if (tenancy()->host && (!Auth::check() || tenancy()->validHostUser())) {
 
             // Only return rows/data that don't belong to any tenant
             if (tenancy()->validTable($model->getTable())) {
@@ -40,8 +38,6 @@ class TenantScope implements Scope
                 }
             }
 
-        } else {
-            return;
         }
     }
 

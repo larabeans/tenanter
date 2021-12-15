@@ -32,7 +32,7 @@ class TenancyServiceProvider extends MainProvider
         });
 
         $this->app->bind(Domain::class, function () {
-            return DomainTenantResolver::$currentDomain;
+            return Tenancy::$currentDomain;
         });
 
         // Stateful Bootstrappers ( i.e. singletons)

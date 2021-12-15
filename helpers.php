@@ -35,9 +35,17 @@ if (! function_exists('tenant')) {
 
 if (! function_exists('domain')) {
     /** @return Domain */
-    function domain()
+    function domain($key = null)
     {
-        return app(Domain::class);
+        if (! app()->bound(Domain::class)) {
+            return;
+        }
+
+        if (is_null($key)) {
+            return app(Domain::class);
+        }
+
+        return optional(app(Domain::class))->getAttribute($key) ?? null;
     }
 }
 

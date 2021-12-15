@@ -22,6 +22,9 @@ class Tenancy
     /** @var Tenant|Model|null */
     public $tenant;
 
+    /** @var Domain|Model|null */
+    public static $currentDomain;
+
     /** @var callable|null */
     public $getBootstrappersUsing = null;
 
