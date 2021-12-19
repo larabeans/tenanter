@@ -13,7 +13,7 @@ class InitializeTenancyByRequestHeader extends IdentificationMiddleware
     /** @var Tenancy */
     protected $tenancy;
 
-    /** @var DomainTenantResolver */
+    /** @var RequestHeaderTenantResolver */
     protected $resolver;
 
     public function __construct(Tenancy $tenancy, RequestHeaderTenantResolver $resolver)
@@ -31,7 +31,7 @@ class InitializeTenancyByRequestHeader extends IdentificationMiddleware
      */
     public function handle($request, Closure $next)
     {
-        return $this->initializeTenancy(
+        return $this->initializeTenant(
             $request, $next, $this->getAxisHost($request)
         );
     }

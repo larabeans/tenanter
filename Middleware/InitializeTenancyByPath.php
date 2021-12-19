@@ -37,7 +37,7 @@ class InitializeTenancyByPath extends IdentificationMiddleware
         // We don't want to initialize tenancy if the tenant is
         // simply injected into some route controller action.
         if ($route->parameterNames()[0] === PathTenantResolver::$tenantParameterName) {
-            return $this->initializeTenancy(
+            return $this->initializeTenant(
                 $request, $next, $route
             );
         } else {

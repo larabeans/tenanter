@@ -4,8 +4,8 @@ namespace App\Containers\Vendor\Tenanter\Providers;
 
 use App\Ship\Parents\Providers\MainProvider;
 use App\Containers\Vendor\Tenanter\Tenancy;
+use App\Containers\Vendor\Tenanter\Contracts\Host;
 use App\Containers\Vendor\Tenanter\Contracts\Tenant;
-use App\Containers\Vendor\Tenanter\Resolvers\DomainTenantResolver;
 use App\Containers\Vendor\Tenanter\Bootstrappers\FilesystemTenancyBootstrapper;
 
 class TenancyServiceProvider extends MainProvider
@@ -24,6 +24,11 @@ class TenancyServiceProvider extends MainProvider
                 $this->app[$feature]->bootstrap($tenancy);
             }
             return $tenancy;
+        });
+
+        // Make it possible to inject the current host by typehinting the Host contract.
+        $this->app->bind(Host::class, function ($app) {
+            return $app[Tenancy::class]->host;
         });
 
         // Make it possible to inject the current tenant by typehinting the Tenant contract.

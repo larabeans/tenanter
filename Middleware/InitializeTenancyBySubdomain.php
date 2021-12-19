@@ -48,7 +48,7 @@ class InitializeTenancyBySubdomain extends InitializeTenancyByDomain
             return $subdomain;
         }
 
-        return $this->initializeTenancy(
+        return $this->initializeTenant(
             $request,
             $next,
             $subdomain

@@ -8,16 +8,18 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Traits\Macroable;
 
 use App\Containers\Vendor\Tenanter\Events;
+use App\Containers\Vendor\Tenanter\Contracts\Host;
 use App\Containers\Vendor\Tenanter\Contracts\Tenant;
 use App\Containers\Vendor\Tenanter\Contracts\TenancyBootstrapper;
+use App\Containers\Vendor\Tenanter\Exceptions\HostCouldNotBeIdentifiedById;
 use App\Containers\Vendor\Tenanter\Exceptions\TenantCouldNotBeIdentifiedById;
 
 class Tenancy
 {
     use Macroable;
 
-    /** @var Booleen */
-    public $host = false;
+    /** @var Host|Model|null */
+    public $host;
 
     /** @var Tenant|Model|null */
     public $tenant;
@@ -25,18 +27,60 @@ class Tenancy
     /** @var Domain|Model|null */
     public static $currentDomain;
 
+    /** @var bool */
+    public $initialized = false;
+
+    /** @var bool */
+    public $hostInitialized = false;
+
+    /** @var bool */
+    public $tenantInitialized = false;
+
     /** @var callable|null */
     public $getBootstrappersUsing = null;
 
-    /** @var bool */
-    public $initialized = false;
+    /**
+     * Initializes the host.
+     * @param Tenant|int|string $tenant
+     * @return void
+     */
+    public function initializeHost($host): void
+    {
+        if (! is_object($host)) {
+            $hostId = $host;
+            $host = $this->find($hostId);
+
+            if (! $host) {
+                throw new HostCouldNotBeIdentifiedById($hostId);
+            }
+        }
+
+        // host is same, as already initialized
+        if ($this->initialized && $this->hostInitialized && $this->host->getHostKey() === $host->getHostKey()) {
+            return;
+        }
+
+        // This will end tenancy with old tenant & will use to revert to host context
+        // if ($this->hostInitialized) {
+        //     $this->end();
+        // }
+
+        $this->host = $host;
+
+        event(new Events\InitializingTenancy($this));
+
+        $this->initialized = true;
+        $this->hostInitialized = true;
+
+        event(new Events\TenancyInitialized($this));
+    }
 
     /**
      * Initializes the tenant.
      * @param Tenant|int|string $tenant
      * @return void
      */
-    public function initialize($tenant): void
+    public function initializeTenant($tenant): void
     {
         if (! is_object($tenant)) {
             $tenantId = $tenant;
@@ -47,13 +91,14 @@ class Tenancy
             }
         }
 
-        if ($this->initialized && $this->tenant->getTenantKey() === $tenant->getTenantKey()) {
+        // tenant is same, as already initialized
+        if ($this->initialized && $this->tenantInitialized && $this->tenant->getTenantKey() === $tenant->getTenantKey()) {
             return;
         }
 
         // This will end tenancy
         // will use to revert to host context
-        if ($this->initialized) {
+        if ($this->tenantInitialized) {
             $this->end();
         }
 
@@ -62,19 +107,22 @@ class Tenancy
         event(new Events\InitializingTenancy($this));
 
         $this->initialized = true;
+        $this->tenantInitialized = true;
 
         event(new Events\TenancyInitialized($this));
     }
+
 
     public function end(): void
     {
         event(new Events\EndingTenancy($this));
 
-        if (! $this->initialized) {
+        if (! $this->initialized && ! $this->tenantInitialized) {
             return;
         }
 
         $this->initialized = false;
+        $this->tenantInitialized = false;
 
         event(new Events\TenancyEnded($this));
 
@@ -85,7 +133,7 @@ class Tenancy
     public function getBootstrappers(): array
     {
         // If no callback for getting bootstrappers is set, we just return all of them.
-        $resolve = $this->getBootstrappersUsing ?? function (Tenant $tenant) {
+        $resolve = $this->getBootstrappersUsing ?? function () {
                 return config('tenanter.bootstrappers');
             };
 

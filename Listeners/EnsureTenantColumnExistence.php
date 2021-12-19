@@ -26,15 +26,15 @@ class EnsureTenantColumnExistence
                         if(Schema::hasColumn($t->getTable(), 'tenant_id') === false){
                             if (Schema::hasColumn($t->getTable(), 'id')) {
                                 if (config('uuider.installed', false)) {
-                                    $t->uuid('tenant_id')->after('id')->nullable();
+                                    $t->uuid('tenant_id')->after('id')->nullable()->index('tenant_id_index');;
                                 } else {
-                                    $t->integer('tenant_id')->after('id')->nullable();
+                                    $t->integer('tenant_id')->after('id')->nullable()->index('tenant_id_index');;
                                 }
                             } else {
                                 if (config('uuider.installed', false)) {
-                                    $t->uuid('tenant_id')->first()->nullable();
+                                    $t->uuid('tenant_id')->first()->nullable()->index('tenant_id_index');;
                                 } else {
-                                    $t->integer('tenant_id')->first()->nullable();
+                                    $t->integer('tenant_id')->first()->nullable()->index('tenant_id_index');;
                                 }
                             }
                             TenantColumnInserted::dispatch();

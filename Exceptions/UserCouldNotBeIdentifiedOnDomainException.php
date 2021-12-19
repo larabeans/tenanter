@@ -5,9 +5,9 @@ namespace App\Containers\Vendor\Tenanter\Exceptions;
 use Facade\IgnitionContracts\BaseSolution;
 use Facade\IgnitionContracts\ProvidesSolution;
 use Facade\IgnitionContracts\Solution;
-use App\Containers\Vendor\Tenanter\Contracts\TenantCouldNotBeIdentifiedException;
+use App\Containers\Vendor\Tenanter\Contracts\UserCouldNotBeIdentifiedException;
 
-class UserCouldNotBeIdentifiedOnDomainException extends TenantCouldNotBeIdentifiedException implements ProvidesSolution
+class UserCouldNotBeIdentifiedOnDomainException extends UserCouldNotBeIdentifiedException implements ProvidesSolution
 {
     public function __construct($domain)
     {

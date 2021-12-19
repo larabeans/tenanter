@@ -1,5 +1,6 @@
 <?php
 
+use App\Containers\Vendor\Tenanter\Contracts\Host;
 use App\Containers\Vendor\Tenanter\Contracts\Tenant;
 use App\Containers\Vendor\Tenanter\Contracts\Domain;
 use App\Containers\Vendor\Tenanter\Tenancy;
@@ -9,6 +10,27 @@ if (! function_exists('tenancy')) {
     function tenancy()
     {
         return app(Tenancy::class);
+    }
+}
+
+if (! function_exists('host')) {
+    /**
+     * Get a key from the current host's storage.
+     *
+     * @param string|null $key
+     * @return Host|null|mixed
+     */
+    function host($key = null)
+    {
+        if (! app()->bound(Host::class)) {
+            return;
+        }
+
+        if (is_null($key)) {
+            return app(Host::class);
+        }
+
+        return optional(app(Host::class))->getAttribute($key) ?? null;
     }
 }
 

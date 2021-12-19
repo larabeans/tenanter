@@ -4,10 +4,10 @@ namespace App\Containers\Vendor\Tenanter\Resolvers\Contracts;
 
 use Illuminate\Contracts\Cache\Factory;
 use Illuminate\Contracts\Cache\Repository;
-use App\Containers\Vendor\Tenanter\Contracts\Tenant;
-use App\Containers\Vendor\Tenanter\Contracts\TenantResolver;
+use App\Containers\Vendor\Tenanter\Contracts\Host;
+use App\Containers\Vendor\Tenanter\Contracts\HostResolver;
 
-abstract class CachedTenantResolver implements TenantResolver
+abstract class CachedHostResolver implements HostResolver
 {
     /** @var bool */
     public static $shouldCache = false;
@@ -26,7 +26,7 @@ abstract class CachedTenantResolver implements TenantResolver
         $this->cache = $cache->store(static::$cacheStore);
     }
 
-    public function resolve(...$args): ?Tenant
+    public function resolve(...$args): ?Host
     {
         if (! static::$shouldCache) {
             return $this->resolveWithoutCache(...$args);
@@ -35,26 +35,26 @@ abstract class CachedTenantResolver implements TenantResolver
         $key = $this->getCacheKey(...$args);
 
         if ($this->cache->has($key)) {
-            $tenant = $this->cache->get($key);
+            $host = $this->cache->get($key);
 
-            $this->resolved($tenant, ...$args);
+            $this->resolved($host, ...$args);
 
-            return $tenant;
+            return $host;
         }
 
-        $tenant = $this->resolveWithoutCache(...$args);
-        $this->cache->put($key, $tenant, static::$cacheTTL);
+        $host = $this->resolveWithoutCache(...$args);
+        $this->cache->put($key, $host, static::$cacheTTL);
 
-        return $tenant;
+        return $host;
     }
 
-    public function invalidateCache(Tenant $tenant): void
+    public function invalidateCache(Host $host): void
     {
         if (! static::$shouldCache) {
             return;
         }
 
-        foreach ($this->getArgsForTenant($tenant) as $args) {
+        foreach ($this->getArgsForHost($host) as $args) {
             $this->cache->forget($this->getCacheKey(...$args));
         }
     }
@@ -64,17 +64,17 @@ abstract class CachedTenantResolver implements TenantResolver
         return '_tenancy_resolver:' . static::class . ':' . json_encode($args);
     }
 
-    abstract public function resolveWithoutCache(...$args): ?Tenant;
+    abstract public function resolveWithoutCache(...$args): ?Host;
 
-    public function resolved(Tenant $tenant, ...$args): void
+    public function resolved(Host $host, ...$args): void
     {
     }
 
     /**
      * Get all the arg combinations for resolve() that can be used to find this tenant.
      *
-     * @param Tenant $tenant
+     * @param Host $host
      * @return array[]
      */
-    abstract public function getArgsForTenant(Tenant $tenant): array;
+    abstract public function getArgsForHost(Host $host): array;
 }

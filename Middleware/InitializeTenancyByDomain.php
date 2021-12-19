@@ -34,7 +34,7 @@ class InitializeTenancyByDomain extends IdentificationMiddleware
      */
     public function handle($request, Closure $next)
     {
-        return $this->initializeTenancy(
+        return $this->initializeTenant(
             $request, $next, $request->getHost()
         );
     }

@@ -38,6 +38,7 @@ return [
     ],
 
     'models' => [
+        'host' => App\Containers\Vendor\Tenanter\Models\Host::class,
         'tenant' => App\Containers\Vendor\Tenanter\Models\Tenant::class,
         'domain' => App\Containers\Vendor\Tenanter\Models\Domain::class,
     ],
@@ -81,6 +82,7 @@ return [
         "cities",
 
         "tenants",
+        "domains"
     ],
 
 

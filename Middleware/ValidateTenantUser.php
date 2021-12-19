@@ -17,8 +17,8 @@ class ValidateTenantUser
      */
     public function handle($request, Closure $next)
     {
-        if( Auth::check() && tenancy()->initialized && !tenancy()->validTenantUser()){
-            throw new UserCouldNotBeIdentifiedOnDomainException('dsd');
+        if( Auth::check() && tenancy()->initialized && tenancy()->tenantInitialized && !tenancy()->validTenantUser()){
+            throw new UserCouldNotBeIdentifiedOnDomainException('');
         }
 
         return $next($request);

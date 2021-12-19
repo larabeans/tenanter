@@ -3,26 +3,24 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateDomainTable extends Migration
+class CreateHostTable extends Migration
 {
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create('domains', function (Blueprint $table) {
+        Schema::create('hosts', function (Blueprint $table) {
+
             if (config('uuider.installed', false)) {
                 $table->uuid('id')->primary('id');
             } else {
                 $table->increments('id')->primary('id');
             }
-            $table->uuidMorphs('domainable');
-            $table->string("domain")->unique();
+            $table->string("name");
+            $table->string("slug")->unique();
             $table->boolean("is_active");
-            $table->boolean("is_verified");
-            $table->string('dns_verification_hostname')->nullable();
-            $table->string('dns_verification_code')->nullable();
-            $table->timestamp('verified_at')->nullable()->default(null);
+
             $table->timestamps();
             $table->softDeletes();
         });
@@ -33,6 +31,6 @@ class CreateDomainTable extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('domains');
+        Schema::dropIfExists('hosts');
     }
 }

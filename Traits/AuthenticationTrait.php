@@ -20,8 +20,13 @@ trait AuthenticationTrait
             $builder = $builder->orWhere($field, $identifier);
         }
 
-        if(tenancy()->initialized) {
+        if(tenancy()->initialized && tenancy()->tenantInitialized && tenancy()->tenant) {
             $builder = $builder->where(config('tenanter.tenant_column'), tenant()->getTenantKey());
+        }
+
+        if(tenancy()->initialized && tenancy()->hostInitialized && tenancy()->host) {
+            $builder = $builder->where(config('tenanter.tenant_column'), host()->getHostKey());
+            $builder = $builder->orWhere(config('tenanter.tenant_column'), null);
         }
 
         return $builder->first();
