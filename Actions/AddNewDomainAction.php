@@ -11,6 +11,6 @@ class AddNewDomainAction extends Action
 {
     public function run(AddNewDomainRequest $request):Domain
     {
-        return app(AssignDomainToTenantTask::class)->run($request->domain,true);
+        return app(AssignDomainToTenantTask::class)->run($request->domain,true,tenant()->getTenantKey(),'tenant');
     }
 }

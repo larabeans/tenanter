@@ -49,17 +49,17 @@ class Host extends Model implements Contracts\Host
 
     public function getHostKey()
     {
-        return $this->getAttribute($this->getTenantKeyName());
+        return $this->getAttribute($this->getHostKeyName());
     }
 
     protected $dispatchesEvents = [
-        'saving' => Events\SavingHost::class,
-        'saved' => Events\HostSaved::class,
-        'creating' => Events\CreatingHost::class,
-        'created' => Events\HostCreated::class,
-        'updating' => Events\UpdatingHost::class,
-        'updated' => Events\HostUpdated::class,
-        'deleting' => Events\DeletingHost::class,
-        'deleted' => Events\HostDeleted::class,
+//        'saving' => Events\SavingHost::class,
+//        'saved' => Events\HostSaved::class,
+//        'creating' => Events\CreatingHost::class,
+//        'created' => Events\HostCreated::class,
+//        'updating' => Events\UpdatingHost::class,
+//        'updated' => Events\HostUpdated::class,
+//        'deleting' => Events\DeletingHost::class,
+//        'deleted' => Events\HostDeleted::class,
     ];
 }

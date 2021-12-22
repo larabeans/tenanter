@@ -18,22 +18,28 @@ class AssignDomainToTenantTask extends Task
         $this->repository = $repository;
     }
 
-    public function run($tenant, $new = false)
+    public function run($domainName, $new = false, $domainableId = null, $domainableType = null)
     {
 
         $domain = null;
         $dnsHostname = null;
         $dnsCode = null;
         $data = null;
+        $index = null;
 
         if ($new == false) {
             $hostDomain = config('tenanter.host_domains');
-            $domain = $tenant->name . '.' . $hostDomain[1];
-            $data['tenant_id'] = $tenant->id;
+            $domain = $domainName->name . '.' . $hostDomain[1];
+            $data['tenant_id'] = $domainName->id;
         } else {
-            $domain = $tenant;
+            $domain = $domainName;
             $dnsHostname = Str::random(5) . '.' . $domain;
             $dnsCode = Str::random(14);
+
+        }
+
+        foreach (config('tenanter.configurable_entities') as $key => $value) {
+            $index= $key == $domainableType ? $value['model'] : null;
         }
 
         $data['domain'] = $domain;
@@ -42,6 +48,8 @@ class AssignDomainToTenantTask extends Task
         $data['dns_verification_hostname'] = $dnsHostname;
         $data['dns_verification_code'] = $dnsCode;
         $data['verified_at'] = null;
+        $data['domainable_type'] = $index;
+        $data['domainable_id'] = $domainableId;
 
         try {
             return $this->repository->create($data);

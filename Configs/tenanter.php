@@ -24,8 +24,14 @@ return [
             'identifier' => 'domain',
             'name' => 'Domain',
             'model' => \App\Containers\Vendor\Tenanter\Models\Domain::class
+        ],
+        'host' => [
+            'identifier' => 'host',
+            'name' => 'Host',
+            'model' => \App\Containers\Vendor\Tenanter\Models\Host::class
         ]
     ],
+
 
     /**
      * The list of host domains.
@@ -82,7 +88,8 @@ return [
         "cities",
 
         "tenants",
-        "domains"
+        "domains",
+        "hosts"
     ],
 
 

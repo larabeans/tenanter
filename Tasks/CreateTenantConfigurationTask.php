@@ -34,13 +34,10 @@ class CreateTenantConfigurationTask extends Task
             'configuration' => $configurationData,
         ];
         if ($data['configurable_type'] == 'tenant') {
-
             $queryData['configurable_id'] = $data['tenant_id'];
             $queryData['tenant_id'] = $data['tenant_id'];
         } elseif ($data['configurable_type'] == 'domain') {
-
             $queryData['configurable_id'] = $data['id'];
-            $queryData['tenant_id'] = tenant()->getKey();
         }
 
         try {

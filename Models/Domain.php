@@ -29,7 +29,8 @@ class Domain extends Model implements Contracts\Domain
         'verified_at',
         'dns_verification_hostname',
         'dns_verification_code',
-        'tenant_id'
+        'domainable_id',
+        'domainable_type'
     ];
 
     protected $guarded = [];
