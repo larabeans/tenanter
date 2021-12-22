@@ -20,7 +20,6 @@ class AssignDomainToTenantTask extends Task
 
     public function run($domainName, $new = false, $domainableId = null, $domainableType = null)
     {
-
         $domain = null;
         $dnsHostname = null;
         $dnsCode = null;
@@ -39,7 +38,9 @@ class AssignDomainToTenantTask extends Task
         }
 
         foreach (config('tenanter.configurable_entities') as $key => $value) {
-            $index= $key == $domainableType ? $value['model'] : null;
+            if($key == $domainableType) {
+                $index = $value['model'];
+            }
         }
 
         $data['domain'] = $domain;

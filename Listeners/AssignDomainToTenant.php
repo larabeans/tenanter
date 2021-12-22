@@ -13,6 +13,6 @@ class AssignDomainToTenant
 
     public function handle(TenantCreated $event)
     {
-         app(AssignDomainToTenantTask::class)->run(null,false, $event->tenant-id,'tenant');
+         app(AssignDomainToTenantTask::class)->run($event->tenant,false, $event->tenant->id,'tenant');
     }
 }
