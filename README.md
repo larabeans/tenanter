@@ -60,6 +60,9 @@ Includes seeders for
 - Implement cli (artisan) command to add tenant column to any table (specifying table name and column type i.e. incement
   or uuid)
 - Implement cli (artisan) command to add default tenant in database
+- Remove CLI command Add TennatIdToTablesCommand
+- Remove CLI command from confugurationer comtainer to add host configuration (it is already handled here
+- Remove use of host_domains from tenanter config
 
 ---
 

@@ -3,7 +3,7 @@
 namespace App\Containers\Vendor\Tenanter\Listeners;
 
 use App\Containers\Vendor\Tenanter\Events\TenantCreated;
-use App\Containers\Vendor\Tenanter\Tasks\CreateTenantConfigurationTask;
+use App\Containers\Vendor\Tenanter\Tasks\CreateConfigurationTask;
 
 
 class CreateTenantConfiguration
@@ -26,10 +26,10 @@ class CreateTenantConfiguration
      */
     public function handle(TenantCreated $event)
     {
-        app(CreateTenantConfigurationTask::class)->run([
+        app(CreateConfigurationTask::class)->run([
             'configurable_type' => 'tenant',
             'configuration' => config('configurationer.default'),
-            'tenant_id' => $event->tenant->id
+            'id' => $event->tenant->id
         ]);
     }
 }

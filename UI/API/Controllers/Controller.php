@@ -4,7 +4,7 @@ namespace App\Containers\Vendor\Tenanter\UI\API\Controllers;
 
 use App\Containers\Vendor\Tenanter\UI\API\Requests\GetDomainConfigurationRequest;
 use App\Containers\Vendor\Tenanter\Actions\ActivateDomainAction;
-use App\Containers\Vendor\Tenanter\Actions\AddNewDomainAction;
+use App\Containers\Vendor\Tenanter\Actions\CreateDomainAction;
 use App\Containers\Vendor\Tenanter\Actions\ChangeTenantModeAction;
 use App\Containers\Vendor\Tenanter\Actions\DeactivateDomainAction;
 use App\Containers\Vendor\Tenanter\Actions\DeleteDomainAction;
@@ -16,7 +16,7 @@ use App\Containers\Vendor\Tenanter\Actions\UpdateConfigurationAction;
 use App\Containers\Vendor\Tenanter\Actions\VerifyDomainAction;
 use App\Containers\Vendor\Tenanter\Models\Domain;
 use App\Containers\Vendor\Tenanter\UI\API\Requests\ActivateDomainRequest;
-use App\Containers\Vendor\Tenanter\UI\API\Requests\AddNewDomainRequest;
+use App\Containers\Vendor\Tenanter\UI\API\Requests\CreateDomainRequest;
 use App\Containers\Vendor\Tenanter\UI\API\Requests\ChangeTenantModeRequest;
 use App\Containers\Vendor\Tenanter\UI\API\Requests\DeactivateDomainRequest;
 use App\Containers\Vendor\Tenanter\UI\API\Requests\DeleteDomainRequest;
@@ -74,9 +74,10 @@ class Controller extends ApiController
         return $this->created($this->transform($tenant, TenantTransformer::class));
     }
 
-    public function addNewDomain(AddNewDomainRequest $request)
+    // TODO: Purpose of this function
+    public function createDomain(CreateDomainRequest $request)
     {
-        $domain = app(AddNewDomainAction::class)->run($request);
+        $domain = app(CreateDomainAction::class)->run($request);
         return $this->transform($domain, DomainTransformer::class);
     }
 

@@ -46,33 +46,4 @@ class InitializeHostContext extends IdentificationMiddleware
 
         return false;
     }
-
-
-//    /**
-//     * Handle an incoming request.
-//     *
-//     * @param  \Illuminate\Http\Request  $request
-//     * @param  \Closure  $next
-//     * @return mixed
-//     */
-//    public function handle($request, Closure $next)
-//    {
-//        return $this->checkHost(
-//            $request, $next, $request->header(config('tenanter.tenancy.header_attribute'))
-//        );
-//    }
-
-//    public function checkHost($request, $next, ...$resolverArguments)
-//    {
-//        $domain = $resolverArguments[0];
-//        /**
-//         * Check domain is associated with host domains,
-//         * if true set host context true else identify tenancy
-//         */
-//        if(in_array($domain, config('tenanter.host_domains'))){
-//            $this->tenancy->host = true;
-//        }
-//
-//        return $next($request);
-//    }
 }

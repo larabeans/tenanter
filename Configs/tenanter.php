@@ -38,10 +38,7 @@ return [
      *
      * Only relevant if you're using the domain or subdomain identification middleware.
      */
-    'host_domains' => [
-        '127.0.0.1',
-        'localhost:4200',
-    ],
+    'host_domains' => [],
 
     'models' => [
         'host' => App\Containers\Vendor\Tenanter\Models\Host::class,

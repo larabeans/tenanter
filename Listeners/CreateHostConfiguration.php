@@ -2,10 +2,11 @@
 
 namespace App\Containers\Vendor\Tenanter\Listeners;
 
-use App\Containers\Vendor\Tenanter\Events\DomainCreated;
+use App\Containers\Vendor\Tenanter\Events\HostCreated;
 use App\Containers\Vendor\Tenanter\Tasks\CreateConfigurationTask;
 
-class CreateDomainConfigurations
+
+class CreateHostConfiguration
 {
     /**
      * Create the event listener.
@@ -20,15 +21,15 @@ class CreateDomainConfigurations
     /**
      * Handle the event.
      *
-     * @param \App\Events\DomainCreated $event
+     * @param \App\Events\HostCreated $event
      * @return void
      */
-    public function handle(DomainCreated $event)
+    public function handle(HostCreated $event)
     {
         app(CreateConfigurationTask::class)->run([
-            'configurable_type' => 'domain',
+            'configurable_type' => 'host',
             'configuration' => config('configurationer.default'),
-            'id' => $event->domain->id
+            'id' => $event->entity->id
         ]);
     }
 }

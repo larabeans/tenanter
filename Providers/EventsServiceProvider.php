@@ -24,10 +24,15 @@ class EventsServiceProvider extends EventsProvider
             Listeners\UpdateRoleTableToChangeUniqueIndex::class
         ],
 
+        // Host events
+        Events\HostCreated::class => [
+            Listeners\CreateHostConfiguration::class
+        ],
+
         // Tenant events
         Events\CreatingTenant::class => [],
         Events\TenantCreated::class => [
-            Listeners\AssignDomainToTenant::class,
+            Listeners\CreateCnameForTenantAsSubDomainOnHostPrimaryDomain::class,
             Listeners\AddTenantStorageFolder::class,
             Listeners\CreateTenantConfiguration::class
         ],
@@ -49,13 +54,6 @@ class EventsServiceProvider extends EventsProvider
         Events\DomainUpdated::class => [],
         Events\DeletingDomain::class => [],
         Events\DomainDeleted::class => [],
-
-        // Database events
-        Events\DatabaseCreated::class => [],
-        Events\DatabaseMigrated::class => [],
-        Events\DatabaseSeeded::class => [],
-        Events\DatabaseRolledBack::class => [],
-        Events\DatabaseDeleted::class => [],
 
         // Tenancy events
         Events\InitializingTenancy::class => [],

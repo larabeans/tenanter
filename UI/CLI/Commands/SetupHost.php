@@ -2,22 +2,22 @@
 
 namespace App\Containers\Vendor\Tenanter\UI\CLI\Commands;
 
-use App\Containers\Vendor\Tenanter\Tasks\AssignDomainToTenantTask;
+use App\Containers\Vendor\Tenanter\Tasks\CreateDomainTask;
 use App\Containers\Vendor\Tenanter\Tasks\CreateHostTask;
-use App\Containers\Vendor\Tenanter\Tasks\CreateTenantUserTask;
+use App\Containers\Vendor\Tenanter\Tasks\CreateUserTask;
 use Illuminate\Console\Command;
 
 class SetupHost extends Command
 {
-    protected $description = 'It create host, make host domain nad create host configuration. ';
+    protected $description = 'This command creates host, adds host domains, and host configuration.';
 
-    protected $signature = 'larabeans:setup:host';
+    protected $signature = 'tenanter:setup:host';
 
     private $data = [];
     private $questions = [
         'name' => 'Enter host name',
-        'domain' => 'Enter domain for host. <fg=blue> www.example.com',
-        'email' => 'Enter email for host user. <fg=blue> example@exaple.com',
+        'domain' => 'Enter primary domain for host e.g. <fg=blue> www.example.com',
+        'email' => 'Enter email for host admin user. <fg=blue> usear@example.com',
         'password' => 'Enter password for host user'
     ];
 
@@ -34,14 +34,18 @@ class SetupHost extends Command
 
         $host = app(CreateHostTask::class)->run($this->data['name']);
 
-        $user = app(CreateTenantUserTask::class)->run(
+        $user = app(CreateUserTask::class)->run(
             true,
             $host->id,
             $this->data['email'],
             $this->data['password']
         )->assignRole('admin');
 
-        $domain = app(AssignDomainToTenantTask::class)->run($this->data['domain'], true, $host->id, 'host');
+        $domain = app(CreateDomainTask::class)->run(
+            $this->data['domain'],
+            'host',
+            $host->id
+        );
         $this->line('<fg=green>' . "Host setup successfully\n");
     }
 

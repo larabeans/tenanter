@@ -53,13 +53,13 @@ class Host extends Model implements Contracts\Host
     }
 
     protected $dispatchesEvents = [
-//        'saving' => Events\SavingHost::class,
-//        'saved' => Events\HostSaved::class,
-//        'creating' => Events\CreatingHost::class,
-//        'created' => Events\HostCreated::class,
-//        'updating' => Events\UpdatingHost::class,
-//        'updated' => Events\HostUpdated::class,
-//        'deleting' => Events\DeletingHost::class,
-//        'deleted' => Events\HostDeleted::class,
+        'saving' => Events\SavingHost::class,
+        'saved' => Events\HostSaved::class,
+        'creating' => Events\CreatingHost::class,
+        'created' => Events\HostCreated::class,
+        'updating' => Events\UpdatingHost::class,
+        'updated' => Events\HostUpdated::class,
+        'deleting' => Events\DeletingHost::class,
+        'deleted' => Events\HostDeleted::class,
     ];
 }

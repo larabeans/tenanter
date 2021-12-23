@@ -14,12 +14,14 @@ class UpdateRoleTableToChangeUniqueIndex
 
     public function handle(MigrationsEnded $event)
     {
-        Schema::table('roles', function (Blueprint $table) {
-            $table->dropUnique(['name', 'guard_name']);
-        });
+        if (Schema::hasTable('roles')) {
+            Schema::table('roles', function (Blueprint $table) {
+                $table->dropUnique(['name', 'guard_name']);
+            });
 
-        Schema::table('roles', function (Blueprint $table) {
-            $table->unique(['name', 'guard_name', 'tenant_id']);
-        });
+            Schema::table('roles', function (Blueprint $table) {
+                $table->unique(['name', 'guard_name', 'tenant_id']);
+            });
+        }
     }
 }

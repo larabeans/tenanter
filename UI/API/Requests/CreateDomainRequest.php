@@ -4,7 +4,7 @@ namespace App\Containers\Vendor\Tenanter\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;
 
-class AddNewDomainRequest extends Request
+class CreateDomainRequest extends Request
 {
     /**
      * Define which Roles and/or Permissions has access to this request.

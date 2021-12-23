@@ -2,7 +2,7 @@
 
 /**
  * @apiGroup           Tenant
- * @apiName            addNewDomain
+ * @apiName            createDomain
  *
  * @api                {POST} /v1/domains Add New Domain
  * @apiDescription     Endpoint description here..
@@ -22,7 +22,7 @@
 use App\Containers\Vendor\Tenanter\UI\API\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 
-Route::post('domains', [Controller::class, 'addNewDomain'])
+Route::post('domains', [Controller::class, 'createDomain'])
     ->name('api_tenanter_add_new_domain')
     ->middleware(['auth:api']);
 
