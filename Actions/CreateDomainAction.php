@@ -13,6 +13,7 @@ class CreateDomainAction extends Action
     {
         return app(CreateDomainTask::class)->run(
             $request->domain,
+            false,
             'tenant',
             tenant()->getTenantKey()
         );

@@ -18,6 +18,7 @@ class CreateDomainTable extends Migration
             }
             $table->uuidMorphs('domainable');
             $table->string("domain")->unique();
+            $table->boolean("is_primary")->default(false);
             $table->boolean("is_active")->default(false);
             $table->boolean("is_verified")->default(false);
             $table->string('dns_verification_hostname')->nullable();

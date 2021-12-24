@@ -43,6 +43,7 @@ class SetupHost extends Command
 
         $domain = app(CreateDomainTask::class)->run(
             $this->data['domain'],
+            true,
             'host',
             $host->id
         );

@@ -19,7 +19,7 @@ class CreateDomainTask extends Task
         $this->repository = $repository;
     }
 
-    public function run($domain, $type, $id)
+    public function run($domain, $primary, $type, $id)
     {
         try {
             if ( $entity = configurationer()::getConfigurableEntity($type)) {
@@ -28,8 +28,9 @@ class CreateDomainTask extends Task
                     'domainable_type' => $entity['model'],
                     'domainable_id' => $id,
                     'domain' => $domain,
-                    'dns_verification_hostname' => Str::random(5) . '.' . $domain,
-                    'dns_verification_code' => Str::random(14)
+                    'is_primary' => $primary,
+                    'dns_verification_hostname' => $primary ? null : (Str::random(5) . '.' . $domain),
+                    'dns_verification_code' => $primary ? null : (Str::random(14))
                 ];
                 return $this->repository->create($queryData);
             }
