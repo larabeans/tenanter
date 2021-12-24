@@ -90,7 +90,7 @@ return [
     ],
 
 
-    'only-admin-permissions' => [
+    'admin_only_permissions' => [
         'manage-tenant',
         'create-tenant',
         'delete-tenant'

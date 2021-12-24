@@ -44,7 +44,7 @@ class RequestHeaderHostResolver extends Contracts\CachedHostResolver
             return $host;
         }
 
-        throw new HostCouldNotBeIdentifiedByRequestHeaderException($args[0]);
+        // throw new HostCouldNotBeIdentifiedByRequestHeaderException($args[0]);
     }
 
     public function resolved(Host $host, ...$args): void

@@ -4,6 +4,7 @@ namespace App\Containers\Vendor\Tenanter\Middleware;
 
 use Closure;
 use App\Containers\Vendor\Tenanter\Resolvers\RequestHeaderHostResolver;
+use App\Containers\Vendor\Tenanter\Tasks\GetHostPrimaryDomainsTask;
 use App\Containers\Vendor\Tenanter\Tenancy;
 
 
@@ -33,9 +34,20 @@ class InitializeHostContext extends IdentificationMiddleware
      */
     public function handle($request, Closure $next)
     {
-        return $this->initializeHost(
-            $request, $next, $this->getAxisHost($request)
-        );
+        $hostDomain = app(GetHostPrimaryDomainsTask::class)
+                        ->run()
+                        ->pluck('domain')
+                        ->toArray();
+
+        $domain = $this->getAxisHost($request);
+
+        if(in_array($domain, $hostDomain)) {
+            return $this->initializeHost(
+                $request, $next, $this->getAxisHost($request)
+            );
+        }
+
+        return $next($request);
     }
 
     protected function getAxisHost( $request)
@@ -44,6 +56,6 @@ class InitializeHostContext extends IdentificationMiddleware
             return $request->header(config('tenanter.tenancy.header_attribute'));
         }
 
-        return false;
+        return '';
     }
 }
