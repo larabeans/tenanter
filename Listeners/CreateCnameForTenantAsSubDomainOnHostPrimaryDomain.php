@@ -4,6 +4,7 @@ namespace App\Containers\Vendor\Tenanter\Listeners;
 
 use App\Containers\Vendor\Tenanter\Events\TenantCreated;
 use App\Containers\Vendor\Tenanter\Tasks\CreateDomainTask;
+use Illuminate\Database\Eloquent\Builder;
 
 class CreateCnameForTenantAsSubDomainOnHostPrimaryDomain
 {
@@ -13,17 +14,30 @@ class CreateCnameForTenantAsSubDomainOnHostPrimaryDomain
 
     public function handle(TenantCreated $event)
     {
-        // TODO: Get Primary Host Domain, and create subdomain to be used as cname for tenant,
-        // pass that instead of tenant name
-        $cname = '';
-        app(CreateDomainTask::class)->run($cname, true, 'tenant', $event->tenant->id);
+        app(CreateDomainTask::class)->run(
+            $this->cname(),
+            true,
+            'tenant',
+            $event->tenant->id
+        );
     }
 
 
-    private function createCname($name) {
-        // TODO: Get host primary domain, attache tenant-name to create cname for new tenant
-        $hostDomain = config('tenanter.host_domains');
+    private function cname($name)
+    {
+        return $name . '.' . $this->getHostPrimaryDomains()[0];
+    }
 
-        return $name . '.' . $hostDomain[1];
+    private function getHostPrimaryDomains()
+    {
+        /** @var Host|null $host */
+        $host = config('tenanter.models.host')::query()
+            ->whereHas('domains', function (Builder $query) {
+                $query->where('is_primary', true);
+            })
+            ->with('domains')
+            ->first();
+
+        return $host->domains();
     }
 }

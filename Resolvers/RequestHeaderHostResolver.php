@@ -30,18 +30,18 @@ class RequestHeaderHostResolver extends Contracts\CachedHostResolver
     {
         $domain = $args[0];
 
-        /** @var Host|null $tenant */
-        $tenant = config('tenanter.models.host')::query()
+        /** @var Host|null $host */
+        $host = config('tenanter.models.host')::query()
             ->whereHas('domains', function (Builder $query) use ($domain) {
                 $query->where('domain', $domain);
             })
             ->with('domains')
             ->first();
 
-        if ($tenant) {
-            $this->setCurrentDomain($tenant, $domain);
+        if ($host) {
+            $this->setCurrentDomain($host, $domain);
 
-            return $tenant;
+            return $host;
         }
 
         throw new HostCouldNotBeIdentifiedByRequestHeaderException($args[0]);
