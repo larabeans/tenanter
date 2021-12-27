@@ -137,27 +137,6 @@ class Controller extends ApiController
         return $this->transform($tenants, TenantTransformer::class);
     }
 
-    /**
-     * @param GetTenantConfigurationRequest $request
-     * @return array
-     */
-    public function getTenantConfiguration(GetTenantConfigurationRequest $request)
-    {
-        $tenants = app(GetTenantConfigurationAction::class)->run($request);
-
-        return $tenants;
-    }
-
-    /**
-     * @param GetDomainConfigurationRequest $request
-     * @return array
-     */
-    public function getDomainConfiguration(GetDomainConfigurationRequest $request)
-    {
-        $tenants = app(GetDomainConfigurationAction::class)->run($request);
-
-        return $tenants;
-    }
 
     /**
      * @param GetAllTenantDomainsRequest $request
@@ -207,12 +186,12 @@ class Controller extends ApiController
      * @param UpdateConfigurationRequest $request
      * @return array
      */
-    public function updateConfiguration(UpdateConfigurationRequest $request)
-    {
-        $tenant = app(UpdateConfigurationAction::class)->run($request);
-
-        return $tenant;
-    }
+//    public function updateConfiguration(UpdateConfigurationRequest $request)
+//    {
+//        $tenant = app(UpdateConfigurationAction::class)->run($request);
+//
+//        return $tenant;
+//    }
 
     /**
      * @param DeleteTenantRequest $request

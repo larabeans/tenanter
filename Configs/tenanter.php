@@ -14,25 +14,6 @@ return [
         ],
     ],
 
-    'configurable_entities' => [
-        'tenant' => [
-            'identifier' => 'tenant',
-            'name' => 'Tenant',
-            'model' => \App\Containers\Vendor\Tenanter\Models\Tenant::class
-        ],
-        'domain' => [
-            'identifier' => 'domain',
-            'name' => 'Domain',
-            'model' => \App\Containers\Vendor\Tenanter\Models\Domain::class
-        ],
-        'host' => [
-            'identifier' => 'host',
-            'name' => 'Host',
-            'model' => \App\Containers\Vendor\Tenanter\Models\Host::class
-        ]
-    ],
-
-
     /**
      * The list of host domains.
      *
@@ -50,8 +31,131 @@ return [
 
     'default_id' => null,
 
+    /**
+     *  Used for handling configuration, link to configurationer
+     */
+    'configurable' => [
+        'host' => [
+            'identifier' => 'host',
+            'key' => 'host',
+            'name' => 'Host',
+            'model' => App\Containers\Vendor\Tenanter\Models\Host::class,
+            'tasks' => [
+                'get' => null,
+                'create' => null,
+                'update' => null
+            ],
+            'authenticate' => false,
+            'default' => [
+                'user_management' => [
+                    'register_user_in_system' => true,
+                    'new_user_active_by_default' => true,
+                    'captcha_on_registration' => true,
+                    'captcha_on_login' => true,
+                    'enabled_cookie_consent' => true,
+                    'enabled_session_timeout' => false,
+                    'email_confirmation_for_login' => false,
+                    'allow_profile_picture' => true
+                ],
+                'security' => [
+                    'user_default_settings' => true,
+                    'user_account_locking' => true,
+                    'number_of_login_attemps' => 222,
+                    'account_locking_duration' => 333,
+                    'password' => [
+                        'require_digit' => false,
+                        'require_lowercase' => true,
+                        'require_non_alphanumeric' => false,
+                        'require_uppercase' => true,
+                        'password_length' => 111,
+                    ]
+                ],
+                'clock' => [
+                    'provider' => 'unspecifiedClockProvider'
+                ],
+                'timing' => [
+                    'time_zone_info' => [
+                        'iana' => [
+                            'time_zone_id' => 'Etc / UTC'
+                        ]
+                    ]
+                ],
+            ],
+        ],
+        'tenant' => [
+            'identifier' => 'tenant',
+            'key' => 'tenant',
+            'name' => 'Tenant',
+            'model' => App\Containers\Vendor\Tenanter\Models\Tenant::class,
+            'tasks' => [
+                'get' => \App\Containers\Vendor\Tenanter\Tasks\GetResolvedTenantConfigurationTask::class,
+                'create' => null,
+                'update' => null
+            ],
+            'authenticate' => false,
+            'default' => [
+                'user_management' => [
+                    'register_user_in_system' => true,
+                    'new_user_active_by_default' => true,
+                    'captcha_on_registration' => true,
+                    'captcha_on_login' => true,
+                    'enabled_cookie_consent' => true,
+                    'enabled_session_timeout' => false,
+                    'email_confirmation_for_login' => false,
+                    'allow_profile_picture' => true
+                ],
+                'security' => [
+                    'user_default_settings' => true,
+                    'user_account_locking' => true,
+                    'number_of_login_attemps' => 222,
+                    'account_locking_duration' => 333,
+                    'password' => [
+                        'require_digit' => false,
+                        'require_lowercase' => true,
+                        'require_non_alphanumeric' => false,
+                        'require_uppercase' => true,
+                        'password_length' => 111,
+                    ]
+                ],
+                'clock' => [
+                    'provider' => 'unspecifiedClockProvider'
+                ],
+                'timing' => [
+                    'time_zone_info' => [
+                        'iana' => [
+                            'time_zone_id' => 'Etc / UTC'
+                        ]
+                    ]
+                ],
+            ],
+        ],
+        'domain' => [
+            'identifier' => 'domain',
+            'key' => 'domain',
+            'name' => 'Domain',
+            'model' => App\Containers\Vendor\Tenanter\Models\Domain::class,
+            'tasks' => [
+                'get' => \App\Containers\Vendor\Tenanter\Tasks\GetResolvedDomainConfigurationTask::class,
+                'create' => null,
+                'update' => null
+            ],
+            'authenticate' => false,
+            'default' => [
+                'branding' => [
+                    'animation_logo' => null,
+                    'style' => null
+                ],
+                'invoice' => [
+                    'name' => 'Legal Name',
+                    'address' => 'VPO',
+                    'tax_number' => '313133'
+                ],
+            ],
+        ]
+    ],
 
-   /**
+
+    /**
     *--------------------------------------------------------------------------
     *     Ignore tables list
     *--------------------------------------------------------------------------
@@ -84,6 +188,7 @@ return [
         "states",
         "cities",
 
+        "configurations",
         "tenants",
         "domains",
         "hosts"

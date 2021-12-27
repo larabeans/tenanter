@@ -48,13 +48,7 @@ class MainServiceProvider extends MainProvider
     public function boot(): void
     {
         parent::boot();
-
-        // Feed configurations to global container
-        $targetConfigurableTypes = config('configurationer.entities');
-        $sourceConfigurableTypes = config('tenanter.configurable_entities');
-        $configurableTypes       = array_merge($targetConfigurableTypes, $sourceConfigurableTypes);
-        config(['configurationer.entities' => $configurableTypes]);
-        config(['configurationer.system.tenancy' => config('tenanter.tenancy', [])]);
-
+        configurationer()::addSystemConfiguration('tenancy', config('tenanter.tenancy', []));
+        configurationer()::addEntity(config('tenanter.configurable'));
     }
 }

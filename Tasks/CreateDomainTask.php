@@ -22,10 +22,10 @@ class CreateDomainTask extends Task
     public function run($domain, $primary, $type, $id)
     {
         try {
-            if ( $entity = configurationer()::getConfigurableEntity($type)) {
+            if ( $model = configurationer()::getModel($type)) {
 
                 $queryData = [
-                    'domainable_type' => $entity['model'],
+                    'domainable_type' => $model,
                     'domainable_id' => $id,
                     'domain' => $domain,
                     'is_primary' => $primary,

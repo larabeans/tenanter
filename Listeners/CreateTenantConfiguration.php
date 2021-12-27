@@ -28,7 +28,7 @@ class CreateTenantConfiguration
     {
         app(CreateConfigurationTask::class)->run([
             'configurable_type' => 'tenant',
-            'configuration' => config('configurationer.default'),
+            'configuration' => configurationer()::getDefault('tenant'),
             'id' => $event->tenant->id
         ]);
     }

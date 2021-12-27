@@ -27,7 +27,7 @@ class CreateDomainConfigurations
     {
         app(CreateConfigurationTask::class)->run([
             'configurable_type' => 'domain',
-            'configuration' => config('configurationer.default'),
+            'configuration' => configurationer()::getDefault('domain'),
             'id' => $event->domain->id
         ]);
     }

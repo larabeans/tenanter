@@ -28,7 +28,7 @@ class CreateHostConfiguration
     {
         app(CreateConfigurationTask::class)->run([
             'configurable_type' => 'host',
-            'configuration' => config('configurationer.default'),
+            'configuration' => configurationer()::getDefault('host'),
             'id' => $event->entity->id
         ]);
     }

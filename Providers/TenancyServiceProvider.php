@@ -36,7 +36,7 @@ class TenancyServiceProvider extends MainProvider
             return $app[Tenancy::class]->tenant;
         });
 
-        $this->app->bind(Domain::class, function () {
+        $this->app->bind(Domain::class, function ($app) {
             return Tenancy::$currentDomain;
         });
 

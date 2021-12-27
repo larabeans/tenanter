@@ -20,9 +20,9 @@ class CreateConfigurationTask extends Task
     public function run(array $data)
     {
         try {
-            if ( $entity = configurationer()::getConfigurableEntity($data['configurable_type'])) {
+            if ( $model = configurationer()::getModel($data['configurable_type'])) {
                 $queryData = [
-                    'configurable_type' => $entity['model'],
+                    'configurable_type' => $model,
                     'configurable_id' => $data['id'],
                     'configuration' => json_encode($data['configuration']),
                 ];

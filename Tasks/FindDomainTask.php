@@ -8,7 +8,7 @@ use App\Ship\Parents\Tasks\Task;
 use Exception;
 use Illuminate\Support\Str;
 
-class FindDomainByIdTask extends Task
+class FindDomainTask extends Task
 {
     protected DomainRepository $repository;
 
