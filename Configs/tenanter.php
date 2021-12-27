@@ -41,11 +41,12 @@ return [
             'name' => 'Host',
             'model' => App\Containers\Vendor\Tenanter\Models\Host::class,
             'tasks' => [
-                'get' => null,
+                'get' => App\Containers\Vendor\Tenanter\Tasks\GetResolvedHostConfigurationTask::class,
                 'create' => null,
                 'update' => null
             ],
             'authenticate' => false,
+            'load_in_default_task' => true,
             'default' => [
                 'user_management' => [
                     'register_user_in_system' => true,
@@ -88,11 +89,12 @@ return [
             'name' => 'Tenant',
             'model' => App\Containers\Vendor\Tenanter\Models\Tenant::class,
             'tasks' => [
-                'get' => \App\Containers\Vendor\Tenanter\Tasks\GetResolvedTenantConfigurationTask::class,
+                'get' => App\Containers\Vendor\Tenanter\Tasks\GetResolvedTenantConfigurationTask::class,
                 'create' => null,
                 'update' => null
             ],
             'authenticate' => false,
+            'load_in_default_task' => true,
             'default' => [
                 'user_management' => [
                     'register_user_in_system' => true,
@@ -140,6 +142,7 @@ return [
                 'update' => null
             ],
             'authenticate' => false,
+            'load_in_default_task' => true,
             'default' => [
                 'branding' => [
                     'animation_logo' => null,

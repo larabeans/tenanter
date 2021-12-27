@@ -19,25 +19,18 @@ class GetResolvedTenantConfigurationTask extends Task
 
     public function run(Request $request, $type)
     {
-        try {
+         if(tenancy()->initialized && tenancy()->tenantInitialized) {
 
-            if(! tenancy()->initialized ||  ! tenancy()->tenantInitialized) {
-                throw new Exception();
-            }
+             $configurations = $this->repository->findWhere([
+                 'configurable_id' => tenant()->getTenantKey(),
+                 'configurable_type' => configurationer()::getModel($type)
+             ])->first();
 
-            $configurations = $this->repository->findWhere([
-                'configurable_id' => tenant()->getTenantKey(),
-                'configurable_type' => configurationer()::getModel($type)
-            ])->first();
+             if ($configurations) {
+                 return (array) json_decode($configurations->configuration);
+             }
+         }
 
-            $configurations = json_decode($configurations->configuration);
-
-            return [
-                'data' => $configurations
-            ];
-        }
-        catch (Exception $exception) {
-            throw new NotFoundException();
-        }
+        return [];
     }
 }

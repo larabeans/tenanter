@@ -20,25 +20,18 @@ class GetResolvedDomainConfigurationTask extends Task
 
     public function run(Request $request, $type)
     {
-        if(! tenancy()->initialized ||   ( ! tenancy()->hostInitialized && ! tenancy()->tenantInitialized )) {
-            throw new Exception();
-        }
+         if(tenancy()->initialized && (tenancy()->hostInitialized || tenancy()->tenantInitialized )) {
 
-        try {
+             $configurations = $this->repository->findWhere([
+                 'configurable_id' => domain()->id,
+                 'configurable_type' => configurationer()::getModel($type)
+             ])->first();
 
-            $configurations = $this->repository->findWhere([
-                'configurable_id' => domain()->id,
-                'configurable_type' => configurationer()::getModel($type)
-            ])->first();
+             if ($configurations) {
+                 return (array) json_decode($configurations->configuration);
+             }
+         }
 
-            $configurations = json_decode($configurations->configuration);
-
-            return [
-                'data' => $configurations
-            ];
-        }
-        catch (Exception $exception) {
-            throw new NotFoundException();
-        }
+         return [];
     }
 }

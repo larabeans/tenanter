@@ -22,9 +22,9 @@ class TenantScope implements Scope
 
             if (tenancy()->validTable($model->getTable())) {
                 // TODO: Check if below check is still required
-                //if (! $this->gettingRolesForAuthenticatedUser($builder, $model)) {
+                if (! $this->gettingRolesForAuthenticatedUser($builder, $model)) {
                     $builder->where($model->qualifyColumn(config('tenanter.tenant_column')), tenant()->getTenantKey());
-                //}
+                }
             } else if ($model->getTable() == 'tenants' && !empty(tenant()->getTenantKey())) {
                 // if table in context is `tenant`, apply tenant id check, so one tenant can only view its own tenant
                 $builder->where($model->qualifyColumn(tenant()->getTenantKeyName()), tenant()->getTenantKey());
@@ -34,10 +34,10 @@ class TenantScope implements Scope
 
             // Only return rows/data that don't belong to any tenant
             if (tenancy()->validTable($model->getTable())) {
-                //if (! $this->gettingRolesForAuthenticatedUser($builder, $model)) {
+                if (! $this->gettingRolesForAuthenticatedUser($builder, $model)) {
                     $builder->where($model->qualifyColumn(config('tenanter.tenant_column')), host()->getHostKey());
                     $builder->orWhere($model->qualifyColumn(config('tenanter.tenant_column')), null);
-                //}
+                }
             }
 
         }
