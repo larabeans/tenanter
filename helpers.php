@@ -56,7 +56,13 @@ if (! function_exists('tenant')) {
 }
 
 if (! function_exists('domain')) {
-    /** @return Domain */
+    /**
+     * Get a key from the current host's storage.
+     *
+     * @param string|null $key
+     * @return Domain|null|mixed
+     */
+
     function domain($key = null)
     {
         if (! app()->bound(Domain::class)) {

@@ -3,6 +3,7 @@
 namespace App\Containers\Vendor\Tenanter\Tasks;
 
 use App\Containers\Vendor\Configurationer\Data\Repositories\ConfigurationRepository;
+use App\Containers\Vendor\Tenanter\Tenancy;
 use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Tasks\Task;
 use App\Ship\Parents\Requests\Request;
@@ -19,16 +20,22 @@ class GetResolvedDomainConfigurationTask extends Task
 
     public function run(Request $request, $type)
     {
-        // TODO: Instead of using header, use resolved domain and tenancy object
-        $domain = app(FindDomainTask::class)->run($request->header('Axis-Host'));
+        if(! tenancy()->initialized ||   ( ! tenancy()->hostInitialized && ! tenancy()->tenantInitialized )) {
+            throw new Exception();
+        }
 
         try {
+
             $configurations = $this->repository->findWhere([
-                'configurable_id' => $domain->id,
+                'configurable_id' => domain()->id,
                 'configurable_type' => configurationer()::getModel($type)
             ])->first();
+
             $configurations = json_decode($configurations->configuration);
-            return ['data'=>$configurations];
+
+            return [
+                'data' => $configurations
+            ];
         }
         catch (Exception $exception) {
             throw new NotFoundException();

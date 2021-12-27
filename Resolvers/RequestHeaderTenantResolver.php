@@ -10,13 +10,6 @@ use App\Containers\Vendor\Tenanter\Exceptions\TenantCouldNotBeIdentifiedByReques
 
 class RequestHeaderTenantResolver extends Contracts\CachedTenantResolver
 {
-    /**
-     * The model representing the domain that the tenant was identified on.
-     *
-     * @var Domain
-     */
-    public static $currentDomain;
-
     /** @var bool */
     public static $shouldCache = false;
 
@@ -54,8 +47,7 @@ class RequestHeaderTenantResolver extends Contracts\CachedTenantResolver
 
     protected function setCurrentDomain(Tenant $tenant, string $domain): void
     {
-        static::$currentDomain = $tenant->domains->where('domain', $domain)->first();
-        Tenancy::$currentDomain = static::$currentDomain;
+        tenancy()->domain = $tenant->domains->where('domain', $domain)->first();
     }
 
     public function getArgsForTenant(Tenant $tenant): array

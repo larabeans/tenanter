@@ -10,13 +10,6 @@ use App\Containers\Vendor\Tenanter\Exceptions\HostCouldNotBeIdentifiedByRequestH
 
 class RequestHeaderHostResolver extends Contracts\CachedHostResolver
 {
-    /**
-     * The model representing the domain that the tenant was identified on.
-     *
-     * @var Domain
-     */
-    public static $currentDomain;
-
     /** @var bool */
     public static $shouldCache = false;
 
@@ -54,8 +47,7 @@ class RequestHeaderHostResolver extends Contracts\CachedHostResolver
 
     protected function setCurrentDomain(Host $host, string $domain): void
     {
-        static::$currentDomain = $host->domains->where('domain', $domain)->first();
-        Tenancy::$currentDomain = static::$currentDomain;
+        tenancy()->domain = $host->domains->where('domain', $domain)->first();
     }
 
     public function getArgsForHost(Host $host): array

@@ -8,7 +8,7 @@ use App\Ship\Parents\Requests\Request;
 use App\Ship\Parents\Tasks\Task;
 use Exception;
 
-class GetResolvedTenantConfigurationTask extends Task
+class GetResolvedHostConfigurationTask extends Task
 {
     protected ConfigurationRepository $repository;
 
@@ -21,12 +21,12 @@ class GetResolvedTenantConfigurationTask extends Task
     {
         try {
 
-            if(! tenancy()->initialized ||  ! tenancy()->tenantInitialized) {
+            if(! tenancy()->initialized ||  ! tenancy()->hostInitialized) {
                 throw new Exception();
             }
 
             $configurations = $this->repository->findWhere([
-                'configurable_id' => tenant()->getTenantKey(),
+                'configurable_id' => host()->getHostKey(),
                 'configurable_type' => configurationer()::getModel($type)
             ])->first();
 

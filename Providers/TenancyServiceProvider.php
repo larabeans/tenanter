@@ -6,6 +6,7 @@ use App\Ship\Parents\Providers\MainProvider;
 use App\Containers\Vendor\Tenanter\Tenancy;
 use App\Containers\Vendor\Tenanter\Contracts\Host;
 use App\Containers\Vendor\Tenanter\Contracts\Tenant;
+use App\Containers\Vendor\Tenanter\Contracts\Domain;
 use App\Containers\Vendor\Tenanter\Bootstrappers\FilesystemTenancyBootstrapper;
 
 class TenancyServiceProvider extends MainProvider
@@ -26,18 +27,19 @@ class TenancyServiceProvider extends MainProvider
             return $tenancy;
         });
 
-        // Make it possible to inject the current host by typehinting the Host contract.
+        // Bind with resolved host
         $this->app->bind(Host::class, function ($app) {
             return $app[Tenancy::class]->host;
         });
 
-        // Make it possible to inject the current tenant by typehinting the Tenant contract.
+        // Bind with resolved tenant
         $this->app->bind(Tenant::class, function ($app) {
             return $app[Tenancy::class]->tenant;
         });
 
+        // Bind with resolved domain
         $this->app->bind(Domain::class, function ($app) {
-            return Tenancy::$currentDomain;
+            return $app[Tenancy::class]->domain;
         });
 
         // Stateful Bootstrappers ( i.e. singletons)

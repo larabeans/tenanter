@@ -25,7 +25,7 @@ class Tenancy
     public $tenant;
 
     /** @var Domain|Model|null */
-    public static $currentDomain;
+    public $domain;
 
     /** @var bool */
     public $initialized = false;
