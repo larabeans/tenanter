@@ -18,7 +18,7 @@ class TenantScope implements Scope
      */
     public function apply(Builder $builder, Model $model)
     {
-        if (tenancy()->initialized && tenancy()->tenantInitialized && tenancy()->tenant && (!Auth::check() || tenancy()->validTenantUser())) {
+        if (tenancy()->initialized && tenancy()->tenantInitialized && tenancy()->tenant && (!Auth::check() || tenancy()->isValidTenantUser())) {
 
             if (tenancy()->validTable($model->getTable())) {
                 // TODO: Check if below check is still required
@@ -30,7 +30,7 @@ class TenantScope implements Scope
                 $builder->where($model->qualifyColumn(tenant()->getTenantKeyName()), tenant()->getTenantKey());
             }
 
-        } else if (tenancy()->initialized && tenancy()->hostInitialized && tenancy()->host && (!Auth::check() || tenancy()->validHostUser())) {
+        } else if (tenancy()->initialized && tenancy()->hostInitialized && tenancy()->host && (!Auth::check() || tenancy()->isValidHostUser())) {
 
             // Only return rows/data that don't belong to any tenant
             if (tenancy()->validTable($model->getTable())) {

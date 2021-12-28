@@ -41,14 +41,14 @@ class Tenancy
 
     /**
      * Initializes the host.
-     * @param Tenant|int|string $tenant
+     * @param Host|int|string $host
      * @return void
      */
     public function initializeHost($host): void
     {
         if (! is_object($host)) {
             $hostId = $host;
-            $host = $this->find($hostId);
+            $host = $this->findHost($hostId);
 
             if (! $host) {
                 throw new HostCouldNotBeIdentifiedById($hostId);
@@ -84,7 +84,7 @@ class Tenancy
     {
         if (! is_object($tenant)) {
             $tenantId = $tenant;
-            $tenant = $this->find($tenantId);
+            $tenant = $this->findTenant($tenantId);
 
             if (! $tenant) {
                 throw new TenantCouldNotBeIdentifiedById($tenantId);
@@ -141,33 +141,50 @@ class Tenancy
         return array_map('app', $resolve($this->tenant));
     }
 
-    public function query(): Builder
+    public function findTenant($id): ?Tenant
     {
-        return $this->model()->query();
+        return $this->model('tenant')->where($this->model('tenant')->getTenantKeyName(), $id)->first();
     }
 
-    public function find($id): ?Tenant
+    public function findHost($id): ?Host
     {
-        return $this->model()->where($this->model()->getTenantKeyName(), $id)->first();
+        return $this->model('host')->where($this->model('host')->getHostKeyName(), $id)->first();
     }
 
-    /** @return Tenant|Model */
-    public function model()
+    public function query($key): Builder
     {
-        $class = config('tenanter.models.tenant');
+        return $this->model($key)->query();
+    }
+
+    public function model($key)
+    {
+        $class = config('tenanter.models.' . $key);
 
         return new $class;
     }
 
-    public function  validTenantUser(): bool {
+    public function validTable($table): bool
+    {
+        return ! in_array($table, config('tenanter.ignore_tables'));
+    }
+
+    public function  isValidHostAdmin(): bool
+    {
+        return Auth::check() && Auth::user()->hasAdminRole() && $this->host && $this->host->getHostKey() === Auth::user()->tenant_id;
+    }
+
+    public function  isValidHostUser(): bool
+    {
+        return Auth::check() && $this->host && $this->host->getHostKey() === Auth::user()->tenant_id;
+    }
+
+    public function  isValidTenantAdmin(): bool
+    {
         return Auth::check() && $this->tenant && $this->tenant->getTenantKey() === Auth::user()->tenant_id;
     }
 
-    public function  validHostUser(): bool {
-        return Auth::check() && $this->host && Auth::user()->tenant_id === null;
-    }
-
-    public function validTable($table): bool {
-        return ! in_array($table, config('tenanter.ignore_tables'));
+    public function  isValidTenantUser(): bool
+    {
+        return Auth::check() && Auth::user()->hasRole('tenant-admin') && $this->tenant && $this->tenant->getTenantKey() === Auth::user()->tenant_id;
     }
 }

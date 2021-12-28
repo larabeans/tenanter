@@ -43,7 +43,7 @@ return [
             'tasks' => [
                 'get' => App\Containers\Vendor\Tenanter\Tasks\GetResolvedHostConfigurationTask::class,
                 'create' => null,
-                'update' => null
+                'update' => App\Containers\Vendor\Tenanter\Tasks\UpdateHostConfigurationTask::class
             ],
             'authenticate' => false,
             'load_in_default_task' => true,
@@ -91,7 +91,7 @@ return [
             'tasks' => [
                 'get' => App\Containers\Vendor\Tenanter\Tasks\GetResolvedTenantConfigurationTask::class,
                 'create' => null,
-                'update' => null
+                'update' => App\Containers\Vendor\Tenanter\Tasks\UpdateTenantConfigurationTask::class
             ],
             'authenticate' => false,
             'load_in_default_task' => true,
@@ -137,9 +137,9 @@ return [
             'name' => 'Domain',
             'model' => App\Containers\Vendor\Tenanter\Models\Domain::class,
             'tasks' => [
-                'get' => \App\Containers\Vendor\Tenanter\Tasks\GetResolvedDomainConfigurationTask::class,
+                'get' => App\Containers\Vendor\Tenanter\Tasks\GetResolvedDomainConfigurationTask::class,
                 'create' => null,
-                'update' => null
+                'update' => App\Containers\Vendor\Tenanter\Tasks\UpdateDomainConfigurationTask::class
             ],
             'authenticate' => false,
             'load_in_default_task' => true,

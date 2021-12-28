@@ -183,17 +183,6 @@ class Controller extends ApiController
     }
 
     /**
-     * @param UpdateConfigurationRequest $request
-     * @return array
-     */
-//    public function updateConfiguration(UpdateConfigurationRequest $request)
-//    {
-//        $tenant = app(UpdateConfigurationAction::class)->run($request);
-//
-//        return $tenant;
-//    }
-
-    /**
      * @param DeleteTenantRequest $request
      * @return \Illuminate\Http\JsonResponse
      */

@@ -24,7 +24,7 @@ trait HasTenancy
         static::creating(function ($model) {
             // Schema::hasColumn($model->getTable(), 'tenant_id')
             // Last check ensures to apply this only if route is public (i.e. no authenticated  required) or authenticated user is valid tenant user
-            if (tenancy()->initialized && tenancy()->tenantInitialized && tenancy()->validTable($model->getTable()) && (!Auth::check() || tenancy()->validTenantUser())) {
+            if (tenancy()->initialized && tenancy()->tenantInitialized && tenancy()->validTable($model->getTable()) && (!Auth::check() || tenancy()->isValidTenantUser())) {
                 if (! $model->getAttribute(config('tenanter.tenant_column')) && ! $model->relationLoaded('tenant')) {
                     $model->setAttribute(config('tenanter.tenant_column'), tenant()->getTenantKey());
                     $model->setRelation('tenant', tenant());

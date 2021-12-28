@@ -24,6 +24,7 @@ class Domain extends Model implements Contracts\Domain
 
     protected $fillable = [
         'domain',
+        'is_primary',
         'is_active',
         'is_verified',
         'verified_at',
@@ -38,6 +39,11 @@ class Domain extends Model implements Contracts\Domain
     public function tenant()
     {
         return $this->belongsTo(config('tenanter.models.tenant'));
+    }
+
+    public function host()
+    {
+        return $this->belongsTo(config('tenanter.models.host'));
     }
 
     protected $dispatchesEvents = [

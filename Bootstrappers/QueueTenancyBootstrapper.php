@@ -54,7 +54,7 @@ class QueueTenancyBootstrapper implements TenancyBootstrapper
 
             // Tenancy was either not initialized, or initialized for a different tenant.
             // Therefore, we initialize it for the correct tenant.
-            tenancy()->initializeTenant(tenancy()->find($tenantId));
+            tenancy()->initializeTenant(tenancy()->findTenant($tenantId));
         });
     }
 
