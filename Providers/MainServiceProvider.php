@@ -2,6 +2,7 @@
 
 namespace App\Containers\Vendor\Tenanter\Providers;
 
+use App\Containers\Vendor\Configurationer\Configurationer;
 use App\Ship\Parents\Providers\MainProvider;
 use App\Containers\Vendor\Tenanter\Models\Tenant;
 

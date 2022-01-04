@@ -5,7 +5,7 @@ namespace App\Containers\Vendor\Tenanter\Tasks;
 use App\Containers\Vendor\Tenanter\Data\Repositories\HostRepository;
 use App\Ship\Exceptions\CreateResourceFailedException;
 use App\Ship\Parents\Tasks\Task;
-use Exception;
+use App\Ship\Parents\Exceptions\Exception;
 use Illuminate\Support\Str;
 
 class CreateHostTask extends Task

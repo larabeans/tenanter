@@ -26,7 +26,7 @@ trait AuthenticationTrait
 
         if(tenancy()->initialized && tenancy()->hostInitialized && tenancy()->host) {
             $builder = $builder->where(config('tenanter.tenant_column'), host()->getHostKey());
-            $builder = $builder->orWhere(config('tenanter.tenant_column'), null);
+            //$builder = $builder->orWhere(config('tenanter.tenant_column'), null);
         }
 
         return $builder->first();

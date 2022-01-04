@@ -28,6 +28,7 @@ class DomainTransformer extends Transformer
             'id' => $domain->id,
             'tenant_id' => $domain->tenant_id,
             'domain' => $domain->domain,
+            'is_primary' => $domain->is_primary,
             'is_active' => $domain->is_active,
             'is_verified' => $domain->is_verified,
             'dns_verification_hostname' => $domain->dns_verification_hostname,

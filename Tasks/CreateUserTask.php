@@ -2,7 +2,7 @@
 
 namespace App\Containers\Vendor\Tenanter\Tasks;
 
-use Exception;
+use App\Ship\Parents\Exceptions\Exception;
 use Illuminate\Support\Facades\Hash;
 use App\Ship\Parents\Tasks\Task;
 use App\Containers\AppSection\User\Data\Repositories\UserRepository;

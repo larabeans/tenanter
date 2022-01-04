@@ -10,9 +10,9 @@ class UpdateTenantAction extends Action
 {
     public function run(UpdateTenantRequest $request)
     {
+        //TODO WIP
         $data = $request->sanitizeInput([
-            'name',
-            'domain'
+
         ]);
 
         $tenant = app(UpdateTenantTask::class)->run($request->id, $data);

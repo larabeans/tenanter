@@ -58,6 +58,18 @@ return [
                     'email_confirmation_for_login' => false,
                     'allow_profile_picture' => true
                 ],
+                'tenant_management' => [
+                    'allow_profile_picture' => true,
+                    'captcha_on_login' => true,
+                    'captcha_on_registration' => true,
+                    'email_confirmation_for_login' => true,
+                    'enabled_cookie_consent' => true,
+                    'enabled_session_timeout' => true,
+                    'new_user_active_by_default' => true,
+                    'register_user_in_system' => true,
+                    'user_default_mode' => true,
+                    'user_session_time' => true,
+                ],
                 'security' => [
                     'user_default_settings' => true,
                     'user_account_locking' => true,

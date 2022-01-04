@@ -3,7 +3,7 @@
 namespace App\Containers\Vendor\Tenanter\Tasks;
 
 use App\Ship\Exceptions\NotFoundException;
-use Exception;
+use App\Ship\Parents\Exceptions\Exception;
 use App\Containers\Vendor\Tenanter\Data\Repositories\DomainRepository;
 use App\Ship\Parents\Tasks\Task;
 
@@ -19,7 +19,7 @@ class GetAllTenantDomainsTask extends Task
     public function run($id)
     {
         try {
-            return $this->repository->findWhere(['tenant_id'=>$id]);
+            return $this->repository->findWhere(['domainable_id'=>$id]);
         } catch (Exception $exception) {
             throw new NotFoundException();
         }

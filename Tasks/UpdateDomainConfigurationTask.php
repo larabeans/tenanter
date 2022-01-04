@@ -12,6 +12,7 @@ use App\Containers\Vendor\Configurationer\Data\Repositories\ConfigurationHistory
 use App\Containers\Vendor\Tenanter\Traits\IsTenantAdminTrait;
 use App\Containers\Vendor\Tenanter\Contracts\Host;
 use App\Containers\Vendor\Tenanter\Contracts\Tenant;
+use App\Containers\Vendor\Tenanter\Models\Domain;
 
 
 
@@ -34,10 +35,9 @@ class UpdateDomainConfigurationTask extends Task
     {
         try {
 
-            $configurable = $configuration -> configurable;
+            $configurable = $configuration->configurable;
 
             if($configurable instanceof Domain) {
-
                 // domainable entity (i.e domain belongs to entity) host or tenant
                 $domainable = $configurable -> domainable;
 

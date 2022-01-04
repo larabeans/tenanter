@@ -5,7 +5,7 @@ namespace App\Containers\Vendor\Tenanter\Tasks;
 use App\Containers\Vendor\Tenanter\Data\Repositories\DomainRepository;
 use App\Ship\Exceptions\UpdateResourceFailedException;
 use App\Ship\Parents\Tasks\Task;
-use Exception;
+use App\Ship\Parents\Exceptions\Exception;
 
 class UpdateDomainTask extends Task
 {

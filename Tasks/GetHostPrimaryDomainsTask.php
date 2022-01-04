@@ -5,7 +5,7 @@ namespace App\Containers\Vendor\Tenanter\Tasks;
 use App\Containers\Vendor\Tenanter\Data\Repositories\HostRepository;
 use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Tasks\Task;
-use Exception;
+use App\Ship\Parents\Exceptions\Exception;
 use Illuminate\Database\Eloquent\Builder;
 
 class GetHostPrimaryDomainsTask extends Task

@@ -2,12 +2,13 @@
 
 namespace App\Containers\Vendor\Tenanter\Tasks;
 
+use App\Containers\Vendor\Configurationer\Configurationer;
 use App\Containers\Vendor\Configurationer\Data\Repositories\ConfigurationRepository;
 use App\Containers\Vendor\Tenanter\Tenancy;
 use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Tasks\Task;
 use App\Ship\Parents\Requests\Request;
-use Exception;
+use App\Ship\Parents\Exceptions\Exception;
 
 class GetResolvedDomainConfigurationTask extends Task
 {
@@ -18,7 +19,7 @@ class GetResolvedDomainConfigurationTask extends Task
         $this->repository = $repository;
     }
 
-    public function run(Request $request, $type)
+    public function run(Request $request, $type, $transform=null)
     {
          if(tenancy()->initialized && (tenancy()->hostInitialized || tenancy()->tenantInitialized )) {
 
@@ -28,7 +29,11 @@ class GetResolvedDomainConfigurationTask extends Task
              ])->first();
 
              if ($configurations) {
-                 return (array) json_decode($configurations->configuration);
+                 $configurations->configuration = (array) json_decode($configurations->configuration);
+                 if($transform) {
+                     return $configurations;
+                 }
+                 return $configurations->configuration;
              }
          }
 

@@ -3,6 +3,7 @@
 namespace App\Containers\Vendor\Tenanter\Models;
 
 use App\Containers\Vendor\Beaner\Parents\Models\Model;
+use App\Containers\Vendor\Configurationer\Traits\Configurable;
 use App\Containers\Vendor\Tenanter\Contracts;
 use App\Containers\Vendor\Tenanter\Events;
 use App\Containers\Vendor\Tenanter\Models\Concerns\HasInternalKeys;
@@ -12,7 +13,7 @@ use App\Containers\Vendor\Tenanter\Models\Concerns\HasDomains;
 
 class Tenant extends Model implements Contracts\Tenant
 {
-    use HasInternalKeys, TenantRun, InvalidatesResolverCache, HasDomains;
+    use HasInternalKeys, TenantRun, InvalidatesResolverCache, HasDomains, Configurable;
 
     protected $fillable = [
         'slug',

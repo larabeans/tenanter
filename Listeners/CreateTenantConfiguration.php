@@ -2,6 +2,7 @@
 
 namespace App\Containers\Vendor\Tenanter\Listeners;
 
+use App\Containers\Vendor\Configurationer\Configurationer;
 use App\Containers\Vendor\Tenanter\Events\TenantCreated;
 use App\Containers\Vendor\Tenanter\Tasks\CreateConfigurationTask;
 

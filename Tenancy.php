@@ -180,11 +180,11 @@ class Tenancy
 
     public function  isValidTenantAdmin(): bool
     {
-        return Auth::check() && $this->tenant && $this->tenant->getTenantKey() === Auth::user()->tenant_id;
+        return Auth::check() && Auth::user()->hasRole('tenant-admin') && $this->tenant && $this->tenant->getTenantKey() === Auth::user()->tenant_id;
     }
 
     public function  isValidTenantUser(): bool
     {
-        return Auth::check() && Auth::user()->hasRole('tenant-admin') && $this->tenant && $this->tenant->getTenantKey() === Auth::user()->tenant_id;
+        return Auth::check() && $this->tenant && $this->tenant->getTenantKey() === Auth::user()->tenant_id;
     }
 }
