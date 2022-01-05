@@ -26,7 +26,8 @@ class EventsServiceProvider extends EventsProvider
 
         // Host events
         Events\HostCreated::class => [
-            Listeners\CreateHostConfiguration::class
+            Listeners\CreateHostConfiguration::class,
+            Listeners\SetupTenantIdForDefaultRoles::class
         ],
 
         // Tenant events
