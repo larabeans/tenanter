@@ -10,12 +10,14 @@ class BootstrapTenancy
 {
     public function handle(TenancyInitialized $event)
     {
-        event(new BootstrappingTenancy($event->tenancy));
+        if($event->tenancy->tenant){
+            event(new BootstrappingTenancy($event->tenancy));
 
-        foreach ($event->tenancy->getBootstrappers() as $bootstrapper) {
-            $bootstrapper->bootstrap($event->tenancy->tenant);
+            foreach ($event->tenancy->getBootstrappers() as $bootstrapper) {
+                $bootstrapper->bootstrap($event->tenancy->tenant);
+            }
+
+            event(new TenancyBootstrapped($event->tenancy));
         }
-
-        event(new TenancyBootstrapped($event->tenancy));
     }
 }

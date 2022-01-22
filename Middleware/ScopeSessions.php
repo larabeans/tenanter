@@ -14,7 +14,7 @@ class ScopeSessions
 
     public function handle(Request $request, Closure $next)
     {
-        if (! tenancy()->initialized) {
+        if (! tenancy()->initialized || ! tenancy()->tenantInitialized) {
             throw new TenancyNotInitializedException('Tenancy needs to be initialized before the session scoping middleware is executed');
         }
 

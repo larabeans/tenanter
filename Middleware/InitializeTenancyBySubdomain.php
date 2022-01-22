@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Containers\Vendor\Tenanter\Middleware;
 
 use Closure;
-use Exception;
+use App\Ship\Parents\Exceptions\Exception;
 use Illuminate\Http\Response;
 use Illuminate\Support\Str;
 use App\Containers\Vendor\Tenanter\Exceptions\NotASubdomainException;
@@ -48,7 +48,7 @@ class InitializeTenancyBySubdomain extends InitializeTenancyByDomain
             return $subdomain;
         }
 
-        return $this->initializeTenancy(
+        return $this->initializeTenant(
             $request,
             $next,
             $subdomain

@@ -18,11 +18,11 @@ trait TenantRun
         /** @var Tenant $this */
         $originalTenant = tenant();
 
-        tenancy()->initialize($this);
+        tenancy()->initializeTenant($this);
         $result = $callback($this);
 
         if ($originalTenant) {
-            tenancy()->initialize($originalTenant);
+            tenancy()->initializeTenant($originalTenant);
         } else {
             tenancy()->end();
         }

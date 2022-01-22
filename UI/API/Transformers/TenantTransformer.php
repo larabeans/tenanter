@@ -34,7 +34,7 @@ class TenantTransformer extends Transformer
             'id' => $entity->id,
             'name' => $entity->name,
             'slug' => $entity->slug,
-            'domain' => $entity->domain,
+            'domain' => $entity->domains,
             'mode'=> $entity->mode,
             'is_active' => $entity->is_active,
             'created_at' => $entity->created_at,

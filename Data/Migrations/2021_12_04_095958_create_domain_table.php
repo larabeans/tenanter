@@ -16,11 +16,14 @@ class CreateDomainTable extends Migration
             } else {
                 $table->increments('id')->primary('id');
             }
-
+            $table->uuidMorphs('domainable');
             $table->string("domain")->unique();
-            $table->boolean("is_active");
-            $table->boolean("is_verified");
-            $table->timestamp('verified_at');
+            $table->boolean("is_primary")->default(false);
+            $table->boolean("is_active")->default(false);
+            $table->boolean("is_verified")->default(false);
+            $table->string('dns_verification_hostname')->nullable();
+            $table->string('dns_verification_code')->nullable();
+            $table->timestamp('verified_at')->nullable()->default(null);
             $table->timestamps();
             $table->softDeletes();
         });

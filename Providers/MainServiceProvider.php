@@ -2,7 +2,9 @@
 
 namespace App\Containers\Vendor\Tenanter\Providers;
 
+use App\Containers\Vendor\Configurationer\Configurationer;
 use App\Ship\Parents\Providers\MainProvider;
+use App\Containers\Vendor\Tenanter\Models\Tenant;
 
 
 /**
@@ -47,5 +49,7 @@ class MainServiceProvider extends MainProvider
     public function boot(): void
     {
         parent::boot();
+        configurationer()::addSystemConfiguration('tenancy', config('tenanter.tenancy', []));
+        configurationer()::addEntity(config('tenanter.configurable'), 'system');
     }
 }

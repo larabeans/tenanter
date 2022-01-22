@@ -48,28 +48,6 @@ abstract class CachedTenantResolver implements TenantResolver
         return $tenant;
     }
 
-    public function resolveHost(...$args): ?string
-    {
-        if (! static::$shouldCache) {
-            return $this->resolveWithoutCache(...$args);
-        }
-
-        $key = $this->getCacheKey(...$args);
-
-        if ($this->cache->has($key)) {
-            $host = $this->cache->get($key);
-
-            $this->resolvedHost($host, ...$args);
-
-            return $host;
-        }
-
-        $host = $this->resolveWithoutCache(...$args);
-        $this->cache->put($key, $host, static::$cacheTTL);
-
-        return $host;
-    }
-
     public function invalidateCache(Tenant $tenant): void
     {
         if (! static::$shouldCache) {
@@ -89,10 +67,6 @@ abstract class CachedTenantResolver implements TenantResolver
     abstract public function resolveWithoutCache(...$args): ?Tenant;
 
     public function resolved(Tenant $tenant, ...$args): void
-    {
-    }
-
-    public function resolvedHost(string $domain): void
     {
     }
 

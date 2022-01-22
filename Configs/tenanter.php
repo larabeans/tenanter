@@ -1,18 +1,28 @@
 <?php
-
 return [
+
+    /**
+     * Feed in configurationer system sections
+     */
+    'tenancy' => [
+        'is_enabled' => true,
+        'header_attribute' => 'Axis-Host',
+        'ignore_feature_check_for_host_users' => false,
+        'sides' => [
+            'host' => 2, // Who is hosting multiple tenants
+            'tenant' => 1 // A customer which has its own users, roles, permissions, settings... and uses the application completely isolated from other tenants
+        ],
+    ],
 
     /**
      * The list of host domains.
      *
      * Only relevant if you're using the domain or subdomain identification middleware.
      */
-    'host_domains' => [
-        '127.0.0.1',
-        'localhost:4200',
-    ],
+    'host_domains' => [],
 
     'models' => [
+        'host' => App\Containers\Vendor\Tenanter\Models\Host::class,
         'tenant' => App\Containers\Vendor\Tenanter\Models\Tenant::class,
         'domain' => App\Containers\Vendor\Tenanter\Models\Domain::class,
     ],
@@ -21,8 +31,146 @@ return [
 
     'default_id' => null,
 
+    /**
+     *  Used for handling configuration, link to configurationer
+     */
+    'configurable' => [
+        'host' => [
+            'identifier' => 'host',
+            'key' => 'host',
+            'name' => 'Host',
+            'model' => App\Containers\Vendor\Tenanter\Models\Host::class,
+            'tasks' => [
+                'get' => App\Containers\Vendor\Tenanter\Tasks\GetResolvedHostConfigurationTask::class,
+                'create' => null,
+                'update' => App\Containers\Vendor\Tenanter\Tasks\UpdateHostConfigurationTask::class
+            ],
+            'authenticate' => false,
+            'load_in_default_task' => true,
+            'default' => [
+                'user_management' => [
+                    'register_user_in_system' => true,
+                    'new_user_active_by_default' => true,
+                    'captcha_on_registration' => true,
+                    'captcha_on_login' => true,
+                    'enabled_cookie_consent' => true,
+                    'enabled_session_timeout' => false,
+                    'email_confirmation_for_login' => false,
+                    'allow_profile_picture' => true
+                ],
+                'tenant_management' => [
+                    'allow_profile_picture' => true,
+                    'captcha_on_login' => true,
+                    'captcha_on_registration' => true,
+                    'email_confirmation_for_login' => true,
+                    'enabled_cookie_consent' => true,
+                    'enabled_session_timeout' => true,
+                    'new_user_active_by_default' => true,
+                    'register_user_in_system' => true,
+                    'user_default_mode' => true,
+                    'user_session_time' => true,
+                ],
+                'security' => [
+                    'user_default_settings' => true,
+                    'user_account_locking' => true,
+                    'number_of_login_attemps' => 222,
+                    'account_locking_duration' => 333,
+                    'password' => [
+                        'require_digit' => false,
+                        'require_lowercase' => true,
+                        'require_non_alphanumeric' => false,
+                        'require_uppercase' => true,
+                        'password_length' => 111,
+                    ]
+                ],
+                'clock' => [
+                    'provider' => 'unspecifiedClockProvider'
+                ],
+                'timing' => [
+                    'time_zone_info' => [
+                        'iana' => [
+                            'time_zone_id' => 'Etc / UTC'
+                        ]
+                    ]
+                ],
+            ],
+        ],
+        'tenant' => [
+            'identifier' => 'tenant',
+            'key' => 'tenant',
+            'name' => 'Tenant',
+            'model' => App\Containers\Vendor\Tenanter\Models\Tenant::class,
+            'tasks' => [
+                'get' => App\Containers\Vendor\Tenanter\Tasks\GetResolvedTenantConfigurationTask::class,
+                'create' => null,
+                'update' => App\Containers\Vendor\Tenanter\Tasks\UpdateTenantConfigurationTask::class
+            ],
+            'authenticate' => false,
+            'load_in_default_task' => true,
+            'default' => [
+                'user_management' => [
+                    'register_user_in_system' => true,
+                    'new_user_active_by_default' => true,
+                    'captcha_on_registration' => true,
+                    'captcha_on_login' => true,
+                    'enabled_cookie_consent' => true,
+                    'enabled_session_timeout' => false,
+                    'email_confirmation_for_login' => false,
+                    'allow_profile_picture' => true
+                ],
+                'security' => [
+                    'user_default_settings' => true,
+                    'user_account_locking' => true,
+                    'number_of_login_attemps' => 222,
+                    'account_locking_duration' => 333,
+                    'password' => [
+                        'require_digit' => false,
+                        'require_lowercase' => true,
+                        'require_non_alphanumeric' => false,
+                        'require_uppercase' => true,
+                        'password_length' => 111,
+                    ]
+                ],
+                'clock' => [
+                    'provider' => 'unspecifiedClockProvider'
+                ],
+                'timing' => [
+                    'time_zone_info' => [
+                        'iana' => [
+                            'time_zone_id' => 'Etc / UTC'
+                        ]
+                    ]
+                ],
+            ],
+        ],
+        'domain' => [
+            'identifier' => 'domain',
+            'key' => 'domain',
+            'name' => 'Domain',
+            'model' => App\Containers\Vendor\Tenanter\Models\Domain::class,
+            'tasks' => [
+                'get' => App\Containers\Vendor\Tenanter\Tasks\GetResolvedDomainConfigurationTask::class,
+                'create' => null,
+                'update' => App\Containers\Vendor\Tenanter\Tasks\UpdateDomainConfigurationTask::class
+            ],
+            'authenticate' => false,
+            'load_in_default_task' => true,
+            'default' => [
+                'branding' => [
+                    'animation_logo' => null,
+                    'style' => null
+                ],
+                'invoice' => [
+                    'name' => 'Legal Name',
+                    'address' => 'VPO',
+                    'tax_number' => '313133'
+                ],
+            ],
+        ]
+    ],
 
-   /**
+
+    /**
     *--------------------------------------------------------------------------
     *     Ignore tables list
     *--------------------------------------------------------------------------
@@ -55,11 +203,14 @@ return [
         "states",
         "cities",
 
+        "configurations",
         "tenants",
+        "domains",
+        "hosts"
     ],
 
 
-    'only-admin-permissions' => [
+    'admin_only_permissions' => [
         'manage-tenant',
         'create-tenant',
         'delete-tenant'
@@ -97,7 +248,7 @@ return [
 
     /**
      * Filesystem tenancy config. Used by FilesystemTenancyBootstrapper.
-     * https://tenancyforlaravel.com/docs/v3/tenancy-bootstrappers/#filesystem-tenancy-boostrapper.
+     * https://larabeans.com/docs/v3/tenancy-bootstrappers/#filesystem-tenancy-boostrapper.
      */
     'filesystem' => [
         /**
@@ -113,7 +264,7 @@ return [
         /**
          * Use this for local disks.
          *
-         * See https://tenancyforlaravel.com/docs/v3/tenancy-bootstrappers/#filesystem-tenancy-boostrapper
+         * See https://larabeans.com/docs/v3/tenancy-bootstrappers/#filesystem-tenancy-boostrapper
          */
         'root_override' => [
             // Disks whose roots should be overriden after storage_path() is suffixed.

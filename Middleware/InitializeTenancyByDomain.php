@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Containers\Vendor\Tenanter\Middleware;
 
 use Closure;
-use App\Containers\Vendor\Tenanter\Resolvers\DomainTenantTenantResolver;
+use App\Containers\Vendor\Tenanter\Resolvers\DomainTenantResolver;
 use App\Containers\Vendor\Tenanter\Tenancy;
 
 class InitializeTenancyByDomain extends IdentificationMiddleware
@@ -16,10 +16,10 @@ class InitializeTenancyByDomain extends IdentificationMiddleware
     /** @var Tenancy */
     protected $tenancy;
 
-    /** @var DomainTenantTenantResolver */
+    /** @var DomainTenantResolver */
     protected $resolver;
 
-    public function __construct(Tenancy $tenancy, DomainTenantTenantResolver $resolver)
+    public function __construct(Tenancy $tenancy, DomainTenantResolver $resolver)
     {
         $this->tenancy = $tenancy;
         $this->resolver = $resolver;
@@ -34,7 +34,7 @@ class InitializeTenancyByDomain extends IdentificationMiddleware
      */
     public function handle($request, Closure $next)
     {
-        return $this->initializeTenancy(
+        return $this->initializeTenant(
             $request, $next, $request->getHost()
         );
     }

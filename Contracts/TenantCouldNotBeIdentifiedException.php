@@ -2,7 +2,7 @@
 
 namespace App\Containers\Vendor\Tenanter\Contracts;
 
-use Exception;
+use App\Ship\Parents\Exceptions\Exception;
 
 abstract class TenantCouldNotBeIdentifiedException extends Exception
 {

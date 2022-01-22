@@ -11,21 +11,8 @@ trait HasDomains
 {
     public function domains()
     {
-        return $this->hasMany(config('tenanter.models.domain'), config('tenanter.tenant_column'));
+        //$this->hasMany(config('tenanter.models.domain'), config('tenanter.tenant_column'));
+        return $this->morphMany(config('tenanter.models.domain'), 'domainable')->orderBy('created_at', 'desc');
     }
 
-    public function createDomain($data): Domain
-    {
-        $class = config('tenanter.models.domain');
-
-        if (! is_array($data)) {
-            $data = ['domain' => $data];
-        }
-
-        $domain = (new $class)->fill($data);
-        $domain->tenant()->associate($this);
-        $domain->save();
-
-        return $domain;
-    }
 }

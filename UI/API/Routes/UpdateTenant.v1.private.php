@@ -10,8 +10,6 @@
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated User, tenant-admin, edit-tenant
  *
- * @apiParam           {String}   name
- * @apiParam           {String}   domain
  *
  * @apiUse             TenantSuccessSingleResponse
  */

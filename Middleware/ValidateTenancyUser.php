@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Support\Facades\Auth;
 use App\Containers\Vendor\Tenanter\Exceptions\UserCouldNotBeIdentifiedOnDomainException;
 
-class ValidateTenantUser
+class ValidateTenancyUser
 {
     /**
      * Handle an incoming request.
@@ -17,8 +17,8 @@ class ValidateTenantUser
      */
     public function handle($request, Closure $next)
     {
-        if( Auth::check() && tenancy()->initialized && !tenancy()->validTenantUser()){
-            throw new UserCouldNotBeIdentifiedOnDomainException('dsd');
+        if( (Auth::check() && tenancy()->initialized && tenancy()->tenantInitialized && !tenancy()->isValidTenantUser()) || (Auth::check() && tenancy()->initialized && tenancy()->hostInitialized && !tenancy()->isValidHostUser())){
+            throw new UserCouldNotBeIdentifiedOnDomainException('');
         }
 
         return $next($request);

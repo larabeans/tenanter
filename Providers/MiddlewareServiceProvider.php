@@ -30,8 +30,8 @@ class MiddlewareServiceProvider extends MiddlewareProvider
         ],
         'api' => [
             Middleware\InitializeHostContext::class,
-            Middleware\InitializeTenancyByDomainOrSubdomain::class,
-            Middleware\ValidateTenantUser::class,
+            Middleware\InitializeTenancyByRequestHeader::class,
+            Middleware\ValidateTenancyUser::class,
         ],
     ];
 
@@ -50,6 +50,7 @@ class MiddlewareServiceProvider extends MiddlewareProvider
         'init.tenancy.domain.subdomain' => Middleware\InitializeTenancyByDomainOrSubdomain::class,
         'init.tenancy.path' => Middleware\InitializeTenancyByPath::class,
         'init.tenancy.request' => Middleware\InitializeTenancyByRequestData::class,
+        'init.tenancy.header' => Middleware\InitializeTenancyByRequestHeader::class,
     ];
 
 
@@ -62,8 +63,8 @@ class MiddlewareServiceProvider extends MiddlewareProvider
      */
     protected array $middlewarePriority = [
         Middleware\InitializeHostContext::class,
-        Middleware\InitializeTenancyByDomainOrSubdomain::class,
-        Middleware\ValidateTenantUser::class,
+        Middleware\InitializeTenancyByRequestHeader::class,
+        Middleware\ValidateTenancyUser::class,
     ];
 
     public function boot() : void

@@ -4,7 +4,7 @@
  * @apiGroup           Tenant
  * @apiName            findTenantByDomain
  *
- * @api                {GET} /v1/domain/tenant Find Tanent by Domain name
+ * @api                {GET} /v1/tenant/{id} Find Tanent by Domain name
  * @apiDescription     search on the base of domain name such as www/example.com
  *
  * @apiVersion         1.0.0

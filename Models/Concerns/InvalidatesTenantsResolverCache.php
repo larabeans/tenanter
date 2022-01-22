@@ -12,7 +12,7 @@ use App\Containers\Vendor\Tenanter\Resolvers\Contracts\CachedTenantResolver;
 trait InvalidatesTenantsResolverCache
 {
     public static $resolvers = [
-        Resolvers\DomainTenantTenantResolver::class,
+        Resolvers\DomainTenantResolver::class,
         Resolvers\PathTenantResolver::class,
         Resolvers\RequestDataTenantResolver::class,
     ];
@@ -24,7 +24,7 @@ trait InvalidatesTenantsResolverCache
                 /** @var CachedTenantResolver $resolver */
                 $resolver = app($resolver);
 
-                $resolver->invalidateCache($model->tenant);
+                //$resolver->invalidateCache($model->tenant);
             }
         });
     }

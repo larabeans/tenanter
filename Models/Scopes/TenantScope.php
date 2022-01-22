@@ -5,8 +5,7 @@ namespace App\Containers\Vendor\Tenanter\Models\Scopes;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Scope;
-use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Auth;
 
 class TenantScope implements Scope
 {
@@ -19,31 +18,31 @@ class TenantScope implements Scope
      */
     public function apply(Builder $builder, Model $model)
     {
-        if (tenancy()->validTenantUser()) {
+        if (tenancy()->initialized && tenancy()->tenantInitialized && tenancy()->tenant && (!Auth::check() || tenancy()->isValidTenantUser())) {
 
             if (tenancy()->validTable($model->getTable())) {
+                // TODO: Check if below check is still required
                 if (! $this->gettingRolesForAuthenticatedUser($builder, $model)) {
                     $builder->where($model->qualifyColumn(config('tenanter.tenant_column')), tenant()->getTenantKey());
                 }
-            } else if ($model->getTable() == 'tenants') {
+            } else if ($model->getTable() == 'tenants' && !empty(tenant()->getTenantKey())) {
                 // if table in context is `tenant`, apply tenant id check, so one tenant can only view its own tenant
-                // if (! $this->gettingRolesForAuthenticatedUser($builder, $model)) {
-                    $builder->where($model->qualifyColumn(tenant()->getTenantKeyName(), tenant()->getTenantKey()));
-                // }
+                $builder->where($model->qualifyColumn(tenant()->getTenantKeyName()), tenant()->getTenantKey());
             }
 
-        } else if (tenancy()->validHostUser()) {
+        } else if (tenancy()->initialized && tenancy()->hostInitialized && tenancy()->host && (!Auth::check() || tenancy()->isValidHostUser())) {
 
             // Only return rows/data that don't belong to any tenant
             if (tenancy()->validTable($model->getTable())) {
                 if (! $this->gettingRolesForAuthenticatedUser($builder, $model)) {
-                    $builder->where($model->qualifyColumn(config('tenanter.tenant_column')), null);
+                    $builder->where($model->qualifyColumn(config('tenanter.tenant_column')), host()->getHostKey());
+                    //$builder->orWhere($model->qualifyColumn(config('tenanter.tenant_column')), null);
                 }
             }
 
-        } else {
-            return;
         }
+
+        return;
     }
 
     public function extend(Builder $builder)
