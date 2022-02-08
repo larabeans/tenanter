@@ -32,7 +32,16 @@ class GetResolvedHostConfigurationTask extends Task
                  if($transform) {
                      return $configurations;
                  }
-                 return $configurations->configuration;
+                 return array_merge(
+                     $configurations->configuration,
+                     array(
+                         'session' => array (
+                             'host' => host()->getHostKey(),
+                             'admin' => tenancy()->isValidHostAdmin(),
+                             'side' => tenancy()->side()
+                         )
+                     )
+                 );
              }
          }
 

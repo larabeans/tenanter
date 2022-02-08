@@ -9,8 +9,8 @@ return [
         'header_attribute' => 'Axis-Host',
         'ignore_feature_check_for_host_users' => false,
         'sides' => [
-            'host' => 2, // Who is hosting multiple tenants
-            'tenant' => 1 // A customer which has its own users, roles, permissions, settings... and uses the application completely isolated from other tenants
+            'HOST' => 2, // Who is hosting multiple tenants
+            'TENANT' => 1 // A customer which has its own users, roles, permissions, settings... and uses the application completely isolated from other tenants
         ],
     ],
 
@@ -210,10 +210,12 @@ return [
     ],
 
 
+    // means host only permissions
     'admin_only_permissions' => [
         'manage-tenant',
         'create-tenant',
-        'delete-tenant'
+        'delete-tenant',
+        'edit-host-configuration'
     ],
 
 

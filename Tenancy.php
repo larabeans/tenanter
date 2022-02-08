@@ -170,7 +170,8 @@ class Tenancy
 
     public function  isValidHostAdmin(): bool
     {
-        return Auth::check() && Auth::user()->hasAdminRole() && $this->host && $this->host->getHostKey() === Auth::user()->tenant_id;
+        // using guard implicitly, not sure it is added at middleware level
+        return Auth::guard('api')->check() && Auth::guard('api')->user()->hasAdminRole() && $this->host && $this->host->getHostKey() === Auth::guard('api')->user()->tenant_id;
     }
 
     public function  isValidHostUser(): bool
@@ -180,11 +181,20 @@ class Tenancy
 
     public function  isValidTenantAdmin(): bool
     {
-        return Auth::check() && Auth::user()->hasRole('tenant-admin') && $this->tenant && $this->tenant->getTenantKey() === Auth::user()->tenant_id;
+        // using guard implicitly, not sure it is added at middleware level
+        return Auth::guard('api')->check() && Auth::guard('api')->user()->hasRole('tenant-admin') && $this->tenant && $this->tenant->getTenantKey() === Auth::guard('api')->user()->tenant_id;
     }
 
     public function  isValidTenantUser(): bool
     {
         return Auth::check() && $this->tenant && $this->tenant->getTenantKey() === Auth::user()->tenant_id;
+    }
+
+    public function side() {
+        $sides = config('tenanter.tenancy.sides');
+        if($this->initialized) {
+            return $this->hostInitialized ? $sides['HOST'] : $sides['TENANT'];
+        }
+        return null;
     }
 }

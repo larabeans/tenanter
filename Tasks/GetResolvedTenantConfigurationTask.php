@@ -32,7 +32,16 @@ class GetResolvedTenantConfigurationTask extends Task
                  if($transform) {
                      return $configurations;
                  }
-                 return $configurations->configuration;
+                 return array_merge(
+                     $configurations->configuration,
+                     array(
+                         'session' => array (
+                             'tenant' => tenant()->getTenantKey(),
+                             'admin' => tenancy()->isValidTenantAdmin(),
+                             'side' => tenancy()->side()
+                         )
+                     )
+                 );
              }
          }
 
