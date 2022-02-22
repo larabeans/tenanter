@@ -44,7 +44,7 @@ Includes seeders for
 
 ## USAGE
 
-- Use HasTenancy traits in User, Roles, ParentModel in core/beanner ( or your own recpective models accordingly)
+- Uncomment HasTenancy traits in User, Roles, ParentModel in core/beanner ( or your own recpective models accordingly)
 - Use Authentication Trait in User modes on core/beanner ( or your own recpective models accordingly)
 - In User container we need to modify two requests, email validation rules as give below
     - \app\Containers\AppSection\User\UI\API\Requests\RegisterUserRequest.php
