@@ -4,7 +4,7 @@
  * @apiGroup           Tenant
  * @apiName            getAllTenantDomains
  *
- * @api                {GET} /v1/tenant/{id}/domains Get All Tenant Domains
+ * @api                {GET} /v1/tenants/{id}/domains Get All Tenant Domains
  * @apiDescription     Endpoint description here..
  *
  * @apiVersion         1.0.0
@@ -22,7 +22,7 @@
 use App\Containers\Vendor\Tenanter\UI\API\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 
-Route::get('tenant/{id}/domains', [Controller::class, 'getAllTenantDomains'])
-    ->name('api_tenanter_get_all_tenant_domains')
+Route::get('tenants/{id}/domains', [Controller::class, 'getAllTenantDomains'])
+    ->name('api_tenants_get_all_tenant_domains')
     ->middleware(['auth:api']);
 
