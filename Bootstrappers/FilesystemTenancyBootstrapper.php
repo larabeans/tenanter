@@ -48,9 +48,6 @@ class FilesystemTenancyBootstrapper implements TenancyBootstrapper
                 $this->app['config']['app.asset_url'] = ($this->originalPaths['asset_url'] ?? $this->app['config']['app.url']) . "/$suffix";
                 $this->app['url']->setAssetRoot($this->app['config']['app.asset_url']);
             }
-//            else {
-//                $this->app['url']->setAssetRoot($this->app['url']->route('stancl.tenancy.asset', ['path' => '']));
-//            }
         }
 
         // Storage facade
