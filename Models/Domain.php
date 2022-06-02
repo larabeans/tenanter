@@ -32,10 +32,10 @@ class Domain extends Model implements Contracts\Domain
     protected $guarded = [];
 
 
-//    public function tenant()
-//    {
-//        return $this->belongsTo(config('tenanter.models.tenant'));
-//    }
+    public function tenant()
+    {
+        return $this->belongsTo(config('tenanter.models.tenant'));
+    }
 //
 //    public function host()
 //    {

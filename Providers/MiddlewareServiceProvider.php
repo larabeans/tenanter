@@ -2,10 +2,10 @@
 
 namespace App\Containers\Vendor\Tenanter\Providers;
 
-use App\Ship\Parents\Providers\MiddlewareProvider;
+use App\Ship\Parents\Providers\MiddlewareServiceProvider as ParentMiddlewareServiceProvider;
 use App\Containers\Vendor\Tenanter\Middleware;
 
-class MiddlewareServiceProvider extends MiddlewareProvider
+class MiddlewareServiceProvider extends ParentMiddlewareServiceProvider
 {
     /**
      * The application's global HTTP middleware stack.

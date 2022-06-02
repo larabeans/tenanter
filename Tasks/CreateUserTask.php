@@ -24,7 +24,7 @@ class CreateUserTask extends Task
     ) {
         try {
             return $this->repository->create([
-                'is_admin' => $is_admin,
+                //'is_admin' => $is_admin,  // comment because the column is_admin is removed from apiato11
                 'tenant_id' => $tenant_id,
                 'email' => $email,
                 'password' => Hash::make($password)

@@ -38,7 +38,7 @@ class CreateTenantTask extends Task
         try {
             return $this->repository->create($data);
         } catch (Exception $exception) {
-            throw new CreateResourceFailedException($exception);
+            throw new CreateResourceFailedException();
         }
     }
 }
