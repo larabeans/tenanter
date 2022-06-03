@@ -3,7 +3,7 @@
 namespace App\Containers\Vendor\Tenanter\Providers;
 
 use App\Containers\Vendor\Configurationer\Configurationer;
-use App\Ship\Parents\Providers\MainProvider;
+use App\Ship\Parents\Providers\MainServiceProvider as ParentMainServiceProvider;
 use App\Containers\Vendor\Tenanter\Models\Tenant;
 
 
@@ -12,7 +12,7 @@ use App\Containers\Vendor\Tenanter\Models\Tenant;
  *
  * The Main Service Provider of this container, it will be automatically registered in the framework.
  */
-class MainServiceProvider extends MainProvider
+class MainServiceProvider extends ParentMainServiceProvider
 {
     /**
      * Container Service Providers.

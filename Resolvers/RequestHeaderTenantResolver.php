@@ -48,6 +48,7 @@ class RequestHeaderTenantResolver extends Contracts\CachedTenantResolver
     protected function setCurrentDomain(Tenant $tenant, string $domain): void
     {
         tenancy()->domain = $tenant->domains->where('domain', $domain)->first();
+
     }
 
     public function getArgsForTenant(Tenant $tenant): array

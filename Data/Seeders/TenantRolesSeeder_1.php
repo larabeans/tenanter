@@ -10,6 +10,6 @@ class TenantRolesSeeder_1 extends Seeder
     public function run()
     {
         // Default Tenant Roles ----------------------------------------------------------------
-        app(CreateRoleTask::class)->run('tenant-admin', 'Tenant Administrator', 'Administrator Role', 999);
+        app(CreateRoleTask::class)->run('tenant-admin', 'Tenant Administrator', 'Administrator Role', 'api');
     }
 }

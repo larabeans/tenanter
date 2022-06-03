@@ -13,5 +13,4 @@ namespace App\Containers\Vendor\Tenanter\Contracts;
  */
 interface Domain
 {
-    public function tenant();
 }

@@ -2,14 +2,14 @@
 
 namespace App\Containers\Vendor\Tenanter\Providers;
 
-use App\Ship\Parents\Providers\MainProvider;
+use App\Ship\Parents\Providers\MainServiceProvider as ParentMainServiceProvider;
 use App\Containers\Vendor\Tenanter\Tenancy;
 use App\Containers\Vendor\Tenanter\Contracts\Host;
 use App\Containers\Vendor\Tenanter\Contracts\Tenant;
 use App\Containers\Vendor\Tenanter\Contracts\Domain;
 use App\Containers\Vendor\Tenanter\Bootstrappers\FilesystemTenancyBootstrapper;
 
-class TenancyServiceProvider extends MainProvider
+class TenancyServiceProvider extends ParentMainServiceProvider
 {
 
     public function register():void

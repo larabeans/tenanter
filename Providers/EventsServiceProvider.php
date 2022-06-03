@@ -3,12 +3,12 @@
 namespace App\Containers\Vendor\Tenanter\Providers;
 
 use Illuminate\Database\Events\MigrationsEnded;
-use App\Ship\Parents\Providers\EventsProvider;
+use App\Ship\Parents\Providers\EventServiceProvider;
 use App\Containers\Vendor\Tenanter\Events;
 use App\Containers\Vendor\Tenanter\Listeners;
 # use App\Containers\Vendor\Tenanter\Jobs;
 
-class EventsServiceProvider extends EventsProvider
+class EventsServiceProvider extends EventServiceProvider
 {
 
     /**

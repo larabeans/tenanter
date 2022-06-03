@@ -2,6 +2,7 @@
 
 namespace App\Containers\Vendor\Tenanter\Tasks;
 
+use App\Ship\Exceptions\CreateResourceFailedException;
 use App\Ship\Parents\Exceptions\Exception;
 use Illuminate\Support\Facades\Hash;
 use App\Ship\Parents\Tasks\Task;
@@ -24,7 +25,6 @@ class CreateUserTask extends Task
     ) {
         try {
             return $this->repository->create([
-                'is_admin' => $is_admin,
                 'tenant_id' => $tenant_id,
                 'email' => $email,
                 'password' => Hash::make($password)

@@ -2,7 +2,7 @@
 
 namespace App\Containers\Vendor\Tenanter\Actions;
 
-use App\Containers\AppSection\Authorization\Tasks\AssignUserToRoleTask;
+use App\Containers\AppSection\Authorization\Tasks\AssignRolesToUserTask;
 use App\Containers\AppSection\Authorization\Tasks\FindRoleTask;
 use App\Containers\Vendor\Tenanter\Events\TenantCreated;
 use App\Containers\Vendor\Tenanter\Models\Tenant;
@@ -20,7 +20,7 @@ class RegisterTenantAction extends Action
         $role = app(FindRoleTask::class)->run('tenant-admin');
 
         if ($role !== null) {
-            app(AssignUserToRoleTask::class)->run($user, [$role]);
+            app(AssignRolesToUserTask::class)->run($user, [$role]);
         }
 
         return $tenant;
