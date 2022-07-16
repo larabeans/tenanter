@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\UI\API\Transformers;
+namespace App\Containers\Larabeans\Tenanter\UI\API\Transformers;
 
-use App\Containers\Vendor\Tenanter\Models\Domain;
+use App\Containers\Larabeans\Tenanter\Models\Domain;
 use App\Ship\Parents\Transformers\Transformer;
 
 class DomainTransformer extends Transformer

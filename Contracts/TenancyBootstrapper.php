@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Contracts;
+namespace App\Containers\Larabeans\Tenanter\Contracts;
 
 /**
  * TenancyBootstrappers are classes that make your application tenant-aware automatically.

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Tasks;
+namespace App\Containers\Larabeans\Tenanter\Tasks;
 
 use App\Ship\Parents\Exceptions\Exception;
 use Illuminate\Support\Facades\Hash;

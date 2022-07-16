@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Actions;
+namespace App\Containers\Larabeans\Tenanter\Actions;
 
-use App\Containers\Vendor\Tenanter\Models\Domain;
-use App\Containers\Vendor\Tenanter\Tasks\FindDomainTask;
-use App\Containers\Vendor\Tenanter\UI\API\Requests\FindDomainByIdRequest;
+use App\Containers\Larabeans\Tenanter\Models\Domain;
+use App\Containers\Larabeans\Tenanter\Tasks\FindDomainTask;
+use App\Containers\Larabeans\Tenanter\UI\API\Requests\FindDomainByIdRequest;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
 

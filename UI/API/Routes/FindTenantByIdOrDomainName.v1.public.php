@@ -15,7 +15,7 @@
  * @apiUse             TenantSuccessSingleResponse
  */
 
-use App\Containers\Vendor\Tenanter\UI\API\Controllers\Controller;
+use App\Containers\Larabeans\Tenanter\UI\API\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 
 Route::get('tenants/{id}', [Controller::class, 'findTenantByIdOrDomainName'])

@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Models;
+namespace App\Containers\Larabeans\Tenanter\Models;
 
 //use Illuminate\Database\Eloquent\Model;
-use App\Containers\Vendor\Beaner\Parents\Models\Model;
-use App\Containers\Vendor\Configurationer\Traits\Configurable;
-use App\Containers\Vendor\Tenanter\Contracts;
-use App\Containers\Vendor\Tenanter\Events;
-use App\Containers\Vendor\Tenanter\Tenant;
-use App\Containers\Vendor\Tenanter\Models\Concerns\EnsuresDomainIsNotOccupied;
-use App\Containers\Vendor\Tenanter\Models\Concerns\ConvertsDomainsToLowercase;
-use App\Containers\Vendor\Tenanter\Models\Concerns\InvalidatesTenantsResolverCache;
+use App\Containers\Larabeans\Beaner\Parents\Models\Model;
+use App\Containers\Larabeans\Configurationer\Traits\Configurable;
+use App\Containers\Larabeans\Tenanter\Contracts;
+use App\Containers\Larabeans\Tenanter\Events;
+use App\Containers\Larabeans\Tenanter\Tenant;
+use App\Containers\Larabeans\Tenanter\Models\Concerns\EnsuresDomainIsNotOccupied;
+use App\Containers\Larabeans\Tenanter\Models\Concerns\ConvertsDomainsToLowercase;
+use App\Containers\Larabeans\Tenanter\Models\Concerns\InvalidatesTenantsResolverCache;
 
 
 class Domain extends Model implements Contracts\Domain

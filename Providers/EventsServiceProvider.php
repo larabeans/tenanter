@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Providers;
+namespace App\Containers\Larabeans\Tenanter\Providers;
 
 use Illuminate\Database\Events\MigrationsEnded;
 use App\Ship\Parents\Providers\EventServiceProvider;
-use App\Containers\Vendor\Tenanter\Events;
-use App\Containers\Vendor\Tenanter\Listeners;
-# use App\Containers\Vendor\Tenanter\Jobs;
+use App\Containers\Larabeans\Tenanter\Events;
+use App\Containers\Larabeans\Tenanter\Listeners;
+# use App\Containers\Larabeans\Tenanter\Jobs;
 
 class EventsServiceProvider extends EventServiceProvider
 {

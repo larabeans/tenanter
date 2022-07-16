@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Listeners;
+namespace App\Containers\Larabeans\Tenanter\Listeners;
 
 use File;
-use App\Containers\Vendor\Tenanter\Events\TenantCreated;
+use App\Containers\Larabeans\Tenanter\Events\TenantCreated;
 
 class AddTenantStorageFolder
 {

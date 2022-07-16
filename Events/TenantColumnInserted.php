@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Events;
+namespace App\Containers\Larabeans\Tenanter\Events;
 
 use App\Ship\Parents\Events\Event;
 

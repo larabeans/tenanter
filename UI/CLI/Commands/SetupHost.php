@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\UI\CLI\Commands;
+namespace App\Containers\Larabeans\Tenanter\UI\CLI\Commands;
 
-use App\Containers\Vendor\Tenanter\Tasks\CreateDomainTask;
-use App\Containers\Vendor\Tenanter\Tasks\CreateHostTask;
-use App\Containers\Vendor\Tenanter\Tasks\CreateUserTask;
+use App\Containers\Larabeans\Tenanter\Tasks\CreateDomainTask;
+use App\Containers\Larabeans\Tenanter\Tasks\CreateHostTask;
+use App\Containers\Larabeans\Tenanter\Tasks\CreateUserTask;
 use Illuminate\Console\Command;
 
 class SetupHost extends Command

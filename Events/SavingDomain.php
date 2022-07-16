@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Events;
+namespace App\Containers\Larabeans\Tenanter\Events;
 
 class SavingDomain extends Contracts\DomainEvent
 {

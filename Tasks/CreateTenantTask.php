@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Tasks;
+namespace App\Containers\Larabeans\Tenanter\Tasks;
 
 use App\Ship\Exceptions\CreateResourceFailedException;
 use App\Ship\Parents\Exceptions\Exception;
 use Illuminate\Support\Str;
 use App\Ship\Parents\Tasks\Task;
-use App\Containers\Vendor\Tenanter\Data\Repositories\TenantRepository;
-use App\Containers\Vendor\Tenanter\Models\Tenant;
+use App\Containers\Larabeans\Tenanter\Data\Repositories\TenantRepository;
+use App\Containers\Larabeans\Tenanter\Models\Tenant;
 
 class CreateTenantTask extends Task
 {

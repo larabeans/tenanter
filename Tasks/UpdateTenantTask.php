@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Tasks;
+namespace App\Containers\Larabeans\Tenanter\Tasks;
 
 use App\Ship\Parents\Exceptions\Exception;
 use Illuminate\Support\Str;
 use App\Ship\Parents\Tasks\Task;
-use App\Containers\Vendor\Tenanter\Data\Repositories\TenantRepository;
+use App\Containers\Larabeans\Tenanter\Data\Repositories\TenantRepository;
 
 class UpdateTenantTask extends Task
 {

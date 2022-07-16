@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Listeners;
+namespace App\Containers\Larabeans\Tenanter\Listeners;
 
-use App\Containers\Vendor\Tenanter\Events\TenantColumnInserted;
+use App\Containers\Larabeans\Tenanter\Events\TenantColumnInserted;
 use Illuminate\Database\Events\MigrationsEnded;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;

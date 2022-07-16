@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Exceptions;
+namespace App\Containers\Larabeans\Tenanter\Exceptions;
 
 use Facade\IgnitionContracts\BaseSolution;
 use Facade\IgnitionContracts\ProvidesSolution;
 use Facade\IgnitionContracts\Solution;
-use App\Containers\Vendor\Tenanter\Contracts\UserCouldNotBeIdentifiedException;
+use App\Containers\Larabeans\Tenanter\Contracts\UserCouldNotBeIdentifiedException;
 
 class UserCouldNotBeIdentifiedOnDomainException extends UserCouldNotBeIdentifiedException implements ProvidesSolution
 {

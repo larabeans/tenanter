@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Tasks;
+namespace App\Containers\Larabeans\Tenanter\Tasks;
 
-use App\Containers\Vendor\Configurationer\Configurationer;
-use App\Containers\Vendor\Configurationer\Data\Repositories\ConfigurationRepository;
-use App\Containers\Vendor\Tenanter\Tenancy;
+use App\Containers\Larabeans\Configurationer\Configurationer;
+use App\Containers\Larabeans\Configurationer\Data\Repositories\ConfigurationRepository;
+use App\Containers\Larabeans\Tenanter\Tenancy;
 use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Tasks\Task;
 use App\Ship\Parents\Requests\Request;

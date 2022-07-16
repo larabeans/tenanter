@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Middleware;
+namespace App\Containers\Larabeans\Tenanter\Middleware;
 
 use Closure;
-use App\Containers\Vendor\Tenanter\Resolvers\RequestHeaderHostResolver;
-use App\Containers\Vendor\Tenanter\Tasks\GetHostPrimaryDomainsTask;
-use App\Containers\Vendor\Tenanter\Tenancy;
+use App\Containers\Larabeans\Tenanter\Resolvers\RequestHeaderHostResolver;
+use App\Containers\Larabeans\Tenanter\Tasks\GetHostPrimaryDomainsTask;
+use App\Containers\Larabeans\Tenanter\Tenancy;
 
 
 class InitializeHostContext extends IdentificationMiddleware

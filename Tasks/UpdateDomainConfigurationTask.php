@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Tasks;
+namespace App\Containers\Larabeans\Tenanter\Tasks;
 
 
 use App\Ship\Parents\Tasks\Task;
 use App\Ship\Parents\Requests\Request;
 use App\Ship\Parents\Exceptions\Exception;
 use App\Ship\Exceptions\UpdateResourceFailedException;
-use App\Containers\Vendor\Configurationer\Data\Repositories\ConfigurationRepository;
-use App\Containers\Vendor\Configurationer\Data\Repositories\ConfigurationHistoryRepository;
-use App\Containers\Vendor\Tenanter\Traits\IsTenantAdminTrait;
-use App\Containers\Vendor\Tenanter\Contracts\Host;
-use App\Containers\Vendor\Tenanter\Contracts\Tenant;
-use App\Containers\Vendor\Tenanter\Models\Domain;
+use App\Containers\Larabeans\Configurationer\Data\Repositories\ConfigurationRepository;
+use App\Containers\Larabeans\Configurationer\Data\Repositories\ConfigurationHistoryRepository;
+use App\Containers\Larabeans\Tenanter\Traits\IsTenantAdminTrait;
+use App\Containers\Larabeans\Tenanter\Contracts\Host;
+use App\Containers\Larabeans\Tenanter\Contracts\Tenant;
+use App\Containers\Larabeans\Tenanter\Models\Domain;
 
 
 

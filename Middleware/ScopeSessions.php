@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Containers\Vendor\Tenanter\Middleware;
+namespace App\Containers\Larabeans\Tenanter\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use App\Containers\Vendor\Tenanter\Exceptions\TenancyNotInitializedException;
+use App\Containers\Larabeans\Tenanter\Exceptions\TenancyNotInitializedException;
 
 class ScopeSessions
 {

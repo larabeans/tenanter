@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Containers\Vendor\Tenanter\Bootstrappers;
+namespace App\Containers\Larabeans\Tenanter\Bootstrappers;
 
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\Facades\Storage;
-use App\Containers\Vendor\Tenanter\Contracts\TenancyBootstrapper;
-use App\Containers\Vendor\Tenanter\Contracts\Tenant;
+use App\Containers\Larabeans\Tenanter\Contracts\TenancyBootstrapper;
+use App\Containers\Larabeans\Tenanter\Contracts\Tenant;
 
 class FilesystemTenancyBootstrapper implements TenancyBootstrapper
 {

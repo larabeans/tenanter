@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Providers;
+namespace App\Containers\Larabeans\Tenanter\Providers;
 
 use App\Ship\Parents\Providers\MainServiceProvider as ParentMainServiceProvider;
-use App\Containers\Vendor\Tenanter\Tenancy;
-use App\Containers\Vendor\Tenanter\Contracts\Host;
-use App\Containers\Vendor\Tenanter\Contracts\Tenant;
-use App\Containers\Vendor\Tenanter\Contracts\Domain;
-use App\Containers\Vendor\Tenanter\Bootstrappers\FilesystemTenancyBootstrapper;
+use App\Containers\Larabeans\Tenanter\Tenancy;
+use App\Containers\Larabeans\Tenanter\Contracts\Host;
+use App\Containers\Larabeans\Tenanter\Contracts\Tenant;
+use App\Containers\Larabeans\Tenanter\Contracts\Domain;
+use App\Containers\Larabeans\Tenanter\Bootstrappers\FilesystemTenancyBootstrapper;
 
 class TenancyServiceProvider extends ParentMainServiceProvider
 {

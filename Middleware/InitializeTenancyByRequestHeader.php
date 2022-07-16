@@ -1,9 +1,9 @@
 <?php
-namespace App\Containers\Vendor\Tenanter\Middleware;
+namespace App\Containers\Larabeans\Tenanter\Middleware;
 
 use Closure;
-use App\Containers\Vendor\Tenanter\Resolvers\RequestHeaderTenantResolver;
-use App\Containers\Vendor\Tenanter\Tenancy;
+use App\Containers\Larabeans\Tenanter\Resolvers\RequestHeaderTenantResolver;
+use App\Containers\Larabeans\Tenanter\Tenancy;
 
 class InitializeTenancyByRequestHeader extends IdentificationMiddleware
 {

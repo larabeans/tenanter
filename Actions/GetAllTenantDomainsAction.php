@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Actions;
+namespace App\Containers\Larabeans\Tenanter\Actions;
 
 
-use App\Containers\Vendor\Tenanter\Tasks\GetAllTenantDomainsTask;
-use App\Containers\Vendor\Tenanter\UI\API\Requests\GetAllTenantDomainsRequest;
+use App\Containers\Larabeans\Tenanter\Tasks\GetAllTenantDomainsTask;
+use App\Containers\Larabeans\Tenanter\UI\API\Requests\GetAllTenantDomainsRequest;
 use App\Ship\Parents\Actions\Action;
 
 class GetAllTenantDomainsAction extends Action

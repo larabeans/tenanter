@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Listeners;
+namespace App\Containers\Larabeans\Tenanter\Listeners;
 
-use App\Containers\Vendor\Tenanter\Events\TenantCreated;
-use App\Containers\Vendor\Tenanter\Tasks\CreateDomainTask;
-use App\Containers\Vendor\Tenanter\Tasks\GetHostPrimaryDomainsTask;
+use App\Containers\Larabeans\Tenanter\Events\TenantCreated;
+use App\Containers\Larabeans\Tenanter\Tasks\CreateDomainTask;
+use App\Containers\Larabeans\Tenanter\Tasks\GetHostPrimaryDomainsTask;
 use Illuminate\Database\Eloquent\Builder;
 
 class CreateCnameForTenantAsSubDomainOnHostPrimaryDomain

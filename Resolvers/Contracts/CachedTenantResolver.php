@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Resolvers\Contracts;
+namespace App\Containers\Larabeans\Tenanter\Resolvers\Contracts;
 
 use Illuminate\Contracts\Cache\Factory;
 use Illuminate\Contracts\Cache\Repository;
-use App\Containers\Vendor\Tenanter\Contracts\Tenant;
-use App\Containers\Vendor\Tenanter\Contracts\TenantResolver;
+use App\Containers\Larabeans\Tenanter\Contracts\Tenant;
+use App\Containers\Larabeans\Tenanter\Contracts\TenantResolver;
 
 abstract class CachedTenantResolver implements TenantResolver
 {

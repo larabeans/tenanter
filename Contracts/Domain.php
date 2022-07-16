@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Contracts;
+namespace App\Containers\Larabeans\Tenanter\Contracts;
 
 /**
  * @property-read Tenant $tenant
  *
- * @see \App\Containers\Vendor\Tenanter\Models\Domain
+ * @see \App\Containers\Larabeans\Tenanter\Models\Domain
  *
  * @method __call(string $method, array $parameters) IDE support. This will be a model.
  * @method static __callStatic(string $method, array $parameters) IDE support. This will be a model.

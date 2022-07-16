@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\Containers\Vendor\Tenanter\Middleware;
+namespace App\Containers\Larabeans\Tenanter\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
-use App\Containers\Vendor\Tenanter\Exceptions\RouteIsMissingTenantParameterException;
-use App\Containers\Vendor\Tenanter\Resolvers\PathTenantResolver;
-use App\Containers\Vendor\Tenanter\Tenancy;
+use App\Containers\Larabeans\Tenanter\Exceptions\RouteIsMissingTenantParameterException;
+use App\Containers\Larabeans\Tenanter\Resolvers\PathTenantResolver;
+use App\Containers\Larabeans\Tenanter\Tenancy;
 
 class InitializeTenancyByPath extends IdentificationMiddleware
 {

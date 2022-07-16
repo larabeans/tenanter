@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Models\Concerns;
+namespace App\Containers\Larabeans\Tenanter\Models\Concerns;
 
-use App\Containers\Vendor\Tenanter\Contracts\Tenant;
-use App\Containers\Vendor\Tenanter\Resolvers;
-use App\Containers\Vendor\Tenanter\Resolvers\Contracts\CachedTenantResolver;
+use App\Containers\Larabeans\Tenanter\Contracts\Tenant;
+use App\Containers\Larabeans\Tenanter\Resolvers;
+use App\Containers\Larabeans\Tenanter\Resolvers\Contracts\CachedTenantResolver;
 
 trait InvalidatesResolverCache
 {

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Resolvers;
+namespace App\Containers\Larabeans\Tenanter\Resolvers;
 
 use Illuminate\Database\Eloquent\Builder;
-use App\Containers\Vendor\Tenanter\Contracts\Domain;
-use App\Containers\Vendor\Tenanter\Contracts\Tenant;
-use App\Containers\Vendor\Tenanter\Exceptions\TenantCouldNotBeIdentifiedOnDomainException;
+use App\Containers\Larabeans\Tenanter\Contracts\Domain;
+use App\Containers\Larabeans\Tenanter\Contracts\Tenant;
+use App\Containers\Larabeans\Tenanter\Exceptions\TenantCouldNotBeIdentifiedOnDomainException;
 
 class DomainTenantResolver extends Contracts\CachedTenantResolver
 {

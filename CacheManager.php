@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter;
+namespace App\Containers\Larabeans\Tenanter;
 
 use Illuminate\Cache\CacheManager as BaseCacheManager;
 

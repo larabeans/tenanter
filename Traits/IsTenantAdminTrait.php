@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Traits;
+namespace App\Containers\Larabeans\Tenanter\Traits;
 
 use Illuminate\Support\Facades\Auth;
 

@@ -1,56 +1,56 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\UI\API\Controllers;
+namespace App\Containers\Larabeans\Tenanter\UI\API\Controllers;
 
-use App\Containers\Vendor\Tenanter\UI\API\Requests\GetDomainConfigurationRequest;
-use App\Containers\Vendor\Tenanter\Actions\ActivateDomainAction;
-use App\Containers\Vendor\Tenanter\Actions\CreateDomainAction;
-use App\Containers\Vendor\Tenanter\Actions\ChangeTenantModeAction;
-use App\Containers\Vendor\Tenanter\Actions\DeactivateDomainAction;
-use App\Containers\Vendor\Tenanter\Actions\DeleteDomainAction;
-use App\Containers\Vendor\Tenanter\Actions\FindDomainByIdAction;
-use App\Containers\Vendor\Tenanter\Actions\GetAllTenantDomainsAction;
-use App\Containers\Vendor\Tenanter\Actions\GetDomainConfigurationAction;
-use App\Containers\Vendor\Tenanter\Actions\GetTenantConfigurationAction;
-use App\Containers\Vendor\Tenanter\Actions\UpdateConfigurationAction;
-use App\Containers\Vendor\Tenanter\Actions\VerifyDomainAction;
-use App\Containers\Vendor\Tenanter\Models\Domain;
-use App\Containers\Vendor\Tenanter\UI\API\Requests\ActivateDomainRequest;
-use App\Containers\Vendor\Tenanter\UI\API\Requests\CreateDomainRequest;
-use App\Containers\Vendor\Tenanter\UI\API\Requests\ChangeTenantModeRequest;
-use App\Containers\Vendor\Tenanter\UI\API\Requests\DeactivateDomainRequest;
-use App\Containers\Vendor\Tenanter\UI\API\Requests\DeleteDomainRequest;
-use App\Containers\Vendor\Tenanter\UI\API\Requests\FindDomainByIdRequest;
-use App\Containers\Vendor\Tenanter\UI\API\Requests\GetAllTenantDomainsRequest;
-use App\Containers\Vendor\Tenanter\UI\API\Requests\GetTenantConfigurationRequest;
-use App\Containers\Vendor\Tenanter\UI\API\Requests\UpdateConfigurationRequest;
-use App\Containers\Vendor\Tenanter\UI\API\Requests\VerifyDomainRequest;
-use App\Containers\Vendor\Tenanter\UI\API\Transformers\DomainTransformer;
+use App\Containers\Larabeans\Tenanter\UI\API\Requests\GetDomainConfigurationRequest;
+use App\Containers\Larabeans\Tenanter\Actions\ActivateDomainAction;
+use App\Containers\Larabeans\Tenanter\Actions\CreateDomainAction;
+use App\Containers\Larabeans\Tenanter\Actions\ChangeTenantModeAction;
+use App\Containers\Larabeans\Tenanter\Actions\DeactivateDomainAction;
+use App\Containers\Larabeans\Tenanter\Actions\DeleteDomainAction;
+use App\Containers\Larabeans\Tenanter\Actions\FindDomainByIdAction;
+use App\Containers\Larabeans\Tenanter\Actions\GetAllTenantDomainsAction;
+use App\Containers\Larabeans\Tenanter\Actions\GetDomainConfigurationAction;
+use App\Containers\Larabeans\Tenanter\Actions\GetTenantConfigurationAction;
+use App\Containers\Larabeans\Tenanter\Actions\UpdateConfigurationAction;
+use App\Containers\Larabeans\Tenanter\Actions\VerifyDomainAction;
+use App\Containers\Larabeans\Tenanter\Models\Domain;
+use App\Containers\Larabeans\Tenanter\UI\API\Requests\ActivateDomainRequest;
+use App\Containers\Larabeans\Tenanter\UI\API\Requests\CreateDomainRequest;
+use App\Containers\Larabeans\Tenanter\UI\API\Requests\ChangeTenantModeRequest;
+use App\Containers\Larabeans\Tenanter\UI\API\Requests\DeactivateDomainRequest;
+use App\Containers\Larabeans\Tenanter\UI\API\Requests\DeleteDomainRequest;
+use App\Containers\Larabeans\Tenanter\UI\API\Requests\FindDomainByIdRequest;
+use App\Containers\Larabeans\Tenanter\UI\API\Requests\GetAllTenantDomainsRequest;
+use App\Containers\Larabeans\Tenanter\UI\API\Requests\GetTenantConfigurationRequest;
+use App\Containers\Larabeans\Tenanter\UI\API\Requests\UpdateConfigurationRequest;
+use App\Containers\Larabeans\Tenanter\UI\API\Requests\VerifyDomainRequest;
+use App\Containers\Larabeans\Tenanter\UI\API\Transformers\DomainTransformer;
 use App\Ship\Parents\Controllers\ApiController;
-use App\Containers\Vendor\Tenanter\Actions\ActivateTenantAction;
-use App\Containers\Vendor\Tenanter\Actions\RegisterTenantAction;
-use App\Containers\Vendor\Tenanter\Actions\DeactivateTenantAction;
-use App\Containers\Vendor\Tenanter\Actions\DeleteTenantAction;
-use App\Containers\Vendor\Tenanter\Actions\FindTenantAction;
-use App\Containers\Vendor\Tenanter\Actions\FindTenantByIdOrDomainNameAction;
-use App\Containers\Vendor\Tenanter\Actions\GetAllTenantsAction;
-use App\Containers\Vendor\Tenanter\Actions\UpdateTenantAction;
-use App\Containers\Vendor\Tenanter\Actions\CreateTenantAction;
-use App\Containers\Vendor\Tenanter\UI\API\Requests\ActivateTenantRequest;
-use App\Containers\Vendor\Tenanter\UI\API\Requests\CreateTenantRequest;
-use App\Containers\Vendor\Tenanter\UI\API\Requests\RegisterTenantRequest;
-use App\Containers\Vendor\Tenanter\UI\API\Requests\DeactivateTenantRequest;
-use App\Containers\Vendor\Tenanter\UI\API\Requests\DeleteTenantRequest;
-use App\Containers\Vendor\Tenanter\UI\API\Requests\GetAllTenantsRequest;
-use App\Containers\Vendor\Tenanter\UI\API\Requests\FindTenantByIdRequest;
-use App\Containers\Vendor\Tenanter\UI\API\Requests\FindTenantByIdOrDomainNameRequest;
-use App\Containers\Vendor\Tenanter\UI\API\Requests\UpdateTenantRequest;
-use App\Containers\Vendor\Tenanter\UI\API\Transformers\TenantTransformer;
+use App\Containers\Larabeans\Tenanter\Actions\ActivateTenantAction;
+use App\Containers\Larabeans\Tenanter\Actions\RegisterTenantAction;
+use App\Containers\Larabeans\Tenanter\Actions\DeactivateTenantAction;
+use App\Containers\Larabeans\Tenanter\Actions\DeleteTenantAction;
+use App\Containers\Larabeans\Tenanter\Actions\FindTenantAction;
+use App\Containers\Larabeans\Tenanter\Actions\FindTenantByIdOrDomainNameAction;
+use App\Containers\Larabeans\Tenanter\Actions\GetAllTenantsAction;
+use App\Containers\Larabeans\Tenanter\Actions\UpdateTenantAction;
+use App\Containers\Larabeans\Tenanter\Actions\CreateTenantAction;
+use App\Containers\Larabeans\Tenanter\UI\API\Requests\ActivateTenantRequest;
+use App\Containers\Larabeans\Tenanter\UI\API\Requests\CreateTenantRequest;
+use App\Containers\Larabeans\Tenanter\UI\API\Requests\RegisterTenantRequest;
+use App\Containers\Larabeans\Tenanter\UI\API\Requests\DeactivateTenantRequest;
+use App\Containers\Larabeans\Tenanter\UI\API\Requests\DeleteTenantRequest;
+use App\Containers\Larabeans\Tenanter\UI\API\Requests\GetAllTenantsRequest;
+use App\Containers\Larabeans\Tenanter\UI\API\Requests\FindTenantByIdRequest;
+use App\Containers\Larabeans\Tenanter\UI\API\Requests\FindTenantByIdOrDomainNameRequest;
+use App\Containers\Larabeans\Tenanter\UI\API\Requests\UpdateTenantRequest;
+use App\Containers\Larabeans\Tenanter\UI\API\Transformers\TenantTransformer;
 
 /**
  * Class Controller
  *
- * @package App\Containers\Vendor\Tenanter\UI\API\Controllers
+ * @package App\Containers\Larabeans\Tenanter\UI\API\Controllers
  */
 class Controller extends ApiController
 {

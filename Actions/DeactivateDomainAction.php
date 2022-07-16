@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Actions;
+namespace App\Containers\Larabeans\Tenanter\Actions;
 
-use App\Containers\Vendor\Tenanter\Models\Domain;
-use App\Containers\Vendor\Tenanter\Tasks\UpdateDomainTask;
+use App\Containers\Larabeans\Tenanter\Models\Domain;
+use App\Containers\Larabeans\Tenanter\Tasks\UpdateDomainTask;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
 

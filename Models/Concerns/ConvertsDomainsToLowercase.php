@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Models\Concerns;
+namespace App\Containers\Larabeans\Tenanter\Models\Concerns;
 
 trait ConvertsDomainsToLowercase
 {

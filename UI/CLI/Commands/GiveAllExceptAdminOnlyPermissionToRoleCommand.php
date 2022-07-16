@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\UI\CLI\Commands;
+namespace App\Containers\Larabeans\Tenanter\UI\CLI\Commands;
 
 use App\Containers\AppSection\Authorization\Exceptions\RoleNotFoundException;
 use App\Containers\AppSection\Authorization\Tasks\FindRoleTask;
 use App\Containers\AppSection\Authorization\Tasks\GetAllPermissionsTask;
-use App\Containers\Vendor\Tenanter\Tasks\GetHostPrimaryDomainsTask;
+use App\Containers\Larabeans\Tenanter\Tasks\GetHostPrimaryDomainsTask;
 use Illuminate\Console\Command;
 
 class GiveAllExceptAdminOnlyPermissionToRoleCommand extends Command

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Data\Seeders;
+namespace App\Containers\Larabeans\Tenanter\Data\Seeders;
 
 use App\Containers\AppSection\Authorization\Tasks\FindRoleTask;
 use App\Containers\AppSection\User\Tasks\CreateUserByCredentialsTask;

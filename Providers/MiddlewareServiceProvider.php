@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Providers;
+namespace App\Containers\Larabeans\Tenanter\Providers;
 
 use App\Ship\Parents\Providers\MiddlewareServiceProvider as ParentMiddlewareServiceProvider;
-use App\Containers\Vendor\Tenanter\Middleware;
+use App\Containers\Larabeans\Tenanter\Middleware;
 
 class MiddlewareServiceProvider extends ParentMiddlewareServiceProvider
 {

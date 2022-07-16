@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace App\Containers\Vendor\Tenanter\Middleware;
+namespace App\Containers\Larabeans\Tenanter\Middleware;
 
 use Closure;
 use App\Ship\Parents\Exceptions\Exception;
 use Illuminate\Http\Response;
 use Illuminate\Support\Str;
-use App\Containers\Vendor\Tenanter\Exceptions\NotASubdomainException;
+use App\Containers\Larabeans\Tenanter\Exceptions\NotASubdomainException;
 
 class InitializeTenancyBySubdomain extends InitializeTenancyByDomain
 {

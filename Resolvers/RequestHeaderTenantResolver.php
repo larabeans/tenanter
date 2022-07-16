@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Resolvers;
+namespace App\Containers\Larabeans\Tenanter\Resolvers;
 
 use Illuminate\Database\Eloquent\Builder;
-use App\Containers\Vendor\Tenanter\Tenancy;
-use App\Containers\Vendor\Tenanter\Contracts\Domain;
-use App\Containers\Vendor\Tenanter\Contracts\Tenant;
-use App\Containers\Vendor\Tenanter\Exceptions\TenantCouldNotBeIdentifiedByRequestHeaderException;
+use App\Containers\Larabeans\Tenanter\Tenancy;
+use App\Containers\Larabeans\Tenanter\Contracts\Domain;
+use App\Containers\Larabeans\Tenanter\Contracts\Tenant;
+use App\Containers\Larabeans\Tenanter\Exceptions\TenantCouldNotBeIdentifiedByRequestHeaderException;
 
 class RequestHeaderTenantResolver extends Contracts\CachedTenantResolver
 {

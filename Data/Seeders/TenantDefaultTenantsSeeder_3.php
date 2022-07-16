@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Data\Seeders;
+namespace App\Containers\Larabeans\Tenanter\Data\Seeders;
 
-use App\Containers\Vendor\Tenanter\Tasks\CreateTenantTask;
+use App\Containers\Larabeans\Tenanter\Tasks\CreateTenantTask;
 use App\Ship\Parents\Seeders\Seeder;
 
 class TenantDefaultTenantsSeeder_3 extends Seeder

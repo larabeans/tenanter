@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Listeners;
+namespace App\Containers\Larabeans\Tenanter\Listeners;
 
 use App\Containers\AppSection\Authorization\Tasks\GetAllRolesTask;
-use App\Containers\Vendor\Tenanter\Events\HostCreated;
-use App\Containers\Vendor\Tenanter\Tasks\UpdateRoleTask;
+use App\Containers\Larabeans\Tenanter\Events\HostCreated;
+use App\Containers\Larabeans\Tenanter\Tasks\UpdateRoleTask;
 
 class SetupTenantIdForDefaultRoles
 {

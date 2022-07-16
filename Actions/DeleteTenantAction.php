@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Actions;
+namespace App\Containers\Larabeans\Tenanter\Actions;
 
-use App\Containers\Vendor\Tenanter\Tasks\DeleteTenantTask;
-use App\Containers\Vendor\Tenanter\UI\API\Requests\DeleteTenantRequest;
+use App\Containers\Larabeans\Tenanter\Tasks\DeleteTenantTask;
+use App\Containers\Larabeans\Tenanter\UI\API\Requests\DeleteTenantRequest;
 use App\Ship\Parents\Actions\Action;
 
 class DeleteTenantAction extends Action

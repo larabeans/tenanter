@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\UI\API\Requests;
+namespace App\Containers\Larabeans\Tenanter\UI\API\Requests;
 
-use App\Containers\Vendor\Tenanter\Traits\CheckDomainNameTrait;
-use App\Containers\Vendor\Tenanter\Traits\IsTenantOwnerTrait;
+use App\Containers\Larabeans\Tenanter\Traits\CheckDomainNameTrait;
+use App\Containers\Larabeans\Tenanter\Traits\IsTenantOwnerTrait;
 use App\Ship\Parents\Requests\Request;
 
 /**

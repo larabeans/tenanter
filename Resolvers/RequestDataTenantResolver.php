@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Resolvers;
+namespace App\Containers\Larabeans\Tenanter\Resolvers;
 
-use App\Containers\Vendor\Tenanter\Contracts\Tenant;
-use App\Containers\Vendor\Tenanter\Exceptions\TenantCouldNotBeIdentifiedByRequestDataException;
+use App\Containers\Larabeans\Tenanter\Contracts\Tenant;
+use App\Containers\Larabeans\Tenanter\Exceptions\TenantCouldNotBeIdentifiedByRequestDataException;
 
 class RequestDataTenantResolver extends Contracts\CachedTenantResolver
 {

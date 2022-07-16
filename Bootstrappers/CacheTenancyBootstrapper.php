@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Bootstrappers;
+namespace App\Containers\Larabeans\Tenanter\Bootstrappers;
 
 use Illuminate\Cache\CacheManager;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\Facades\Cache;
-use App\Containers\Vendor\Tenanter\CacheManager as TenantCacheManager;
-use App\Containers\Vendor\Tenanter\Contracts\TenancyBootstrapper;
-use App\Containers\Vendor\Tenanter\Contracts\Tenant;
+use App\Containers\Larabeans\Tenanter\CacheManager as TenantCacheManager;
+use App\Containers\Larabeans\Tenanter\Contracts\TenancyBootstrapper;
+use App\Containers\Larabeans\Tenanter\Contracts\Tenant;
 
 class CacheTenancyBootstrapper implements TenancyBootstrapper
 {

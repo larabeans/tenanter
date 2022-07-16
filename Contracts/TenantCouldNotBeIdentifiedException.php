@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Contracts;
+namespace App\Containers\Larabeans\Tenanter\Contracts;
 
 use App\Ship\Parents\Exceptions\Exception;
 

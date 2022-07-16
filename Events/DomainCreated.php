@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Events;
+namespace App\Containers\Larabeans\Tenanter\Events;
 
-use App\Containers\Vendor\Tenanter\Contracts\Domain;
+use App\Containers\Larabeans\Tenanter\Contracts\Domain;
 
 class DomainCreated extends Contracts\DomainEvent
 {
