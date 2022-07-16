@@ -60,7 +60,7 @@ class TenantScope implements Scope
             if (
                 ($wheres->contains('column', 'model_has_roles.model_id') &&
                     $wheres->contains('column', 'model_has_roles.model_type') &&
-                    $wheres->contains('value', 'App\Containers\Larabeans\Beaner\Models\User')
+                    $wheres->contains('value', 'App\Containers\Larabeans\Core\Models\User')
                 ) ||
                 (
                 $wheres->contains('column', 'role_has_permissions.permission_id')

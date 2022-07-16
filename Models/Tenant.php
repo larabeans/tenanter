@@ -2,7 +2,7 @@
 
 namespace App\Containers\Larabeans\Tenanter\Models;
 
-use App\Containers\Larabeans\Beaner\Parents\Models\Model;
+use App\Containers\Larabeans\Core\Parents\Models\Model;
 use App\Containers\Larabeans\Configurationer\Traits\Configurable;
 use App\Containers\Larabeans\Tenanter\Contracts;
 use App\Containers\Larabeans\Tenanter\Events;
