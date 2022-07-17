@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Data\Seeders;
+namespace App\Containers\Larabeans\Tenanter\Data\Seeders;
 
 use App\Containers\AppSection\Authorization\Tasks\CreatePermissionTask;
 use App\Ship\Parents\Seeders\Seeder;

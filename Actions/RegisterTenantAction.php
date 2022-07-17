@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Actions;
+namespace App\Containers\Larabeans\Tenanter\Actions;
 
 use App\Containers\AppSection\Authorization\Tasks\AssignRolesToUserTask;
 use App\Containers\AppSection\Authorization\Tasks\FindRoleTask;
-use App\Containers\Vendor\Tenanter\Events\TenantCreated;
-use App\Containers\Vendor\Tenanter\Models\Tenant;
+use App\Containers\Larabeans\Tenanter\Events\TenantCreated;
+use App\Containers\Larabeans\Tenanter\Models\Tenant;
 use App\Ship\Parents\Actions\Action;
-use App\Containers\Vendor\Tenanter\Tasks\CreateTenantTask;
-use App\Containers\Vendor\Tenanter\Tasks\CreateUserTask;
-use App\Containers\Vendor\Tenanter\UI\API\Requests\RegisterTenantRequest;
+use App\Containers\Larabeans\Tenanter\Tasks\CreateTenantTask;
+use App\Containers\Larabeans\Tenanter\Tasks\CreateUserTask;
+use App\Containers\Larabeans\Tenanter\UI\API\Requests\RegisterTenantRequest;
 
 class RegisterTenantAction extends Action
 {

@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Containers\Vendor\Tenanter\Exceptions;
+namespace App\Containers\Larabeans\Tenanter\Exceptions;
 
 use Facade\IgnitionContracts\BaseSolution;
 use Facade\IgnitionContracts\ProvidesSolution;
 use Facade\IgnitionContracts\Solution;
-use App\Containers\Vendor\Tenanter\Contracts\HostCouldNotBeIdentifiedException;
+use App\Containers\Larabeans\Tenanter\Contracts\HostCouldNotBeIdentifiedException;
 
 class HostCouldNotBeIdentifiedByRequestHeaderException extends HostCouldNotBeIdentifiedException implements ProvidesSolution
 {

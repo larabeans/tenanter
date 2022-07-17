@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Tasks;
+namespace App\Containers\Larabeans\Tenanter\Tasks;
 
 use App\Containers\AppSection\Authorization\Data\Repositories\RoleRepository;
 use App\Ship\Exceptions\UpdateResourceFailedException;

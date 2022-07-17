@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Middleware;
+namespace App\Containers\Larabeans\Tenanter\Middleware;
 
-use App\Containers\Vendor\Tenanter\Contracts\HostCouldNotBeIdentifiedException;
-use App\Containers\Vendor\Tenanter\Contracts\TenantCouldNotBeIdentifiedException;
-use App\Containers\Vendor\Tenanter\Contracts\TenantResolver;
-use App\Containers\Vendor\Tenanter\Tenancy;
+use App\Containers\Larabeans\Tenanter\Contracts\HostCouldNotBeIdentifiedException;
+use App\Containers\Larabeans\Tenanter\Contracts\TenantCouldNotBeIdentifiedException;
+use App\Containers\Larabeans\Tenanter\Contracts\TenantResolver;
+use App\Containers\Larabeans\Tenanter\Tenancy;
 
 abstract class IdentificationMiddleware
 {

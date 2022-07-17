@@ -22,9 +22,9 @@ return [
     'host_domains' => [],
 
     'models' => [
-        'host' => App\Containers\Vendor\Tenanter\Models\Host::class,
-        'tenant' => App\Containers\Vendor\Tenanter\Models\Tenant::class,
-        'domain' => App\Containers\Vendor\Tenanter\Models\Domain::class,
+        'host' => App\Containers\Larabeans\Tenanter\Models\Host::class,
+        'tenant' => App\Containers\Larabeans\Tenanter\Models\Tenant::class,
+        'domain' => App\Containers\Larabeans\Tenanter\Models\Domain::class,
     ],
 
     'tenant_column' => 'tenant_id',
@@ -39,11 +39,11 @@ return [
             'identifier' => 'host',
             'key' => 'host',
             'name' => 'Host',
-            'model' => App\Containers\Vendor\Tenanter\Models\Host::class,
+            'model' => App\Containers\Larabeans\Tenanter\Models\Host::class,
             'tasks' => [
-                'get' => App\Containers\Vendor\Tenanter\Tasks\GetResolvedHostConfigurationTask::class,
+                'get' => App\Containers\Larabeans\Tenanter\Tasks\GetResolvedHostConfigurationTask::class,
                 'create' => null,
-                'update' => App\Containers\Vendor\Tenanter\Tasks\UpdateHostConfigurationTask::class
+                'update' => App\Containers\Larabeans\Tenanter\Tasks\UpdateHostConfigurationTask::class
             ],
             'authenticate' => false,
             'load_in_default_task' => true,
@@ -99,11 +99,11 @@ return [
             'identifier' => 'tenant',
             'key' => 'tenant',
             'name' => 'Tenant',
-            'model' => App\Containers\Vendor\Tenanter\Models\Tenant::class,
+            'model' => App\Containers\Larabeans\Tenanter\Models\Tenant::class,
             'tasks' => [
-                'get' => App\Containers\Vendor\Tenanter\Tasks\GetResolvedTenantConfigurationTask::class,
+                'get' => App\Containers\Larabeans\Tenanter\Tasks\GetResolvedTenantConfigurationTask::class,
                 'create' => null,
-                'update' => App\Containers\Vendor\Tenanter\Tasks\UpdateTenantConfigurationTask::class
+                'update' => App\Containers\Larabeans\Tenanter\Tasks\UpdateTenantConfigurationTask::class
             ],
             'authenticate' => false,
             'load_in_default_task' => true,
@@ -147,11 +147,11 @@ return [
             'identifier' => 'domain',
             'key' => 'domain',
             'name' => 'Domain',
-            'model' => App\Containers\Vendor\Tenanter\Models\Domain::class,
+            'model' => App\Containers\Larabeans\Tenanter\Models\Domain::class,
             'tasks' => [
-                'get' => App\Containers\Vendor\Tenanter\Tasks\GetResolvedDomainConfigurationTask::class,
+                'get' => App\Containers\Larabeans\Tenanter\Tasks\GetResolvedDomainConfigurationTask::class,
                 'create' => null,
-                'update' => App\Containers\Vendor\Tenanter\Tasks\UpdateDomainConfigurationTask::class
+                'update' => App\Containers\Larabeans\Tenanter\Tasks\UpdateDomainConfigurationTask::class
             ],
             'authenticate' => false,
             'load_in_default_task' => true,
@@ -226,11 +226,11 @@ return [
      * To configure their behavior, see the config keys below.
      */
     'bootstrappers' => [
-         # App\Containers\Vendor\Tenanter\Bootstrappers\DatabaseTenancyBootstrapper::class,
-         App\Containers\Vendor\Tenanter\Bootstrappers\CacheTenancyBootstrapper::class,
-         App\Containers\Vendor\Tenanter\Bootstrappers\FilesystemTenancyBootstrapper::class,
-         App\Containers\Vendor\Tenanter\Bootstrappers\QueueTenancyBootstrapper::class,
-         App\Containers\Vendor\Tenanter\Bootstrappers\RedisTenancyBootstrapper::class, // Note: phpredis is needed
+         # App\Containers\Larabeans\Tenanter\Bootstrappers\DatabaseTenancyBootstrapper::class,
+         App\Containers\Larabeans\Tenanter\Bootstrappers\CacheTenancyBootstrapper::class,
+         App\Containers\Larabeans\Tenanter\Bootstrappers\FilesystemTenancyBootstrapper::class,
+         App\Containers\Larabeans\Tenanter\Bootstrappers\QueueTenancyBootstrapper::class,
+         App\Containers\Larabeans\Tenanter\Bootstrappers\RedisTenancyBootstrapper::class, // Note: phpredis is needed
     ],
 
     /**

@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Models;
+namespace App\Containers\Larabeans\Tenanter\Models;
 
-use App\Containers\Vendor\Beaner\Parents\Models\Model;
-use App\Containers\Vendor\Configurationer\Traits\Configurable;
-use App\Containers\Vendor\Tenanter\Contracts;
-use App\Containers\Vendor\Tenanter\Events;
-use App\Containers\Vendor\Tenanter\Models\Concerns\HasInternalKeys;
-use App\Containers\Vendor\Tenanter\Models\Concerns\InvalidatesResolverCache;
-use App\Containers\Vendor\Tenanter\Models\Concerns\TenantRun;
-use App\Containers\Vendor\Tenanter\Models\Concerns\HasDomains;
+use App\Containers\Larabeans\Core\Parents\Models\Model;
+use App\Containers\Larabeans\Configurationer\Traits\Configurable;
+use App\Containers\Larabeans\Tenanter\Contracts;
+use App\Containers\Larabeans\Tenanter\Events;
+use App\Containers\Larabeans\Tenanter\Models\Concerns\HasInternalKeys;
+use App\Containers\Larabeans\Tenanter\Models\Concerns\InvalidatesResolverCache;
+use App\Containers\Larabeans\Tenanter\Models\Concerns\TenantRun;
+use App\Containers\Larabeans\Tenanter\Models\Concerns\HasDomains;
 
 class Tenant extends Model implements Contracts\Tenant
 {

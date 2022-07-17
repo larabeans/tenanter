@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Middleware;
+namespace App\Containers\Larabeans\Tenanter\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;

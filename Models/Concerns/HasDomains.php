@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Models\Concerns;
+namespace App\Containers\Larabeans\Tenanter\Models\Concerns;
 
-use App\Containers\Vendor\Tenanter\Contracts\Domain;
+use App\Containers\Larabeans\Tenanter\Contracts\Domain;
 
 /**
  * @property-read Domain[]|\Illuminate\Database\Eloquent\Collection $domains

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Listeners;
+namespace App\Containers\Larabeans\Tenanter\Listeners;
 
-use App\Containers\Vendor\Configurationer\Configurationer;
-use App\Containers\Vendor\Tenanter\Events\HostCreated;
-use App\Containers\Vendor\Tenanter\Tasks\CreateConfigurationTask;
+use App\Containers\Larabeans\Configurationer\Configurationer;
+use App\Containers\Larabeans\Tenanter\Events\HostCreated;
+use App\Containers\Larabeans\Tenanter\Tasks\CreateConfigurationTask;
 
 
 class CreateHostConfiguration

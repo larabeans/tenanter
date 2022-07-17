@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Actions;
+namespace App\Containers\Larabeans\Tenanter\Actions;
 
-use App\Containers\Vendor\Tenanter\Models\Domain;
-use App\Containers\Vendor\Tenanter\Tasks\UpdateDomainTask;
-use App\Containers\Vendor\Tenanter\UI\API\Requests\VerifyDomainRequest;
+use App\Containers\Larabeans\Tenanter\Models\Domain;
+use App\Containers\Larabeans\Tenanter\Tasks\UpdateDomainTask;
+use App\Containers\Larabeans\Tenanter\UI\API\Requests\VerifyDomainRequest;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
 use Illuminate\Support\Carbon;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Listeners;
+namespace App\Containers\Larabeans\Tenanter\Listeners;
 
 use Illuminate\Database\Events\MigrationsEnded;
 use Illuminate\Database\Schema\Blueprint;

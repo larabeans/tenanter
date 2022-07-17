@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Middleware;
+namespace App\Containers\Larabeans\Tenanter\Middleware;
 
 use Closure;
 use Illuminate\Foundation\Http\Exceptions\MaintenanceModeException;
 use Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode;
-use App\Containers\Vendor\Tenanter\Exceptions\TenancyNotInitializedException;
+use App\Containers\Larabeans\Tenanter\Exceptions\TenancyNotInitializedException;
 use Symfony\Component\HttpFoundation\IpUtils;
 
 class CheckTenantForMaintenanceMode extends CheckForMaintenanceMode

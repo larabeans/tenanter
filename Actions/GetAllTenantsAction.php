@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Actions;
+namespace App\Containers\Larabeans\Tenanter\Actions;
 
-use App\Containers\Vendor\Tenanter\Tasks\GetAllTenantsTask;
-use App\Containers\Vendor\Tenanter\UI\API\Requests\GetAllTenantsRequest;
+use App\Containers\Larabeans\Tenanter\Tasks\GetAllTenantsTask;
+use App\Containers\Larabeans\Tenanter\UI\API\Requests\GetAllTenantsRequest;
 use App\Ship\Parents\Actions\Action;
 
 class GetAllTenantsAction extends Action

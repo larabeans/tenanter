@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Events\Contracts;
+namespace App\Containers\Larabeans\Tenanter\Events\Contracts;
 
 use App\Ship\Parents\Events\Event;
-use App\Containers\Vendor\Tenanter\Tenancy;
+use App\Containers\Larabeans\Tenanter\Tenancy;
 
 abstract class TenancyEvent extends Event
 {

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Containers\Vendor\Tenanter\Middleware;
+namespace App\Containers\Larabeans\Tenanter\Middleware;
 
 use Closure;
-use App\Containers\Vendor\Tenanter\Resolvers\DomainTenantResolver;
-use App\Containers\Vendor\Tenanter\Tenancy;
+use App\Containers\Larabeans\Tenanter\Resolvers\DomainTenantResolver;
+use App\Containers\Larabeans\Tenanter\Tenancy;
 
 class InitializeTenancyByDomain extends IdentificationMiddleware
 {

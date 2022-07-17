@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Tasks;
+namespace App\Containers\Larabeans\Tenanter\Tasks;
 
 use App\Ship\Parents\Exceptions\Exception;
 use App\Ship\Parents\Tasks\Task;
-use App\Containers\Vendor\Tenanter\Data\Repositories\TenantRepository;
+use App\Containers\Larabeans\Tenanter\Data\Repositories\TenantRepository;
 
 
 

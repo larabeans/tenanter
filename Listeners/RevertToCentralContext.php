@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Listeners;
+namespace App\Containers\Larabeans\Tenanter\Listeners;
 
-use App\Containers\Vendor\Tenanter\Events\RevertedToCentralContext;
-use App\Containers\Vendor\Tenanter\Events\RevertingToCentralContext;
-use App\Containers\Vendor\Tenanter\Events\TenancyEnded;
+use App\Containers\Larabeans\Tenanter\Events\RevertedToCentralContext;
+use App\Containers\Larabeans\Tenanter\Events\RevertingToCentralContext;
+use App\Containers\Larabeans\Tenanter\Events\TenancyEnded;
 
 class RevertToCentralContext
 {

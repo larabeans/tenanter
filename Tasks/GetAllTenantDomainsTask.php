@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Tasks;
+namespace App\Containers\Larabeans\Tenanter\Tasks;
 
 use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Exceptions\Exception;
-use App\Containers\Vendor\Tenanter\Data\Repositories\DomainRepository;
+use App\Containers\Larabeans\Tenanter\Data\Repositories\DomainRepository;
 use App\Ship\Parents\Tasks\Task;
 
 class GetAllTenantDomainsTask extends Task

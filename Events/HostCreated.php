@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Events;
+namespace App\Containers\Larabeans\Tenanter\Events;
 
-use App\Containers\Vendor\Tenanter\Contracts\Host;
+use App\Containers\Larabeans\Tenanter\Contracts\Host;
 
 class HostCreated extends Contracts\HostEvent
 {

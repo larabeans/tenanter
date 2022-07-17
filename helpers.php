@@ -1,9 +1,9 @@
 <?php
 
-use App\Containers\Vendor\Tenanter\Contracts\Host;
-use App\Containers\Vendor\Tenanter\Contracts\Tenant;
-use App\Containers\Vendor\Tenanter\Contracts\Domain;
-use App\Containers\Vendor\Tenanter\Tenancy;
+use App\Containers\Larabeans\Tenanter\Contracts\Host;
+use App\Containers\Larabeans\Tenanter\Contracts\Tenant;
+use App\Containers\Larabeans\Tenanter\Contracts\Domain;
+use App\Containers\Larabeans\Tenanter\Tenancy;
 
 if (! function_exists('tenancy')) {
     /** @return Tenancy */

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Models\Concerns;
+namespace App\Containers\Larabeans\Tenanter\Models\Concerns;
 
 use Illuminate\Support\Facades\Auth;
-use App\Containers\Vendor\Tenanter\Models\Scopes\TenantScope;
+use App\Containers\Larabeans\Tenanter\Models\Scopes\TenantScope;
 
 /**
  * Trait HasTenancy.

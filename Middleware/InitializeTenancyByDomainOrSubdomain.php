@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Containers\Vendor\Tenanter\Middleware;
+namespace App\Containers\Larabeans\Tenanter\Middleware;
 
 use Closure;
 use Illuminate\Support\Str;

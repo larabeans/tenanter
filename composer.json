@@ -1,7 +1,7 @@
 {
   "name": "larabeans/tenanter",
   "description": "Apiato container to add multi tenancy feature",
-  "type": "apiato-container",
+  "type": "larabeans-container",
   "homepage": "https://larabeans.com/",
   "version": "0.1.0",
   "support": {
@@ -34,6 +34,7 @@
   "extra": {
     "apiato": {
       "container": {
+        "section": "Larabeans",
         "name": "Tenanter"
       }
     }

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Exceptions;
+namespace App\Containers\Larabeans\Tenanter\Exceptions;
 
 use Exception;
-use App\Containers\Vendor\Tenanter\Resolvers\PathTenantResolver;
+use App\Containers\Larabeans\Tenanter\Resolvers\PathTenantResolver;
 
 class RouteIsMissingTenantParameterException extends Exception
 {

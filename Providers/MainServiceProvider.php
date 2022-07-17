@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Providers;
+namespace App\Containers\Larabeans\Tenanter\Providers;
 
-use App\Containers\Vendor\Configurationer\Configurationer;
+use App\Containers\Larabeans\Configurationer\Configurationer;
 use App\Ship\Parents\Providers\MainServiceProvider as ParentMainServiceProvider;
-use App\Containers\Vendor\Tenanter\Models\Tenant;
+use App\Containers\Larabeans\Tenanter\Models\Tenant;
 
 
 /**

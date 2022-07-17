@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Events\Contracts;
+namespace App\Containers\Larabeans\Tenanter\Events\Contracts;
 
 use App\Ship\Parents\Events\Event;
 use Illuminate\Queue\SerializesModels;
-use App\Containers\Vendor\Tenanter\Contracts\Host;
+use App\Containers\Larabeans\Tenanter\Contracts\Host;
 
 abstract class HostEvent extends Event
 {

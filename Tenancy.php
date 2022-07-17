@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter;
+namespace App\Containers\Larabeans\Tenanter;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Traits\Macroable;
 
-use App\Containers\Vendor\Tenanter\Events;
-use App\Containers\Vendor\Tenanter\Contracts\Host;
-use App\Containers\Vendor\Tenanter\Contracts\Tenant;
-use App\Containers\Vendor\Tenanter\Contracts\TenancyBootstrapper;
-use App\Containers\Vendor\Tenanter\Exceptions\HostCouldNotBeIdentifiedById;
-use App\Containers\Vendor\Tenanter\Exceptions\TenantCouldNotBeIdentifiedById;
+use App\Containers\Larabeans\Tenanter\Events;
+use App\Containers\Larabeans\Tenanter\Contracts\Host;
+use App\Containers\Larabeans\Tenanter\Contracts\Tenant;
+use App\Containers\Larabeans\Tenanter\Contracts\TenancyBootstrapper;
+use App\Containers\Larabeans\Tenanter\Exceptions\HostCouldNotBeIdentifiedById;
+use App\Containers\Larabeans\Tenanter\Exceptions\TenantCouldNotBeIdentifiedById;
 
 class Tenancy
 {

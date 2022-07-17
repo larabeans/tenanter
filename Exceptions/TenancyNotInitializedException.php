@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Exceptions;
+namespace App\Containers\Larabeans\Tenanter\Exceptions;
 
 use Exception;
 

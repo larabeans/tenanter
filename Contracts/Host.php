@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Contracts;
+namespace App\Containers\Larabeans\Tenanter\Contracts;
 
 /**
- * @see \App\Containers\Vendor\Tenanter\Models\Host
+ * @see \App\Containers\Larabeans\Tenanter\Models\Host
  *
  * @method __call(string $method, array $parameters) IDE support. This will be a model.
  * @method static __callStatic(string $method, array $parameters) IDE support. This will be a model.

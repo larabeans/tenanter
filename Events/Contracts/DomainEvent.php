@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Events\Contracts;
+namespace App\Containers\Larabeans\Tenanter\Events\Contracts;
 
 use Illuminate\Queue\SerializesModels;
 use App\Ship\Parents\Events\Event;
-use App\Containers\Vendor\Tenanter\Contracts\Domain;
+use App\Containers\Larabeans\Tenanter\Contracts\Domain;
 
 abstract class DomainEvent extends Event
 {

@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Tasks;
+namespace App\Containers\Larabeans\Tenanter\Tasks;
 
 
 use App\Ship\Parents\Tasks\Task;
 use App\Ship\Parents\Requests\Request;
 use App\Ship\Parents\Exceptions\Exception;
 use App\Ship\Exceptions\UpdateResourceFailedException;
-use App\Containers\Vendor\Configurationer\Data\Repositories\ConfigurationRepository;
-use App\Containers\Vendor\Configurationer\Data\Repositories\ConfigurationHistoryRepository;
-use App\Containers\Vendor\Tenanter\Contracts\Tenant;
+use App\Containers\Larabeans\Configurationer\Data\Repositories\ConfigurationRepository;
+use App\Containers\Larabeans\Configurationer\Data\Repositories\ConfigurationHistoryRepository;
+use App\Containers\Larabeans\Tenanter\Contracts\Tenant;
 
 class UpdateTenantConfigurationTask extends Task
 {

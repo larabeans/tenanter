@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Bootstrappers;
+namespace App\Containers\Larabeans\Tenanter\Bootstrappers;
 
 use Illuminate\Config\Repository;
 use Illuminate\Contracts\Events\Dispatcher;
@@ -8,8 +8,8 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Queue\Events\JobProcessing;
 use Illuminate\Queue\QueueManager;
 use Illuminate\Support\Testing\Fakes\QueueFake;
-use App\Containers\Vendor\Tenanter\Contracts\TenancyBootstrapper;
-use App\Containers\Vendor\Tenanter\Contracts\Tenant;
+use App\Containers\Larabeans\Tenanter\Contracts\TenancyBootstrapper;
+use App\Containers\Larabeans\Tenanter\Contracts\Tenant;
 
 class QueueTenancyBootstrapper implements TenancyBootstrapper
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Events;
+namespace App\Containers\Larabeans\Tenanter\Events;
 
 use App\Ship\Parents\Events\Event;
-use App\Containers\Vendor\Tenanter\Models\Tenant;
+use App\Containers\Larabeans\Tenanter\Models\Tenant;
 use Illuminate\Queue\SerializesModels;
 
 class TenantRegistered extends Event

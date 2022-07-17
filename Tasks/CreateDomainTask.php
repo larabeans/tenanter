@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Tasks;
+namespace App\Containers\Larabeans\Tenanter\Tasks;
 
-use App\Containers\Vendor\Configurationer\Configurationer;
-use App\Containers\Vendor\Tenanter\Data\Repositories\DomainRepository;
+use App\Containers\Larabeans\Configurationer\Configurationer;
+use App\Containers\Larabeans\Tenanter\Data\Repositories\DomainRepository;
 use App\Ship\Exceptions\CreateResourceFailedException;
 use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Tasks\Task;

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Actions;
+namespace App\Containers\Larabeans\Tenanter\Actions;
 
-use App\Containers\Vendor\Tenanter\Tasks\DeleteDomainTask;
-use App\Containers\Vendor\Tenanter\UI\API\Requests\DeleteDomainRequest;
+use App\Containers\Larabeans\Tenanter\Tasks\DeleteDomainTask;
+use App\Containers\Larabeans\Tenanter\UI\API\Requests\DeleteDomainRequest;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
 

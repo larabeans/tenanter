@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Listeners;
+namespace App\Containers\Larabeans\Tenanter\Listeners;
 
-use App\Containers\Vendor\Tenanter\Events\BootstrappingTenancy;
-use App\Containers\Vendor\Tenanter\Events\TenancyBootstrapped;
-use App\Containers\Vendor\Tenanter\Events\TenancyInitialized;
+use App\Containers\Larabeans\Tenanter\Events\BootstrappingTenancy;
+use App\Containers\Larabeans\Tenanter\Events\TenancyBootstrapped;
+use App\Containers\Larabeans\Tenanter\Events\TenancyInitialized;
 
 class BootstrapTenancy
 {

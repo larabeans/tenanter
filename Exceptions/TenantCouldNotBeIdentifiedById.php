@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Exceptions;
+namespace App\Containers\Larabeans\Tenanter\Exceptions;
 
 use Facade\IgnitionContracts\BaseSolution;
 use Facade\IgnitionContracts\ProvidesSolution;
 use Facade\IgnitionContracts\Solution;
-use App\Containers\Vendor\Tenanter\Contracts\TenantCouldNotBeIdentifiedException;
+use App\Containers\Larabeans\Tenanter\Contracts\TenantCouldNotBeIdentifiedException;
 
 // todo: in v3 this should be suffixed with Exception
 class TenantCouldNotBeIdentifiedById extends TenantCouldNotBeIdentifiedException implements ProvidesSolution

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Containers\Vendor\Tenanter\Middleware;
+namespace App\Containers\Larabeans\Tenanter\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
-use App\Containers\Vendor\Tenanter\Exceptions\UserCouldNotBeIdentifiedOnDomainException;
+use App\Containers\Larabeans\Tenanter\Exceptions\UserCouldNotBeIdentifiedOnDomainException;
 
 class ValidateTenancyUser
 {
