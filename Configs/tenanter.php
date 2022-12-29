@@ -142,6 +142,17 @@ return [
                     ]
                 ],
             ],
+            'business' => [
+                'identifier' => null,   // e.g. shop
+                'key' => null,
+                'name' => null,
+                'model' => null,        // e.g. shop model
+                'tasks' => [
+                    'get' => null,      // e.g. get shop task
+                    'create' => null,   
+                    'update' => null
+                ]
+            ],
         ],
         'domain' => [
             'identifier' => 'domain',
