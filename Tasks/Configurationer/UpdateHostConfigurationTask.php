@@ -1,27 +1,22 @@
 <?php
 
-namespace App\Containers\Larabeans\Tenanter\Tasks;
+namespace App\Containers\Larabeans\Tenanter\Tasks\Configurationer;
 
-use App\Ship\Parents\Tasks\Task;
-use App\Ship\Parents\Requests\Request;
-use App\Ship\Parents\Exceptions\Exception;
-use App\Ship\Exceptions\UpdateResourceFailedException;
 use App\Containers\Larabeans\Configurationer\Data\Repositories\ConfigurationRepository;
-use App\Containers\Larabeans\Configurationer\Data\Repositories\ConfigurationHistoryRepository;
 use App\Containers\Larabeans\Tenanter\Contracts\Host;
+use App\Ship\Exceptions\UpdateResourceFailedException;
+use App\Ship\Parents\Exceptions\Exception;
+use App\Ship\Parents\Requests\Request;
+use App\Ship\Parents\Tasks\Task;
 
 
 class UpdateHostConfigurationTask extends Task
 {
     protected ConfigurationRepository $repository;
-    protected ConfigurationHistoryRepository $historyRepository;
 
-    public function __construct(
-        ConfigurationRepository $repository,
-        ConfigurationHistoryRepository $historyRepository)
+    public function __construct(ConfigurationRepository $repository)
     {
         $this->repository = $repository;
-        $this->historyRepository = $historyRepository;
     }
 
     public function run(Request $request, $configuration, $key, $id)
@@ -32,14 +27,6 @@ class UpdateHostConfigurationTask extends Task
 
             if($configurable instanceof Host && $configurable->id === host()->getHostKey() && tenancy()->isValidHostAdmin()) {
 
-                // First Save History
-                $history = [
-                    "configuration_id" => $configuration->id,
-                    "configuration" => $configuration->configuration
-                ];
-                $this->historyRepository->create($history);
-
-                // Update Configurations
                 $data = [
                     'configuration' => json_encode($request->configuration)
                 ];

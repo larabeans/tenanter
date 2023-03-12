@@ -1,15 +1,12 @@
 <?php
 
-namespace App\Containers\Larabeans\Tenanter\Tasks;
+namespace App\Containers\Larabeans\Tenanter\Tasks\Configurationer;
 
-use App\Containers\Larabeans\Configurationer\Configurationer;
 use App\Containers\Larabeans\Configurationer\Data\Repositories\ConfigurationRepository;
-use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Requests\Request;
 use App\Ship\Parents\Tasks\Task;
-use App\Ship\Parents\Exceptions\Exception;
 
-class GetResolvedTenantConfigurationTask extends Task
+class GetResolvedDomainConfigurationTask extends Task
 {
     protected ConfigurationRepository $repository;
 
@@ -20,10 +17,10 @@ class GetResolvedTenantConfigurationTask extends Task
 
     public function run(Request $request, $type, $transform=null)
     {
-         if(tenancy()->initialized && tenancy()->tenantInitialized) {
+         if(tenancy()->initialized && (tenancy()->hostInitialized || tenancy()->tenantInitialized )) {
 
              $configurations = $this->repository->findWhere([
-                 'configurable_id' => tenant()->getTenantKey(),
+                 'configurable_id' => domain()->id,
                  'configurable_type' => configurationer()::getModel($type)
              ])->first();
 
@@ -32,19 +29,10 @@ class GetResolvedTenantConfigurationTask extends Task
                  if($transform) {
                      return $configurations;
                  }
-                 return array_merge(
-                     $configurations->configuration,
-                     array(
-                         'session' => array (
-                             'tenant' => tenant()->getTenantKey(),
-                             'admin' => tenancy()->isValidTenantAdmin(),
-                             'side' => tenancy()->side()
-                         )
-                     )
-                 );
+                 return $configurations->configuration;
              }
          }
 
-        return [];
+         return [];
     }
 }

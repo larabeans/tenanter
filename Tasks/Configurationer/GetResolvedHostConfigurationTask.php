@@ -1,13 +1,10 @@
 <?php
 
-namespace App\Containers\Larabeans\Tenanter\Tasks;
+namespace App\Containers\Larabeans\Tenanter\Tasks\Configurationer;
 
-use App\Containers\Larabeans\Configurationer\Configurationer;
 use App\Containers\Larabeans\Configurationer\Data\Repositories\ConfigurationRepository;
-use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Requests\Request;
 use App\Ship\Parents\Tasks\Task;
-use App\Ship\Parents\Exceptions\Exception;
 
 class GetResolvedHostConfigurationTask extends Task
 {

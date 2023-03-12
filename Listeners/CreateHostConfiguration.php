@@ -2,9 +2,8 @@
 
 namespace App\Containers\Larabeans\Tenanter\Listeners;
 
-use App\Containers\Larabeans\Configurationer\Configurationer;
 use App\Containers\Larabeans\Tenanter\Events\HostCreated;
-use App\Containers\Larabeans\Tenanter\Tasks\CreateConfigurationTask;
+use App\Containers\Larabeans\Configurationer\Tasks\CreateConfigurationTask;
 
 
 class CreateHostConfiguration
@@ -29,8 +28,8 @@ class CreateHostConfiguration
     {
         app(CreateConfigurationTask::class)->run([
             'configurable_type' => 'host',
+            'configurable_id' => $event->entity->id,
             'configuration' => configurationer()::getDefault('host'),
-            'id' => $event->entity->id
         ]);
     }
 }
