@@ -50,7 +50,7 @@ class MainServiceProvider extends ParentMainServiceProvider
     {
         parent::boot();
         if (config('configurationer.installed')) {
-            configurationer()::addSystemConfiguration('tenancy', config('tenanter.tenancy', []));
+            configurationer()::addSystemConfiguration('tenancy', config('tenanter.configurationer.tenancy', []));
             configurationer()::addEntity(config('tenanter.configurationer.entities'), 'system');
         }
     }
