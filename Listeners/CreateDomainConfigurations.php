@@ -2,9 +2,8 @@
 
 namespace App\Containers\Larabeans\Tenanter\Listeners;
 
-use App\Containers\Larabeans\Configurationer\Configurationer;
 use App\Containers\Larabeans\Tenanter\Events\DomainCreated;
-use App\Containers\Larabeans\Tenanter\Tasks\CreateConfigurationTask;
+use App\Containers\Larabeans\Configurationer\Tasks\CreateConfigurationTask;
 
 class CreateDomainConfigurations
 {
@@ -28,8 +27,8 @@ class CreateDomainConfigurations
     {
         app(CreateConfigurationTask::class)->run([
             'configurable_type' => 'domain',
-            'configuration' => configurationer()::getDefault('domain'),
-            'id' => $event->domain->id
+            'configurable_id' => $event->domain->id,
+            'configuration' => configurationer()::getDefault('domain')
         ]);
     }
 }

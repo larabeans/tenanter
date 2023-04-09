@@ -2,9 +2,8 @@
 
 namespace App\Containers\Larabeans\Tenanter\Listeners;
 
-use App\Containers\Larabeans\Configurationer\Configurationer;
 use App\Containers\Larabeans\Tenanter\Events\TenantCreated;
-use App\Containers\Larabeans\Tenanter\Tasks\CreateConfigurationTask;
+use App\Containers\Larabeans\Configurationer\Tasks\CreateConfigurationTask;
 
 
 class CreateTenantConfiguration
@@ -29,8 +28,8 @@ class CreateTenantConfiguration
     {
         app(CreateConfigurationTask::class)->run([
             'configurable_type' => 'tenant',
+            'configurable_id' => $event->tenant->id,
             'configuration' => configurationer()::getDefault('tenant'),
-            'id' => $event->tenant->id
         ]);
     }
 }
