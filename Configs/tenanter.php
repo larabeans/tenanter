@@ -12,18 +12,6 @@ return [
         'host' => App\Containers\Larabeans\Tenanter\Models\Host::class,
         'tenant' => App\Containers\Larabeans\Tenanter\Models\Tenant::class,
         'domain' => App\Containers\Larabeans\Tenanter\Models\Domain::class,
-        'detail' => [
-            // FORMAT: business detail model
-            // 'identifier' => null,   // e.g. shop
-            // 'key' => null,
-            // 'name' => null,
-            // 'model' => null,        // e.g. shop model
-            // 'tasks' => [
-            //    'get' => null,      // e.g. get shop task
-            //    'create' => null,
-            //    'update' => null
-            // ]
-        ],
     ],
 
     'tenant_column' => 'tenant_id',
