@@ -1,6 +1,16 @@
 <?php
 return [
 
+    'tenancy' => [
+        'is_enabled' => true,
+        'header_attribute' => 'Axis-Host',
+        'ignore_feature_check_for_host_users' => false,
+        'sides' => [
+            'HOST' => 2, // Who is hosting multiple tenants
+            'TENANT' => 1 // A customer which has its own users, roles, permissions, settings... and uses the application completely isolated from other tenants
+        ],
+    ],
+    
     /**
      * The list of host domains.
      *
@@ -173,16 +183,6 @@ return [
 
     'configurationer' => [
         
-        'tenancy' => [
-            'is_enabled' => true,
-            'header_attribute' => 'Axis-Host',
-            'ignore_feature_check_for_host_users' => false,
-            'sides' => [
-                'HOST' => 2, // Who is hosting multiple tenants
-                'TENANT' => 1 // A customer which has its own users, roles, permissions, settings... and uses the application completely isolated from other tenants
-            ],
-        ],
-    
         'entities' => [
             'host' => [
                 'identifier' => 'host',
