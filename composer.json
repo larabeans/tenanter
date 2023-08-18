@@ -23,7 +23,8 @@
   ],
   "license": "MIT",
   "require": {
-    "larabeans/core": "*"
+    "larabeans/core": "*",
+    "facade/ignition-contracts": "^1.0.2"
   },
   "require-dev": {},
   "autoload": {
