@@ -38,8 +38,8 @@ class InitializeTenancyByRequestHeader extends IdentificationMiddleware
 
     protected function getAxisHost( $request)
     {
-        if($request->header('Axis-Host')) {
-            return $request->header('Axis-Host');
+        if($request->header(configurationer()::getSystemConfigurationAttr('tenancy.header_attribute'))) {
+            return $request->header(configurationer()::getSystemConfigurationAttr('tenancy.header_attribute'));
         }
 
         return false;

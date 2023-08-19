@@ -52,8 +52,8 @@ class InitializeHostContext extends IdentificationMiddleware
 
     protected function getAxisHost( $request)
     {
-        if($request->header(config('tenanter.tenancy.header_attribute'))) {
-            return $request->header(config('tenanter.tenancy.header_attribute'));
+        if($request->header(configurationer()::getSystemConfigurationAttr('tenancy.header_attribute'))) {
+            return $request->header(configurationer()::getSystemConfigurationAttr('tenancy.header_attribute'));
         }
 
         return '';
