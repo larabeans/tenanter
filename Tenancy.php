@@ -191,10 +191,15 @@ class Tenancy
     }
 
     public function side() {
-        $sides = config('tenanter.tenancy.sides');
+        $sides = tenancyConfig('sides');
         if($this->initialized) {
             return $this->hostInitialized ? $sides['HOST'] : $sides['TENANT'];
         }
         return null;
     }
+
+    public function config($attr){
+        return configurationer()::getSystemConfigurationAttr('tenancy'.$attr);
+    }  
+
 }

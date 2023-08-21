@@ -13,6 +13,16 @@ if (! function_exists('tenancy')) {
     }
 }
 
+
+if (! function_exists('tenancyConfig')) {
+    /** @return Tenancy */
+    function tenancyConfig($attr)
+    {
+        return app(Tenancy::class)->config($attr);
+    }
+}
+
+
 if (! function_exists('host')) {
     /**
      * Get a key from the current host's storage.

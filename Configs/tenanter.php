@@ -1,6 +1,8 @@
 <?php
 return [
 
+    'installed' => true, 
+
     /**
      * The list of host domains.
      *
