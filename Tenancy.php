@@ -199,7 +199,8 @@ class Tenancy
     }
 
     public function config($attr){
-        return configurationer()::getSystemConfigurationAttr('tenancy'.$attr);
-    }  
+        $attr = $attr ? 'tenancy.' . $attr : 'tenancy';
+        return configurationer()::getSystemConfigurationAttr($attr);
+    }   
 
 }
