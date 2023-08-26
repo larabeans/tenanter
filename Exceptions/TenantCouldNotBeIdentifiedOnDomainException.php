@@ -11,7 +11,7 @@ class TenantCouldNotBeIdentifiedOnDomainException extends TenantCouldNotBeIdenti
 {
     public function __construct($domain)
     {
-        parent::__construct("Tenant could not be identified on domain $domain");
+        parent::__construct("Tenant could not be identified on domain $domain", 406);
     }
 
     public function getSolution(): Solution

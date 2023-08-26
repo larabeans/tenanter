@@ -13,7 +13,7 @@ class TenantCouldNotBeIdentifiedByPathException extends TenantCouldNotBeIdentifi
 {
     public function __construct($tenant_id)
     {
-        parent::__construct("Tenant could not be identified on path with tenant_id: $tenant_id");
+        parent::__construct("Tenant could not be identified on path with tenant_id: $tenant_id", 406);
     }
 
     public function getSolution(): Solution

@@ -13,7 +13,7 @@ class TenantCouldNotBeIdentifiedByRequestDataException extends TenantCouldNotBeI
 {
     public function __construct($tenant_id)
     {
-        parent::__construct("Tenant could not be identified by request data with payload: $tenant_id");
+        parent::__construct("Tenant could not be identified by request data with payload: $tenant_id", 406);
     }
 
     public function getSolution(): Solution

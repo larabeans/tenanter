@@ -13,7 +13,7 @@ class TenantCouldNotBeIdentifiedByRequestHeaderException extends TenantCouldNotB
 {
     public function __construct($axisHost)
     {
-        parent::__construct("Tenant could not be identified by request header with Axis-Host: $axisHost");
+        parent::__construct("Tenant could not be identified by request header with Axis-Host: $axisHost", 406);
     }
 
     public function getSolution(): Solution

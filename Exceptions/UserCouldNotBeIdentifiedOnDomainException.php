@@ -11,7 +11,7 @@ class UserCouldNotBeIdentifiedOnDomainException extends UserCouldNotBeIdentified
 {
     public function __construct($domain)
     {
-        parent::__construct("User could not be identified on domain $domain",406);
+        parent::__construct("User could not be identified on domain $domain", 406);
     }
 
     public function getSolution(): Solution
