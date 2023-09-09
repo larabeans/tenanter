@@ -37,6 +37,7 @@ class SetupHost extends Command
         $user = app(CreateUserTask::class)->run(
             true,
             $host->id,
+            $this->data['name'],
             $this->data['email'],
             $this->data['password']
         )->assignRole('admin');

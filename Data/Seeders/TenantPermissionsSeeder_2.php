@@ -9,16 +9,18 @@ class TenantPermissionsSeeder_2 extends Seeder
 {
     public function run()
     {
-        // Default Tenant Management Permissions ----------------------------------------------------------
-        app(CreatePermissionTask::class)->run('manage-tenant', 'Manage Tenant Permission.');
-        app(CreatePermissionTask::class)->run('create-tenant', 'Create Tenant Permission.');
-        app(CreatePermissionTask::class)->run('edit-tenant', 'Edit Tenant Permission.');
-        app(CreatePermissionTask::class)->run('delete-tenant', 'Delete Tenant Permissions.');
-        app(CreatePermissionTask::class)->run('view-tenant', 'View Tenant Permissions.');
+        foreach (array_keys(config('auth.guards')) as $guardName) {
+            // Default Tenant Management Permissions ----------------------------------------------------------
+            app(CreatePermissionTask::class)->run('manage-tenant', 'Manage Tenant Permission.', guardName: $guardName);
+            app(CreatePermissionTask::class)->run('create-tenant', 'Create Tenant Permission.', guardName: $guardName);
+            app(CreatePermissionTask::class)->run('edit-tenant', 'Edit Tenant Permission.', guardName: $guardName);
+            app(CreatePermissionTask::class)->run('delete-tenant', 'Delete Tenant Permissions.', guardName: $guardName);
+            app(CreatePermissionTask::class)->run('view-tenant', 'View Tenant Permissions.', guardName: $guardName);
 
-        // Configurable Entities Permissions
-        app(CreatePermissionTask::class)->run('edit-host-configuration', 'Edit Tenancy Host Level Configuration Permission.');
-        app(CreatePermissionTask::class)->run('edit-tenant-configuration', 'Edit Tenancy Tenant Level Configuration Permission.');
-        app(CreatePermissionTask::class)->run('edit-domain-configuration', 'Edit Tenancy Domain Level Configuration Permission.');
+            // Configurable Entities Permissions
+            app(CreatePermissionTask::class)->run('edit-host-configuration', 'Edit Tenancy Host Level Configuration Permission.', guardName: $guardName);
+            app(CreatePermissionTask::class)->run('edit-tenant-configuration', 'Edit Tenancy Tenant Level Configuration Permission.', guardName: $guardName);
+            app(CreatePermissionTask::class)->run('edit-domain-configuration', 'Edit Tenancy Domain Level Configuration Permission.', guardName: $guardName);
+        }
     }
 }

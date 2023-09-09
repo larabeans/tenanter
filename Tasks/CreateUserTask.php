@@ -20,12 +20,14 @@ class CreateUserTask extends Task
     public function run(
         bool $is_admin,
         string $tenant_id,
+        string $name,
         string $email,
         string $password
     ) {
         try {
             return $this->repository->create([
                 'tenant_id' => $tenant_id,
+                'name' => $name,
                 'email' => $email,
                 'password' => Hash::make($password)
             ]);

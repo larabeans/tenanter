@@ -36,7 +36,7 @@ class TenantScope implements Scope
             if (tenancy()->validTable($model->getTable())) {
                 if (! $this->gettingRolesForAuthenticatedUser($builder, $model)) {
                     $builder->where($model->qualifyColumn(config('tenanter.tenant_column')), host()->getHostKey());
-                    //$builder->orWhere($model->qualifyColumn(config('tenanter.tenant_column')), null);
+                    $builder->orWhere($model->qualifyColumn(config('tenanter.tenant_column')), null);
                 }
             }
 
